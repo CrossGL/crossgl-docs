@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&family=Nunito:wght@300;400;700&family=Open+Sans:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    background: linear-gradient(90deg, #1a2a6c, #000000, #5e1010);
+    color: #f8f8f2;
+}
+
+:root {
+    --color-background-primary: transparent;
+    --color-background-secondary: #1a1a1a;
+    --color-background-hover: #333;
+    --color-background-border: #444;
+    --color-foreground-primary: #f8f8f2;
+    --color-foreground-secondary: #ccc;
+    --color-foreground-muted: #999;
+    --color-link: #1e90ff;
+    --color-link--hover: #ff4500;
+}
+
+a {
+    color: var(--color-link);
+    font-family: 'Montserrat', sans-serif;
+}
+
+a:hover {
+    color: var(--color-link--hover);
+}
+
+.rst-content {
+    background-color: var(--color-background-primary); /* Use consistent background color */
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-foreground-primary);
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.wy-nav-top {
+    background-color: transparent;
+}
+
+.wy-side-scroll {
+    background: transparent;
+}
+
+.furo [role="doc-toc"] {
+    display: none !important;
+}
+
+.furo .sidebar .sidebar-main {
+    display: none !important;
+}
+
+
+.furo .main-content {
+    background-color: var(--color-background-primary); /* Ensure main content has a consistent background */
+}
+
+.furo .main-content .document {
+    background-color: var(--color-background-primary); /* Ensure main document has a consistent background */
+}
+
+/* custom.css */
+.large-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+
+/* Sidebar styles */
+.wy-nav-side {
+    background-color: #20232a; /* Dark background color */
+    border-right: 1px solid #444; /* Border for the sidebar */
+}
+
+.wy-side-nav-search {
+    padding: 20px;
+    background-color: #2d2f36; /* Slightly lighter for search area */
+}
+
+.wy-menu-vertical .current a, 
+.wy-menu-vertical .current a:hover, 
+.wy-menu-vertical .current a:focus {
+    background-color: #61dafb; /* Highlight for the current item */
+    color: #20232a; /* Text color for the current item */
+    font-weight: bold;
+}
+
+.wy-menu-vertical a {
+    color: #aab4be; /* Default link color */
+}
+
+.wy-menu-vertical a:hover {
+    color: #ffffff; /* Hover link color */
+}
+
+.wy-menu-vertical li.toctree-l1 > a {
+    font-size: 1.1em; /* Main sections size */
+    padding: 10px 20px; /* Padding for links */
+}
+
+.wy-menu-vertical li.toctree-l2 > a {
+    padding: 8px 30px; /* Subsection padding */
+}
+
+.wy-menu-vertical li.toctree-l3 > a {
+    padding: 6px 40px; /* Sub-subsection padding */
+}
+
+.wy-menu-vertical li.toctree-l4 > a {
+    padding: 4px 50px; /* Deeper subsection padding */
+}
+
+.wy-menu-vertical ul {
+    padding: 0; /* Remove padding from ul */
+}
+
+.wy-menu-vertical li {
+    list-style: none; /* Remove list style */
+}
+
+.logo {
+    display: flex; /* Note to Vaat fix this */
+    align-items: center;
+}
+
+.logo img {
+    max-height: 40px; 
+    margin-right: 10px; 
+}
+
+.sidebar-logo {
+    max-height: auto; /* Adjust the height of the logo as needed */
+    width: 130px; /* Maintain aspect ratio */
+    margin-right: auto; /* Space between logo and title */
+}
