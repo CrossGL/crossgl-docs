@@ -25,7 +25,6 @@ jobs:
 
     - name: Build documentation
       run: |
-        cd source 
         make html
 
     - name: Deploy to GitHub Pages
