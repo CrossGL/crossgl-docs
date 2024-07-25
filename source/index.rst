@@ -149,6 +149,7 @@ The CrossGL team comprises experienced professionals from the graphics programmi
    translator
    language
    contribution
+   api_reference
 
 Indices and tables
 ==================
