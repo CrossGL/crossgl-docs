@@ -1,7 +1,7 @@
 DirectX Code Generation API Reference
 =====================================
 
-This document provides an overview of the DirectX code generation functionality in CrossGL, specifically focusing on the `HLSLCodeGen` class. This class is responsible for converting the abstract syntax tree (AST) of CrossGL shaders into HLSL code.
+This doc provides an overview of the DirectX code generation functionality in CrossGL, specifically focusing on the `HLSLCodeGen` class. This class is responsible for converting the abstract syntax tree (AST) of CrossGL shaders into HLSL code.
 
 .. raw:: html
 
