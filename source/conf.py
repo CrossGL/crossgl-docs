@@ -27,5 +27,31 @@ exclude_patterns = []
 html_theme_options = {
     "sidebar_hide_name": False, 
     "navigation_with_keys": True,  
-    "hide_toc": False
+    "hide_toc": False,
+    "light_css_variables": {
+        "color-brand-primary": "#3d94ff",  
+        "color-brand-content": "#000000",
+        "color-background-primary": "#3d94ff",  
+        "color-background-secondary": "#1a1a1a",
+        "color-foreground-primary": "#f8f8f2",
+        "color-foreground-secondary": "#ccc",
+        "color-foreground-muted": "#999",
+        "color-link": "#1e90ff",
+        "color-link--hover": "#ff4500",
+        "color-background-hover": "#333",
+        "color-background-border": "#444",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#3d94ff", 
+        "color-brand-content": "#000000",
+        "color-background-primary": "#3d94ff",  
+        "color-background-secondary": "#1a1a1a",
+        "color-foreground-primary": "#f8f8f2",
+        "color-foreground-secondary": "#ccc",
+        "color-foreground-muted": "#999",
+        "color-link": "#1e90ff",
+        "color-link--hover": "#ff4500",
+        "color-background-hover": "#333",
+        "color-background-border": "#444",
+    },
 }
