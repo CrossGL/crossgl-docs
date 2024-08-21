@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="CrossGL Translator" href="translator.html" /><link rel="prev" title="Welcome to CrossGL’s documentation!" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Contribution Guidelines" href="contribution.html" />
 
     <!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
-        <title>Design - CrossGL 0.0.1 documentation</title>
+        <title>DirectX Code Generation API Reference - CrossGL 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -235,14 +235,14 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Design</a></li>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="translator.html">CrossGL Translator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="language.html">CrossGL Language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_reference.html">DirectX Code Generation API Reference</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">DirectX Code Generation API Reference</a></li>
 </ul>
 
 </div>
@@ -263,7 +263,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/design.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/api_reference.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -283,11 +283,149 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="design">
-<h1>Design<a class="headerlink" href="#design" title="Link to this heading">¶</a></h1>
-<p>Here we present how the CrossGL ecosystem works!</p>
-<a class="reference internal image-reference" href="_images/workflow.png"><img alt="CrossGL Ecosystem Workflow" class="align-center" src="_images/workflow.png" style="width: 80%;" />
-</a>
+          <section id="directx-code-generation-api-reference">
+<h1>DirectX Code Generation API Reference<a class="headerlink" href="#directx-code-generation-api-reference" title="Link to this heading">¶</a></h1>
+<p>This doc provides an overview of the DirectX code generation functionality in CrossGL, specifically focusing on the <cite>HLSLCodeGen</cite> class. This class is responsible for converting the abstract syntax tree (AST) of CrossGL shaders into HLSL code.</p>
+<div class="large-text">HLSLCodeGen</div><p>HLSLCodeGen is responsible for generating HLSL code from the AST nodes.</p>
+<div class="large-text">Attributes</div><ul class="simple">
+<li><p><strong>current_shader</strong> (<cite>ShaderNode</cite>) – The current shader node being processed.</p></li>
+</ul>
+<div class="large-text">Methods</div><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">__init__(self)</span></code></dt><dd><p>Initializes the code generator.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate(self,</span> <span class="pre">ast)</span></code></dt><dd><p>Generates HLSL code from the AST.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>ast</cite> (<cite>ShaderNode</cite>) – The abstract syntax tree of the shader.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_shader(self,</span> <span class="pre">node)</span></code></dt><dd><p>Generates the HLSL code for the shader.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>node</cite> (<cite>ShaderNode</cite>) – The shader node of the AST.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_function(self,</span> <span class="pre">node)</span></code></dt><dd><p>Generates the HLSL code for a function.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>node</cite> (<cite>FunctionNode</cite>) – The function node of the AST.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_statement(self,</span> <span class="pre">stmt,</span> <span class="pre">indent=0,</span> <span class="pre">is_vs_input=False)</span></code></dt><dd><p>Generates the HLSL code for a statement.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>stmt</cite> (<cite>ASTNode</cite>) – The statement node of the AST.
+- <cite>indent</cite> (<cite>int</cite>) – The indentation level.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the statement is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_assignment(self,</span> <span class="pre">node,</span> <span class="pre">is_vs_input=False)</span></code></dt><dd><p>Generates the HLSL code for an assignment statement.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>node</cite> (<cite>AssignmentNode</cite>) – The assignment node of the AST.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the assignment is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_if(self,</span> <span class="pre">node,</span> <span class="pre">indent,</span> <span class="pre">is_vs_input=False)</span></code></dt><dd><p>Generates the HLSL code for an if statement.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>node</cite> (<cite>IfNode</cite>) – The if statement node of the AST.
+- <cite>indent</cite> (<cite>int</cite>) – The indentation level.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the if statement is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_for(self,</span> <span class="pre">node,</span> <span class="pre">indent,</span> <span class="pre">is_vs_input=False)</span></code></dt><dd><p>Generates the HLSL code for a for loop statement.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>node</cite> (<cite>ForNode</cite>) – The for loop node of the AST.
+- <cite>indent</cite> (<cite>int</cite>) – The indentation level.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the for loop is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_expression(self,</span> <span class="pre">expr,</span> <span class="pre">is_vs_input=False)</span></code></dt><dd><p>Generates the HLSL code for an expression.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>expr</cite> (<cite>ASTNode</cite>) – The expression node of the AST.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the expression is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The generated HLSL code.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">translate_expression(self,</span> <span class="pre">expr,</span> <span class="pre">is_vs_input)</span></code></dt><dd><p>Translates an expression from CrossGL syntax to HLSL syntax.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>:
+- <cite>expr</cite> (<cite>str</cite>) – The expression in CrossGL syntax.
+- <cite>is_vs_input</cite> (<cite>bool</cite>) – Whether the expression is in the vertex shader input.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The translated expression.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">map_type(self,</span> <span class="pre">vtype)</span></code></dt><dd><p>Maps CrossGL types to HLSL types.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>: <cite>vtype</cite> (<cite>str</cite>) – The CrossGL type.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The corresponding HLSL type.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">map_operator(self,</span> <span class="pre">op)</span></code></dt><dd><p>Maps CrossGL operators to HLSL operators.</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>: <cite>op</cite> (<cite>str</cite>) – The CrossGL operator.</p></li>
+<li><p><strong>Returns</strong>: <cite>str</cite> – The corresponding HLSL operator.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="large-text">Example</div><p>Here’s an example usage of the <cite>HLSLCodeGen</cite> class to generate HLSL code from a CrossGL shader:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">compiler.lexer</span> <span class="kn">import</span> <span class="n">Lexer</span>
+<span class="kn">from</span> <span class="nn">compiler.parser</span> <span class="kn">import</span> <span class="n">Parser</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">shader main {</span>
+<span class="s2">    input vec3 position;</span>
+<span class="s2">    input vec2 texCoord;</span>
+<span class="s2">    input mat2 depth;</span>
+<span class="s2">    output vec4 fragColor;</span>
+<span class="s2">    output float depth;</span>
+<span class="s2">    vec3 customFunction(vec3 random, float factor) {</span>
+<span class="s2">        return random * factor;</span>
+<span class="s2">    }</span>
+
+<span class="s2">    void main() {</span>
+<span class="s2">        vec3 color = vec3(position.x,position.y, 0.0);</span>
+<span class="s2">        float factor = 1.0;</span>
+
+<span class="s2">        if (texCoord.x &gt; 0.5) {</span>
+<span class="s2">            color = vec3(1.0, 0.0, 0.0);</span>
+<span class="s2">        } else {</span>
+<span class="s2">            color = vec3(0.0, 1.0, 0.0);</span>
+<span class="s2">        }</span>
+
+<span class="s2">        for (int i = 0; i &lt; 3; i = i + 1) {</span>
+<span class="s2">            factor = factor * 0.5;</span>
+<span class="s2">            color = customFunction(color, factor);</span>
+<span class="s2">        }</span>
+
+<span class="s2">        if (length(color) &gt; 1.0) {</span>
+<span class="s2">            color = normalize(color);</span>
+<span class="s2">        }</span>
+
+<span class="s2">        fragColor = vec4(color, 1.0);</span>
+<span class="s2">    }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">lexer</span> <span class="o">=</span> <span class="n">Lexer</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">Parser</span><span class="p">(</span><span class="n">lexer</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+<span class="n">ast</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+
+<span class="n">codegen</span> <span class="o">=</span> <span class="n">HLSLCodeGen</span><span class="p">()</span>
+<span class="n">hlsl_code</span> <span class="o">=</span> <span class="n">codegen</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">ast</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hlsl_code</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="large-text">Returns</div><p><code class="docutils literal notranslate"><span class="pre">str</span></code> – The generated HLSL code as a string.</p>
 </section>
 
         </article>
@@ -295,23 +433,15 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="translator.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">CrossGL Translator</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="index.html">
+          
+          <a class="prev-page" href="contribution.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Contribution Guidelines</div>
                 
               </div>
             </a>
