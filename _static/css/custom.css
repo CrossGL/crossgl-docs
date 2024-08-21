@@ -17,6 +17,23 @@ body {
     --color-link--hover: #ff4500;
 }
 
+
+.theme-toggle-container.theme-toggle-content button.theme-toggle {
+    display: none !important;
+}
+
+
+
+.theme-toggle-container.theme-toggle-content {
+    visibility: hidden !important;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+
 a {
     color: var(--color-link);
     font-family: 'Montserrat', sans-serif;
