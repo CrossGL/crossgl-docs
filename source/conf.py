@@ -54,4 +54,5 @@ html_theme_options = {
         "color-background-hover": "#333",
         "color-background-border": "#444",
     },
+
 }
