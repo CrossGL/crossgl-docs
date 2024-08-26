@@ -34,8 +34,8 @@ Welcome to CrossGL's documentation!
          });
       </script>
 
-        <a href="https://github.com/your-repo">
-          <img src="https://img.shields.io/github/issues/your-repo/your-project.svg?style=flat-square" alt="issues" />
+        <a href="https://github.com/CrossGL/crosstl">
+          <img src="https://img.shields.io/github/issues/CrossGL/crosstl?style=flat-square" alt="issues" />
         </a>
         <a href="https://github.com/your-repo">
           <img src="https://img.shields.io/github/forks/your-repo/your-project.svg?style=flat-square" alt="forks" />
