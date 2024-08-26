@@ -23,13 +23,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install sphinx sphinx-rtd-theme furo
 
+    - name: Clean build directory
+      run: |
+        rm -rf ./docs/build/html  # Clean the build directory before building
+
     - name: Build documentation
       run: |
         make html
 
+    - name: Check build directory
+      run: |
+        ls -al ./docs/build/html  # Verify the build output
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: ./docs/build/html 
+        publish_dir: ./docs/build/html
