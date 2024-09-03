@@ -17,7 +17,7 @@ The syntax of CrossGL is designed to be intuitive and similar to Shadertoy, maki
 
 A typical CrossGL shader consists of input, output, and the main function.
 
-.. code-block:: cgl
+.. code-block:: python
 
     shader main {
         input vec3 position;
@@ -70,7 +70,7 @@ CrossGL supports various data types similar to other shader languages. Below is 
 
 CrossGL provides built-in functions and operations for vector and matrix manipulation, similar to other shader languages.
 
-.. code-block:: cgl
+.. code-block:: python
 
     float3 customFunction(float3 random, float factor) {
         return random * factor;
