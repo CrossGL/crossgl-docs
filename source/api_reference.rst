@@ -8,12 +8,13 @@ API References For CrossGL To DirectX , Metal And OpenGL
 DirectX Code Generation
 -----------------------
 
-The HLSLCodeGen class within the CrossGL framework is pivotal in
+The `HLSLCodeGen` class within the CrossGL framework is pivotal in
 translating CrossGL shader abstract syntax trees (AST) into HLSL
 (High-Level Shader Language) code, which is essential for DirectX
 applications. This class systematically converts the AST (representing
-the logical structure of a shader)—>into corresponding HLSL code that
+the logical structure of a shader) into corresponding HLSL code that
 can be executed in DirectX environments.
+
 
 * Attributes 
    - current_shader (ShaderNode) : The current shader node being processed.
@@ -740,6 +741,7 @@ Methods
 ---
 
 **generate(self, ast)**  
+
 Generates shader code from the given abstract syntax tree (AST).
 
 - **Parameters:**  
@@ -751,6 +753,7 @@ Generates shader code from the given abstract syntax tree (AST).
 ---
 
 **generate_shader(self, node)**  
+
 Generates the SPIR-V code for a Vulkan shader based on the provided shader node.
 
 - **Parameters:**  
@@ -762,6 +765,7 @@ Generates the SPIR-V code for a Vulkan shader based on the provided shader node.
 ---
 
 **declare_types(self)**  
+
 Declares the necessary data types for the Vulkan SPIR-V shader.
 
 - **Parameters:**  
@@ -773,6 +777,7 @@ Declares the necessary data types for the Vulkan SPIR-V shader.
 ---
 
 **declare_global_variables(self)**  
+
 Declares global variables for shader inputs and outputs in the SPIR-V code.
 
 - **Parameters:**  
@@ -783,7 +788,8 @@ Declares global variables for shader inputs and outputs in the SPIR-V code.
 
 ---
 
-**declare_constants(self)**  
+**declare_constants(self)** 
+
 Declares constants used in the shader within the SPIR-V code.
 
 - **Parameters:**  
@@ -794,7 +800,8 @@ Declares constants used in the shader within the SPIR-V code.
 
 ---
 
-**declare_function(self, node)**  
+**declare_function(self, node)**
+
 Declares a function type in SPIR-V code based on the given function node.
 
 - **Parameters:**  
@@ -805,7 +812,8 @@ Declares a function type in SPIR-V code based on the given function node.
 
 ---
 
-**generate_function(self, node)**  
+**generate_function(self, node)**
+
 Generates the SPIR-V code for a function based on the given function node.
 
 - **Parameters:**  
@@ -817,6 +825,7 @@ Generates the SPIR-V code for a function based on the given function node.
 ---
 
 **generate_statement(self, stmt)**  
+
 Generates the SPIR-V code for a given statement node.
 
 - **Parameters:**  
@@ -832,7 +841,8 @@ Generates the SPIR-V code for a given statement node.
 
 ---
 
-**generate_assignment(self, node)**  
+**generate_assignment(self, node)** 
+
 Generates the SPIR-V code for an assignment statement.
 
 - **Parameters:**  
@@ -846,6 +856,7 @@ Generates the SPIR-V code for an assignment statement.
 ---
 
 **generate_if(self, node)**  
+
 Generates SPIR-V code for an `if` statement.
 
 - **Parameters:**  
@@ -862,6 +873,7 @@ Generates SPIR-V code for an `if` statement.
 ---
 
 **generate_for(self, node)**  
+
 Generates SPIR-V code for a `for` loop.
 
 - **Parameters:**  
@@ -880,6 +892,7 @@ Generates SPIR-V code for a `for` loop.
 ---
 
 **generate_expression(self, expr)**  
+
 Generates SPIR-V code for the given expression.
 
 - **Parameters:**  
@@ -901,7 +914,8 @@ Generates SPIR-V code for the given expression.
 
 ---
 
-**translate_expression(self, expr)**  
+**translate_expression(self, expr)** 
+
 Translates an expression into SPIR-V code.
 
 - **Parameters:**  
@@ -917,6 +931,7 @@ Translates an expression into SPIR-V code.
 ---
 
 **map_type(self, vtype)**  
+
 Maps a given type to its corresponding SPIR-V type.
 
 - **Parameters:**  
@@ -940,6 +955,7 @@ Maps a given type to its corresponding SPIR-V type.
 ---
 
 **map_operator(self, op)**  
+
 Maps a given operator to its corresponding SPIR-V opcode.
 
 - **Parameters:**  
@@ -964,7 +980,8 @@ Maps a given operator to its corresponding SPIR-V opcode.
 
 ---
 
-**get_id(self)**  
+**get_id(self)** 
+
 Generates a unique identifier for use in the SPIR-V code.
 
 - **Returns:**  
@@ -1123,6 +1140,7 @@ abstract syntax tree (AST). This node encapsulates the inputs, outputs,
 functions, and intermediate operations specific to the fragment shader.
 
 -  **Attributes**:
+
    -  `inputs`: A list of input variables used by the fragment shader, such as interpolated data from the vertex shader.
    -  `outputs`: A list of output variables produced by the fragment shader, like the final color of the pixel.
    -  `functions`: A list of functions defined and used within the fragment shader.
@@ -1708,8 +1726,6 @@ Methods
 ---
 
 - **skip_comments:**
-
-Skips over comment tokens in the token list.
    - **Description**: This method iterates through the token list and advances the position until the current token is no longer identified as a comment. It handles both single-line and multi-line comments by continuously consuming tokens classified as `COMMENT_SINGLE` or `COMMENT_MULTI`.
    - **Parameters**: None
    - **Returns**: None
@@ -1717,8 +1733,6 @@ Skips over comment tokens in the token list.
 ---
 
 - **eat :**
-
-Consumes the current token if it matches the expected token type.
    - **Description**: This method checks if the current token matches the specified `token_type`. If it does, the token is consumed, and the position is incremented to the next token. After consuming the token, comments are skipped by calling skip_comments. If the current token does not match the expected token type, a `SyntaxError` is raised.
    - **Parameters**:
       - `token_type` (str): The expected token type.
@@ -1727,8 +1741,6 @@ Consumes the current token if it matches the expected token type.
 ---
 
 - **parse_uniforms:**
-
-Parses uniform declarations in the shader code.
    - **Description**: This method processes the shader code to identify and extract uniform declarations. It starts by consuming the `"UNIFORM"` token and then reads the uniform’s type and name. The method expects uniform types to be one of `"VECTOR"`, `"FLOAT"`, `"DOUBLE"`, `"UINT"`, `"INT"`, or `"SAMPLER2D"`. After parsing the type and name, it consumes the following `"SEMICOLON"` token. The method returns a list of `UniformNode` objects representing the parsed uniform declarations.
    - **Parameters**: None
    - **Returns**:
@@ -1739,8 +1751,6 @@ Parses uniform declarations in the shader code.
 ---
 
 - **parse :**
-
-Parses the shader code to generate an abstract syntax tree (AST).
    - **Description**: This method initiates the parsing process for the shader code. It calls the parse_shader method to handle the specifics of shader code parsing and constructs the abstract syntax tree (AST) that represents the structure and components of the shader.
    - **Parameters**: None
    - **Returns**:
@@ -1749,8 +1759,6 @@ Parses the shader code to generate an abstract syntax tree (AST).
 ---
 
 - **parse_shader:**
-
-Parses the shader code and generates a `ShaderNode` object.
    - **Description**: This method processes the shader code to construct a `ShaderNode` object. It starts by consuming the “SHADER” token and then skips any comments. It extracts the shader’s name, then parses global inputs, uniforms, outputs, and sections for vertex and fragment shaders. It also collects global functions. The method continues parsing until it encounters the closing brace of the shader definition and constructs a `ShaderNode` representing the shader’s structure.
    - **Parameters**: None
    - **Returns**:
@@ -1761,8 +1769,6 @@ Parses the shader code and generates a `ShaderNode` object.
 ---
 
 - **parse_shader_section:**
-
-Parses a shader section (VERTEX or FRAGMENT) and generates the corresponding shader node object.
    - **Description**: This method processes a specific shader section, either “VERTEX” or “FRAGMENT”, by consuming the section header and opening brace. It then collects and processes inputs, outputs, functions, and intermediate statements until it encounters the closing brace. It constructs and returns a `VERTEXShaderNode` or `FRAGMENTShaderNode` based on the `section_type` parameter.
    - **Parameters**:
       - `section_type` (str): The type of shader section to parse, either “VERTEX” or “FRAGMENT”.
@@ -1774,8 +1780,6 @@ Parses a shader section (VERTEX or FRAGMENT) and generates the corresponding sha
 ---
 
 - **parse_inputs:**
-
-Parses input declarations in the shader code.
    - **Description**: This method processes and extracts input declarations from the shader code by consuming the “INPUT” token, followed by the variable type and name. It collects these declarations into a list until it encounters a token that is not an “INPUT”.
    - **Parameters**: None
 
@@ -1787,8 +1791,6 @@ Parses input declarations in the shader code.
 ---
 
 - **parse_outputs:**
-
-Parses output declarations in the shader code.
    - **Description**: This method processes and extracts output declarations from the shader code by consuming the “OUTPUT” token, followed by the variable type and name. It continues to collect these declarations into a list until it encounters a token that is not an “OUTPUT”.
    - **Parameters**: None
    - **Returns**:
@@ -1799,8 +1801,6 @@ Parses output declarations in the shader code.
 ---
 
 **parse_function**
-
-Parses a function declaration in the shader code.
    - **Description**: This method processes a function declaration by extracting the return type, function name, parameters, and body. It expects either “MAIN” or an “IDENTIFIER” as the function name, then parses the function’s parameters enclosed in parentheses, and finally, parses the function’s body within curly braces.
    - **Parameters**: None
    - **Returns**:
@@ -1809,8 +1809,6 @@ Parses a function declaration in the shader code.
       - `SyntaxError`: If the current token does not match the expected format for a function declaration, such as not finding “MAIN” or an “IDENTIFIER” where expected.
 
 **parse_parameters**
-
-Parses function parameters in the shader code.
    - **Description**: This method processes function parameters by collecting them into a list. It handles multiple parameters separated by commas and continues parsing until the closing parenthesis is encountered.
    - **Parameters**: None.
    - **Returns**:
@@ -1819,8 +1817,6 @@ Parses function parameters in the shader code.
       - `None`.
 
 **parse_parameter**
-
-Parses a function parameter in the shader code.
    - **Description**: This method extracts the type and name of a function parameter. It processes the parameter type using the `parse_type` method and captures the parameter name from the current token.
    - **Parameters**: None.
    - **Returns**:
@@ -1829,8 +1825,6 @@ Parses a function parameter in the shader code.
       - `SyntaxError`: If the current token does not match the expected type for a parameter.
 
 **parse_type**
-
-Parses a type declaration in the shader code.
    - **Description**: This method identifies and returns the type of a shader variable or function. It handles basic shader types such as `void`, `VECTOR`, `FLOAT`, `DOUBLE`, `UINT`, `INT`, `MATRIX`, `SAMPLER2D`, and user-defined types. The method checks the current token and returns the appropriate type string.
    - **Parameters**: None.
    - **Returns**:
@@ -1839,8 +1833,6 @@ Parses a type declaration in the shader code.
       - `SyntaxError`: If the current token does not match a valid type declaration.
 
 **parse_body**
-
-Parses a function body in the shader code.
    - **Description**: This method processes the statements within a function body, constructing a list of statements by identifying and parsing control structures (`IF`, `FOR`), return statements, and assignments or function calls. It continues parsing until it encounters a closing brace `RBRACE` or end-of-file `EOF`.
    - **Parameters**: None.
    - **Returns**:
@@ -1849,8 +1841,6 @@ Parses a function body in the shader code.
       - `SyntaxError`: If an unexpected token is encountered while parsing the function body.
 
 **parse_if_statement**
-
-Parses an `if` statement in the shader code.
    - **Description**: This method processes an `if` statement by extracting the condition, the body of the `if` block, and optionally the `else` block if present. It constructs an `IfNode` object representing the parsed `if` statement, including its condition and the corresponding bodies for the `if` and `else` branches.
    - **Parameters**: None.
    - **Returns**:
@@ -1859,8 +1849,6 @@ Parses an `if` statement in the shader code.
       - `SyntaxError`: If the current token does not match the expected structure of an `if` statement.
 
 **peak**
-
-Peeks ahead in the token list.
    - **Description**: This method retrieves the token that is `n` positions ahead in the token list without advancing the current position. It allows inspection of future tokens for decision-making during parsing.
    - **Parameters**:
       - `n (int)`: The number of tokens to peek ahead in the token list.
@@ -1870,8 +1858,6 @@ Peeks ahead in the token list.
       - `IndexError`: If peeking beyond the end of the token list.
 
 **parse_for_loop**
-
-Parses a for loop in the shader code.
    - **Description**: This method processes the components of a for loop, including initialization, condition, update, and body. It constructs a `ForNode` object representing the for loop structure.
    - **Parameters**: None
    - **Returns**:
@@ -1880,8 +1866,6 @@ Parses a for loop in the shader code.
       - `SyntaxError`: If the current token does not match the expected for loop structure.
 
 **parse_update**
-
-Parses an update statement in the shader code.
    - **Description**: This method interprets an update statement, handling both increment and decrement operations. It constructs a `VariableNode` object representing the update statement with the appropriate operation.
    - **Parameters**: None
    - **Returns**:
@@ -1890,8 +1874,6 @@ Parses an update statement in the shader code.
       - `SyntaxError`: If the current token does not match the expected update statement structure.
 
 **parse_return_statement**
-
-Parses a return statement in the shader code.
    - **Description**: This method interprets a return statement, capturing the values to be returned. It constructs a `ReturnNode` object that represents the return statement with the appropriate return values.
    - **Parameters**: None
    - **Returns**:
@@ -1909,8 +1891,6 @@ Parses a return statement in the shader code.
       - `SyntaxError`: If the current token does not match any expected patterns for assignments, function calls, or updates.
 
 **parse_variable_declaration**
-
-Parses a variable declaration in the shader code.
    - **Description**: This method parses a variable declaration, handling both simple declarations and assignments. It constructs a `VariableNode` or `BinaryOpNode` representing the variable declaration or assignment, including handling for member access and compound assignments.
    - **Returns**:
       - `VariableNode` or `BinaryOpNode`: An object representing the variable declaration or assignment.
@@ -1918,8 +1898,6 @@ Parses a variable declaration in the shader code.
       - `SyntaxError`  : If the current token does not match the expected variable declaration or assignment structure.
 
 **parse_assignment**
-
-Parses an assignment statement in the shader code.
    - **Description**: This method parses an assignment statement, including various assignment operators. It constructs a `BinaryOpNode` representing the assignment operation, with the variable name and the assigned value.
    - **Attributes**:
       - `name (str)`: The name of the variable being assigned.
@@ -1929,8 +1907,6 @@ Parses an assignment statement in the shader code.
       - `SyntaxError`: If the current token does not match the expected assignment operator or structure.
 
 **parse_additive**
-
-Parses an additive expression in the shader code.
    - **Description**: This method parses an additive expression, which includes addition and subtraction operations. It constructs a `BinaryOpNode` representing the additive expression, handling multiple operations as needed.
    - **Returns**:
       - `ASTNode`: An object representing the additive expression.
@@ -1938,8 +1914,6 @@ Parses an additive expression in the shader code.
       - `SyntaxError`: Not applicable for this method, as it does not handle syntax errors directly.
 
 **parse_multiplicative**
-
-Parses a multiplicative expression in the shader code.
    - **Description**: This method parses a multiplicative expression, which includes multiplication and division operations. It constructs a `BinaryOpNode` representing the multiplicative expression, handling multiple operations as needed.
    - **Returns**:
       - `ASTNode`: An object representing the multiplicative expression.
@@ -1947,8 +1921,6 @@ Parses a multiplicative expression in the shader code.
       - `SyntaxError`: Not applicable for this method, as it does not handle syntax errors directly.
 
 **parse_unary**
-
-Parses a unary expression in the shader code.
    - **Description**: This method parses a unary expression, including unary plus and minus operations. It constructs a `UnaryOpNode` representing the unary expression or proceeds to parse a primary expression if no unary operators are present.
    - **Returns**:
       - `ASTNode`: An object representing the unary expression.
@@ -1956,8 +1928,6 @@ Parses a unary expression in the shader code.
       - `SyntaxError`: Not applicable for this method, as it does not handle syntax errors directly.
 
 **parse_primary**
-
-Parses a primary expression in the shader code.
    - **Description**: This method parses primary expressions, which include parenthesized expressions, numeric literals, and identifiers. It handles different token types to construct the appropriate AST node or value. If the token is not recognized as a valid primary expression, it raises a `SyntaxError`.
    - **Returns**:
       - `ASTNode`: An object representing the primary expression, which could be a value or a node from a function call or identifier.
@@ -1965,8 +1935,6 @@ Parses a primary expression in the shader code.
       - `SyntaxError`: If the current token does not match a valid primary expression.
 
 **parse_function_call**
-
-Parses a function call in the shader code.
    - **Description**: This method interprets a function call by reading the function name and its arguments. It constructs a `FunctionCallNode` object representing the function call with the parsed arguments.
    - **Attributes**:
       - `name (str)`: The name of the function being called.
@@ -1976,8 +1944,6 @@ Parses a function call in the shader code.
       - `SyntaxError`: If the current token does not match the expected structure for a function call.
 
 **parse_expression**
-
-Parses an expression in the shader code.
    - **Description**: This method interprets an expression, handling various operators to construct a `BinaryOpNode` that represents the expression’s structure.
    - **Returns**:
       - `ASTNode`: An object representing the parsed expression, which could be a `BinaryOpNode` reflecting the expression’s operators and operands.
@@ -1985,8 +1951,6 @@ Parses an expression in the shader code.
       - `SyntaxError`: If the current token does not match the expected structure for an expression.
 
 **parse_ternary**
-
-Parses a ternary expression in the shader code.
    - **Description**: This method interprets a ternary expression, handling the ternary operator (`? :`) to construct a `TernaryOpNode` that represents the ternary expression’s condition and its two possible outcomes.
    - **Returns**:
       - `ASTNode`: An object representing the parsed ternary expression, which could be a `TernaryOpNode` reflecting the condition and both branches of the ternary operator.
@@ -1994,8 +1958,6 @@ Parses a ternary expression in the shader code.
       - `SyntaxError`: If the current token does not match the expected structure for a ternary expression.
 
 **parse_function_call_or_identifier**
-
-Parses a function call or identifier in the shader code.
    - **Description**: This method determines whether the current token represents a function call or a simple identifier. It constructs a `FunctionCallNode` if it detects a function call, or a `VariableNode` if it detects an identifier. It also handles member access if a dot (`.`) follows the identifier.
    - **Returns**:
       - `ASTNode`: An object representing either a `FunctionCallNode` for function calls, a `VariableNode` for identifiers, or a member access node if applicable.
@@ -2003,8 +1965,6 @@ Parses a function call or identifier in the shader code.
       - `SyntaxError`: If the current token does not match the expected structure for a function call or identifier.
 
 **parse_member_access**
-
-Parses a member access in the shader code.
    - **Description**: This method parses member access operations, such as accessing a field of an object. It constructs a `MemberAccessNode` representing the member access and handles cases where multiple member accesses are chained.
    - **Attributes**:
       - `object (str)`: The object being accessed.
@@ -4026,9 +3986,7 @@ eat
 
    -  `token_type`: The type of token expected to be consumed.
 
--  **Returns**:
-
-   -  None
+-  **Returns**: None
 
 -  **Raises**:
 
@@ -4042,14 +4000,11 @@ skip_comments(self)
 | Skips over single-line and multi-line comments in the token stream by
   advancing past them.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - None
+| **Returns:** None
 
-| **Raises:**
-| - None
+| **Raises:** None
 
 parse(self)
 ~~~~~~~~~~~~~~~
@@ -4060,16 +4015,13 @@ parse(self)
   entire input has been consumed by checking for the end of file
   (`EOF`).
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The root node of the parsed Abstract Syntax Tree (AST)
-  representing the shader.
+**Returns:**
+   - `ASTNode`: The root node of the parsed Abstract Syntax Tree (AST) representing the shader.
 
-| **Raises:**
-| - `SyntaxError`: If there is any remaining unparsed input after the
-  shader has been parsed.
+**Raises:**
+   - `SyntaxError`: If there is any remaining unparsed input after the shader has been parsed.
 
 parse_shader(self)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -4082,16 +4034,13 @@ parse_shader(self)
   (`EOF`), constructing a list of functions and other shader
   components.
 
-| **Parameters:**
-| - None
+| **Parameters:**  None
 
-| **Returns:**
-| - `ShaderNode`: A node representing the parsed shader, containing
-  all the functions and components.
+**Returns:**
+   - `ShaderNode`: A node representing the parsed shader, containing all the functions and components.
 
-| **Raises:**
-| - `SyntaxError`: If the shader contains unrecognized tokens that
-  cannot be skipped or parsed.
+**Raises:**
+   - `SyntaxError`: If the shader contains unrecognized tokens that cannot be skipped or parsed.
 
 parse_preprocessor_directive(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4102,15 +4051,12 @@ parse_preprocessor_directive(self)
   (`< >`). The method consumes tokens associated with the directive
   until it reaches the end of the directive.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - None
+| **Returns:** None
 
-| **Raises:**
-| - `SyntaxError`: If the preprocessor directive is not properly
-  closed with a `GREATER_THAN` token.
+**Raises:**
+   - `SyntaxError`: If the preprocessor directive is not properly closed with a `GREATER_THAN` token.
 
 parse_using_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4121,15 +4067,12 @@ parse_using_statement(self)
   tokens for `using`, `namespace`, `metal`, and the terminating
   semicolon (`;`).
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - None
+| **Returns:** None
 
-| **Raises:**
-| - `SyntaxError`: If any of the expected tokens (`USING`,
-  `NAMESPACE`, `METAL`, or `SEMICOLON`) are not found in sequence.
+**Raises:**
+   - `SyntaxError`: If any of the expected tokens (`USING`, `NAMESPACE`, `METAL`, or `SEMICOLON`) are not found in sequence.
 
 parse_struct(self)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -4139,17 +4082,13 @@ parse_struct(self)
   the structure’s name, its member variables, and any associated
   attributes.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `StructNode`: A node representing the structure, including its
-  name and members.
+**Returns:**
+   - `StructNode`: A node representing the structure, including its name and members.
 
-| **Raises:**
-| - `SyntaxError`: If any of the expected tokens (`STRUCT`,
-  `IDENTIFIER`, `LBRACE`, `RBRACE`, `SEMICOLON`) are not found
-  in sequence.
+**Raises:**
+   - `SyntaxError`: If any of the expected tokens (`STRUCT`, `IDENTIFIER`, `LBRACE`, `RBRACE`, `SEMICOLON`) are not found in sequence.
 
 parse_constant_buffer(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4158,17 +4097,13 @@ parse_constant_buffer(self)
 | Parses a `constant` buffer declaration in the shader code. This
   method reads the buffer’s name and its member variables.
 
-| **Parameters:**
-| - None
+| **Parameters:**  None
 
-| **Returns:**
-| - `ConstantBufferNode`: A node representing the constant buffer,
-  including its name and members.
+**Returns:**
+   - `ConstantBufferNode`: A node representing the constant buffer, including its name and members.
 
-| **Raises:**
-| - `SyntaxError`: If any of the expected tokens (`CONSTANT`,
-  `IDENTIFIER`, `LBRACE`, `RBRACE`, `SEMICOLON`) are not found
-  in sequence.
+**Raises:**
+   - `SyntaxError`: If any of the expected tokens (`CONSTANT`, `IDENTIFIER`, `LBRACE`, `RBRACE`, `SEMICOLON`) are not found in sequence.
 
 parse_function(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4178,17 +4113,13 @@ parse_function(self)
   qualifiers, return type, parameters, and body. Handles function
   attributes before and after the parameters.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `FunctionNode`: A node representing the function, including its
-  qualifier, return type, name, parameters, body, and attributes.
+**Returns:**
+   - `FunctionNode`: A node representing the function, including its qualifier, return type, name, parameters, body, and attributes.
 
-| **Raises:**
-| - `SyntaxError`: If any of the expected tokens (`VERTEX`,
-  `FRAGMENT`, `KERNEL`, `IDENTIFIER`, `LPAREN`, `RPAREN`,
-  `LBRACE`, `RBRACE`, etc.) are not found in sequence.
+**Raises:**
+   - `SyntaxError`: If any of the expected tokens (`VERTEX`, `FRAGMENT`, `KERNEL`, `IDENTIFIER`, `LPAREN`, `RPAREN`, `LBRACE`, `RBRACE`, etc.) are not found in sequence.
 
 parse_parameters(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4198,17 +4129,13 @@ parse_parameters(self)
   attributes, types, optional template parameters, and names. It
   continues parsing until it encounters a closing parenthesis.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `List[VariableNode]`: A list of `VariableNode` instances
-  representing each parameter with its type, name, and attributes.
+**Returns:**
+   - `List[VariableNode]`: A list of `VariableNode` instances representing each parameter with its type, name, and attributes.
 
-| **Raises:**
-| - `SyntaxError`: - If an unexpected token is encountered in the
-  parameter list. - If a token that is neither a comma nor a closing
-  parenthesis is found when expected.
+**Raises:**
+   - `SyntaxError`: - If an unexpected token is encountered in the parameter list. - If a token that is neither a comma nor a closing parenthesis is found when expected.
 
 parse_attributes(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4218,16 +4145,12 @@ parse_attributes(self)
   enclosed in `[[ ]]`, and this method extracts the attribute name and
   its arguments.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `List[AttributeNode]`: A list of `AttributeNode` instances
-  representing the parsed attributes, including their names and
-  arguments.
+**Returns:**
+   - `List[AttributeNode]`: A list of `AttributeNode` instances representing the parsed attributes, including their names and arguments.
 
-| **Raises:**
-| - `None`
+| **Raises:** `None`
 
 parse_block(self)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -4237,16 +4160,13 @@ parse_block(self)
   method collects statements within the block until it encounters the
   closing brace `}`.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `List[ASTNode]`: A list of statements parsed from the block, where
-  each statement is represented as an `ASTNode`.
+**Returns:**
+   - `List[ASTNode]`: A list of statements parsed from the block, where each statement is represented as an `ASTNode`.
 
-| **Raises:**
-| - `SyntaxError`: If the closing brace `RBRACE` is not found,
-  indicating a mismatch or incomplete block.
+**Raises:**
+   - `SyntaxError`: If the closing brace `RBRACE` is not found, indicating a mismatch or incomplete block.
 
 parse_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4257,18 +4177,13 @@ parse_statement(self)
   appropriate handler method, such as variable declarations, conditional
   statements, loops, or expressions.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed statement represented as an `ASTNode`. The
-  specific type of `ASTNode` depends on the statement type, such as
-  `VariableDeclarationNode`, `IfNode`, `ForNode`, `ReturnNode`,
-  or `ExpressionStatementNode`.
+**Returns:**
+   - `ASTNode`: The parsed statement represented as an `ASTNode`. The specific type of `ASTNode` depends on the statement type, such as `VariableDeclarationNode`, `IfNode`, `ForNode`, `ReturnNode`, or `ExpressionStatementNode`.
 
-| **Raises:**
-| - `SyntaxError`: If the current token does not match any known
-  statement types or if there is an issue parsing the statement.
+**Raises:**
+   - `SyntaxError`: If the current token does not match any known statement types or if there is an issue parsing the statement.
 
 parse_variable_declaration_or_assignment(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4282,16 +4197,12 @@ parse_variable_declaration_or_assignment(self)
 | **Parameters:**
 | - None
 
-| **Returns:**
-| - `ASTNode`: The parsed statement represented as an `ASTNode`.
-  This could be a `VariableNode`, `AssignmentNode`,
-  `BinaryOpNode`, or a general expression node, depending on the
-  syntax of the statement.
+**Returns:**
+   - `ASTNode`: The parsed statement represented as an `ASTNode`.This could be a `VariableNode`, `AssignmentNode`, `BinaryOpNode`, or a general expression node, depending on the syntax of the statement.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the variable declaration or
-  assignment does not match the expected format, or if there are issues
-  parsing the expression.
+**Raises:**
+   - `SyntaxError`: If the syntax of the variable declaration or assignment does not match the expected format, or if there are issues parsing the expression.
+
 
 parse_if_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4301,19 +4212,19 @@ parse_if_statement(self)
   `if` statement including the condition and both the `if` and
   optional `else` blocks.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `IfNode`: An AST node representing the `if` statement. This node
-  contains: - The `condition` as an expression. - The `if_body` as a
-  block of statements executed if the condition is true. - The
-  `else_body` as a block of statements executed if the condition is
-  false (or `None` if there is no `else` block).
+**Returns:**
+   - `IfNode`: An AST node representing the `if` statement. 
+   - This node contains:
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the `if` statement is incorrect
-  or if there are issues parsing the expression or blocks
+     - The `condition` as an expression.
+     - The `if_body` as a block of statements executed if the condition is true.
+     - The `else_body` as a block of statements executed if the condition is false (or `None` if there is no `else` block).
+
+
+**Raises:**
+   - `SyntaxError`: If the syntax of the `if` statement is incorrect or if there are issues parsing the expression or blocks
 
 parse_for_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4323,21 +4234,20 @@ parse_for_statement(self)
   initialization, condition, and update expressions of the `for` loop,
   as well as the body of the loop.
 
-| **Parameters:**
-| - None
+**Parameters:** None
 
-| **Returns:**
-| - `ForNode`: An AST node representing the `for` loop statement.
-  This node contains: - `init`: The initialization expression or
-  statement (e.g., variable declaration and assignment). -
-  `condition`: The condition expression that controls the loop’s
-  continuation. - `update`: The update expression executed after each
-  iteration of the loop. - `body`: The block of statements executed in
-  each iteration of the loop.
+**Returns:**
+   - `ForNode`: An AST node representing the `for` loop statement.
+   -  This node contains:
 
-| **Raises:**
-| - `SyntaxError`: If there are issues with the syntax of the `for`
-  statement or problems parsing the expressions or block.
+      - `init`: The initialization expression or statement (e.g., variable declaration and assignment).
+      - `condition`: The condition expression that controls the loop’s continuation.
+      - `update`: The update expression executed after each iteration of the loop.
+      - `body`: The block of statements executed in each iteration of the loop.
+
+
+**Raises:**
+   - `SyntaxError`: If there are issues with the syntax of the `for` statement or problems parsing the expressions or block.
 
 parse_return_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4347,17 +4257,13 @@ parse_return_statement(self)
   that is returned from a function and ensures proper syntax with a
   terminating semicolon.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ReturnNode`: An AST node representing the `return` statement.
-  This node contains: - `value`: The expression to be returned by the
-  function.
+**Returns:**
+   - `ReturnNode`: An AST node representing the `return` statement.This node contains: - `value`: The expression to be returned by the function.
 
-| **Raises:**
-| - `SyntaxError`: If there are issues with the syntax of the
-  `return` statement or problems parsing the expression.
+**Raises:**
+   - `SyntaxError`: If there are issues with the syntax of the `return` statement or problems parsing the expression.
 
 parse_expression_statement(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4366,16 +4272,13 @@ parse_expression_statement(self)
 | Parses an expression statement. This method handles any general
   expressions followed by a semicolon, treating them as statements.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed expression, which can be any type of
-  expression node (e.g., `BinaryOpNode`, `FunctionCallNode`, etc.).
+**Returns:**
+   - `ASTNode`: The parsed expression, which can be any type of expression node (e.g., `BinaryOpNode`, `FunctionCallNode`, etc.).
 
-| **Raises:**
-| - `SyntaxError`: If there are issues with the syntax of the
-  expression or if the semicolon is missing.
+**Raises:**
+   - `SyntaxError`: If there are issues with the syntax of the expression or if the semicolon is missing.
 
 parse_expression(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4385,16 +4288,13 @@ parse_expression(self)
   This method serves as the entry point for parsing expressions,
   handling the overall expression parsing process.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed assignment expression or any other
-  expression node resulting from the `parse_assignment` method.
+**Returns:**
+   - `ASTNode`: The parsed assignment expression or any other expression node resulting from the `parse_assignment` method.
 
-| **Raises:**
-| - `SyntaxError`: If there are issues with the syntax of the
-  assignment or any sub-expressions.
+**Raises:**
+   - `SyntaxError`: If there are issues with the syntax of the assignment or any sub-expressions.
 
 parse_assignment(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4407,17 +4307,13 @@ parse_assignment(self)
   the right-hand side expression. Additionally, it handles ternary
   conditional expressions if a `QUESTION` token is encountered.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed assignment expression, which could be an
-  `AssignmentNode` or a `TernaryOpNode` depending on the presence of
-  conditional operators.
+**Returns:**
+   - `ASTNode`: The parsed assignment expression, which could be an `AssignmentNode` or a `TernaryOpNode` depending on the presence of conditional operators.
 
-| **Raises:**
-| - `SyntaxError`: If there are issues with the syntax of the
-  assignment or ternary expressions.
+**Raises:**
+   - `SyntaxError`: If there are issues with the syntax of the assignment or ternary expressions.
 
 parse_logical_or(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4429,17 +4325,13 @@ parse_logical_or(self)
   side of each OR operation and combining the results into a
   `BinaryOpNode` representing the logical OR operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed logical OR expression, which is represented
-  as a `BinaryOpNode` if there are multiple OR operations, or a single
-  expression if there is no OR operation.
+**Returns:**
+   - `ASTNode`: The parsed logical OR expression, which is represented as a `BinaryOpNode` if there are multiple OR operations, or a single expression if there is no OR operation.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the logical OR expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the logical OR expression is invalid.
 
 parse_logical_and(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4451,17 +4343,13 @@ parse_logical_and(self)
   side of each AND operation and combining the results into a
   `BinaryOpNode` representing the logical AND operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed logical AND expression, which is represented
-  as a `BinaryOpNode` if there are multiple AND operations, or a
-  single expression if there is no AND operation.
+**Returns:**
+   - `ASTNode`: The parsed logical AND expression, which is represented as a `BinaryOpNode` if there are multiple AND operations, or a single expression if there is no AND operation.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the logical AND expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the logical AND expression is invalid.
 
 parse_equality(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4474,17 +4362,13 @@ parse_equality(self)
   the results into a `BinaryOpNode` representing the equality or
   inequality operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed equality expression, represented as a
-  `BinaryOpNode` if there are multiple equality operations, or a
-  single expression if there are no equality operations.
+**Returns:**
+   - `ASTNode`: The parsed equality expression, represented as a `BinaryOpNode` if there are multiple equality operations, or a single expression if there are no equality operations.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the equality expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the equality expression is invalid.
 
 parse_relational(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4497,17 +4381,13 @@ parse_relational(self)
   operation and combining the results into a `BinaryOpNode`
   representing the relational operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed relational expression, represented as a
-  `BinaryOpNode` if there are multiple relational operations, or a
-  single expression if there are no relational operations.
+**Returns:**
+   - `ASTNode`: The parsed relational expression, represented as a `BinaryOpNode` if there are multiple relational operations, or a single expression if there are no relational operations.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the relational expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the relational expression is invalid.
 
 parse_additive(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4519,17 +4399,13 @@ parse_additive(self)
   right-hand side of each operation and combining the results into a
   `BinaryOpNode` representing the additive operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed additive expression, represented as a
-  `BinaryOpNode` if there are multiple additive operations, or a
-  single expression if there are no additive operations.
+**Returns:**
+   - `ASTNode`: The parsed additive expression, represented as a `BinaryOpNode` if there are multiple additive operations, or a single expression if there are no additive operations.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the additive expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the additive expression is invalid.
 
 parse_multiplicative(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4541,17 +4417,13 @@ parse_multiplicative(self)
   right-hand side of each operation and combining the results into a
   `BinaryOpNode` representing the multiplicative operation.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed multiplicative expression, represented as a
-  `BinaryOpNode` if there are multiple multiplicative operations, or a
-  single expression if there are no multiplicative operations.
+**Returns:**
+   - `ASTNode`: The parsed multiplicative expression, represented as a `BinaryOpNode` if there are multiple multiplicative operations, or a single expression if there are no multiplicative operations.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the multiplicative expression is
-  invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the multiplicative expression is invalid.
 
 parse_unary(self)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -4562,16 +4434,13 @@ parse_unary(self)
   call to `parse_unary()`. If no unary operator is present, it
   delegates to `parse_primary()` to handle the primary expression.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed unary expression, represented as a
-  `UnaryOpNode` if a unary operator is present, or a primary
-  expression if no unary operator is found.
+**Returns:**
+   - `ASTNode`: The parsed unary expression, represented as a `UnaryOpNode` if a unary operator is present, or a primary expression if no unary operator is found.
 
-| **Raises:**
-| - `SyntaxError`: If the syntax of the unary expression is invalid.
+**Raises:**
+   - `SyntaxError`: If the syntax of the unary expression is invalid.
 
 parse_primary(self)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -4580,17 +4449,13 @@ parse_primary(self)
 | Parses a primary expression, which includes literals, variables,
   function calls, or expressions inside parentheses.
 
-| **Parameters:**
-| - None
+| **Parameters:** None
 
-| **Returns:**
-| - `ASTNode`: The parsed primary expression, such as a
-  `VariableNode`, a constructor call, a literal value, or an
-  expression inside parentheses.
+**Returns:**
+   - `ASTNode`: The parsed primary expression, such as a `VariableNode`, a constructor call, a literal value, or an expression inside parentheses.
 
-| **Raises:**
-| - `SyntaxError`: If an unexpected token is encountered in the
-  expression.
+**Raises:**
+   - `SyntaxError`: If an unexpected token is encountered in the expression.
 
 parse_vector_constructor(self, type_name)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4600,17 +4465,14 @@ parse_vector_constructor(self, type_name)
   parenthesis, a list of expressions separated by commas, and the
   closing parenthesis.
 
-| **Parameters:**
-| - `type_name` (str): The type of the vector being constructed (e.g.,
-  `vec2`, `vec3`, `vec4`).
+**Parameters:**
+   - `type_name` (str): The type of the vector being constructed (e.g., `vec2`, `vec3`, `vec4`).
 
-| **Returns:**
-| - `VectorConstructorNode`: A node representing the vector
-  constructor, which includes the vector type and its arguments.
+**Returns:**
+   - `VectorConstructorNode`: A node representing the vector constructor, which includes the vector type and its arguments.
 
-| **Raises:**
-| - `SyntaxError`: If an unexpected token is encountered (though this
-  specific case is not directly handled in this method).
+**Raises:**
+   - `SyntaxError`: If an unexpected token is encountered (though this specific case is not directly handled in this method).
 
 parse_function_call_or_identifier(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4620,13 +4482,18 @@ parse_function_call_or_identifier(self)
   token. If the token indicates a function call, it processes that;
   otherwise, it handles member access or just returns a variable node.
 
-| **Returns:**
-| - **Function Call:** If `LPAREN` is the next token after the
-  identifier. - `FunctionCallNode`: Represents a function call with
-  its name and arguments. - **Member Access:** If `DOT` follows the
-  identifier. - `MemberAccessNode`: Represents accessing a member of a
-  variable. - **Variable Node:** If no additional tokens are present. -
-  `VariableNode`: Represents a simple variable.
+**Returns:**
+
+- **Function Call:** If `LPAREN` is the next token after the identifier.
+
+  - `FunctionCallNode`: Represents a function call with its name and arguments.
+- **Member Access:** If `DOT` follows the identifier.
+
+  - `MemberAccessNode`: Represents accessing a member of a variable.
+- **Variable Node:** If no additional tokens are present.
+
+  - `VariableNode`: Represents a simple variable.
+
 
 parse_function_call(self, name)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4636,9 +4503,8 @@ parse_function_call(self, name)
   The arguments are collected until the closing parenthesis is
   encountered.
 
-| **Returns:**
-| - `FunctionCallNode`: Represents a function call with its name and
-  arguments.
+**Returns:**
+   - `FunctionCallNode`: Represents a function call with its name and arguments.
 
 parse_member_access(self, object)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4647,13 +4513,8 @@ parse_member_access(self, object)
 | Parses member access expressions. It handles cases where members are
   accessed with dot notation, including nested member accesses.
 
-| **Returns:**
-| - `MemberAccessNode`: Represents the member access expression with
-  the object and the member. If there are nested member accesses, the
-  function will recursively parse them.
-
-Your `parse_texture_sample` function looks solid for parsing texture
-sampling operations. Here’s a quick review:
+**Returns:**
+   - `MemberAccessNode`: Represents the member access expression with the object and the member. If there are nested member accesses, the function will recursively parse them.
 
 parse_texture_sample(self)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4662,7 +4523,7 @@ parse_texture_sample(self)
 | Parses a texture sampling operation, which typically involves calling
   a `sample` method on a texture with specified parameters.
 
-**`Return:`** - Returns a `TextureSampleNode` with the texture,
+**Return:** - Returns a `TextureSampleNode` with the texture,
 sampler, and coordinates.
 
 .. _metal-codegen-1:
@@ -4684,17 +4545,14 @@ generate(self, ast)
   processes the structs, custom functions, vertex shader, and fragment
   shader sections to produce the final shader code.
 
-| **Parameters:**
-| - `ast` (AST): The abstract syntax tree representing the shader
-  code, including functions and other relevant structures.
+**Parameters:**
+   - `ast` (AST): The abstract syntax tree representing the shader code, including functions and other relevant structures.
 
-| **Returns:**
-| - `str`: The generated shader code as a string, including vertex and
-  fragment shader sections.
+**Returns:**
+   - `str`: The generated shader code as a string, including vertex and fragment shader sections.
 
-| **Raises:**
-| - `ValueError`: If no vertex or fragment functions are found in the
-  AST when generating shader sections.
+**Raises:**
+   - `ValueError`: If no vertex or fragment functions are found in the AST when generating shader sections.
 
 process_structs(self, ast)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4705,16 +4563,13 @@ process_structs(self, ast)
   method updates the lists of vertex and fragment inputs and outputs
   based on the struct definitions.
 
-| **Parameters:**
-| - `ast` (AST): The abstract syntax tree representing the shader
-  code, including function and struct definitions.
+**Parameters:**
+   - `ast` (AST): The abstract syntax tree representing the shader code, including function and struct definitions.
 
-| **Returns:**
-| - `None`
+**Returns:** `None`
 
-| **Raises:**
-| - `KeyError`: If a struct with an unexpected name is encountered
-  (though this specific case is not directly handled in this method).
+**Raises:**
+   - `KeyError`: If a struct with an unexpected name is encountered (though this specific case is not directly handled in this method).
 
 generate_io_declarations(self, shader_type)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4725,17 +4580,14 @@ generate_io_declarations(self, shader_type)
   according to the shader type and the lists of vertex and fragment
   inputs and outputs.
 
-| **Parameters:**
-| - `shader_type` (str): The type of shader for which to generate
-  declarations (`"vertex"` or `"fragment"`).
+**Parameters:**
+   - `shader_type` (str): The type of shader for which to generate declarations (`"vertex"` or `"fragment"`).
 
-| **Returns:**
-| - `str`: A string containing the formatted input and output
-  declarations for the specified shader type.
+**Returns:**
+   - `str`: A string containing the formatted input and output declarations for the specified shader type.
 
-| **Raises:**
-| - `ValueError`: If an invalid `shader_type` is provided (though
-  this specific case is not directly handled in this method).
+**Raises:**
+   - `ValueError`: If an invalid `shader_type` is provided (though this specific case is not directly handled in this method).
 
 generate_function(self, func)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4745,19 +4597,14 @@ generate_function(self, func)
   It formats the function declaration and populates it with the
   function’s parameters and return type.
 
-| **Parameters:**
-| - `func` (FunctionNode): The function node representing the function
-  to generate code for, including its return type, name, parameters, and
-  body.
+**Parameters:**
+   - `func` (FunctionNode): The function node representing the function to generate code for, including its return type, name, parameters, and body.
 
-| **Returns:**
-| - `str`: A string containing the formatted function declaration and
-  body.
+**Returns:**
+   - `str`: A string containing the formatted function declaration and body.
 
-| **Raises:**
-| - `TypeError`: If the `func` parameter is not an instance of
-  `FunctionNode` (though this specific case is not directly handled in
-  this method).
+**Raises:**
+   - `TypeError`: If the `func` parameter is not an instance of `FunctionNode` (though this specific case is not directly handled in this method).
 
 generate_main_function(self, func)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4767,18 +4614,14 @@ generate_main_function(self, func)
   the `main` function with appropriate indentation and generates the
   function body.
 
-| **Parameters:**
-| - `func` (FunctionNode): The function node representing the `main`
-  function to generate code for, including its body.
+**Parameters:**
+   - `func` (FunctionNode): The function node representing the `main` function to generate code for, including its body.
 
-| **Returns:**
-| - `str`: A string containing the formatted `main` function with
-  its body.
+**Returns:**
+   - `str`: A string containing the formatted `main` function with its body.
 
-| **Raises:**
-| - `TypeError`: If the `func` parameter is not an instance of
-  `FunctionNode` (though this specific case is not directly handled in
-  this method).
+**Raises:**
+   - `TypeError`: If the `func` parameter is not an instance of `FunctionNode` (though this specific case is not directly handled in this method).
 
 generate_function_body(self, body, indent=0, is_main=False)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4789,22 +4632,18 @@ generate_function_body(self, body, indent=0, is_main=False)
   handles different types of statements and formats them with
   appropriate indentation.
 
-| **Parameters:**
-| - `body` (list): A list of statements and expressions to include in
-  the function body. - `indent` (int, optional): The level of
-  indentation for formatting the code (default is 0). - `is_main`
-  (bool, optional): A flag indicating if the function is the `main`
-  function, affecting how certain statements are handled (default is
-  False).
+**Parameters:**
 
-| **Returns:**
-| - `str`: A string containing the formatted code for the function
-  body.
+- `body` (list): A list of statements and expressions to include in the function body.
+- `indent` (int, optional): The level of indentation for formatting the code (default is 0).
+- `is_main` (bool, optional): A flag indicating if the function is the `main` function, affecting how certain statements are handled (default is False).
 
-| **Raises:**
-| - `TypeError`: If any item in the `body` list is not an instance
-  of an expected node type (though this specific case is not directly
-  handled in this method).
+
+**Returns:**
+   - `str`: A string containing the formatted code for the function body.
+
+**Raises:**
+   - `TypeError`: If any item in the `body` list is not an instance of an expected node type (though this specific case is not directly handled in this method).
 
 generate_for_loop(self, node, indent, is_main)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4814,20 +4653,18 @@ generate_for_loop(self, node, indent, is_main)
   initialization, condition, update expression, and body. It handles
   formatting and indentation for the loop structure.
 
-| **Parameters:**
-| - `node` (ForNode): The `ForNode` instance representing the
-  `for` loop, including initialization, condition, update, and body. -
-  `indent` (int): The level of indentation for formatting the code. -
-  `is_main` (bool): A flag indicating if the function is the `main`
-  function, affecting how certain statements are handled.
+**Parameters:**
 
-| **Returns:**
-| - `str`: A string containing the formatted code for the `for`
-  loop.
+- `node` (ForNode): The `ForNode` instance representing the `for` loop, including initialization, condition, update, and body.
+- `indent` (int): The level of indentation for formatting the code.
+- `is_main` (bool): A flag indicating if the function is the `main` function, affecting how certain statements are handled.
 
-| **Raises:**
-| - `TypeError`: If `node` is not an instance of `ForNode`, though
-  this specific case is not directly handled in this method.
+
+**Returns:**
+   - `str`: A string containing the formatted code for the `for` loop.
+
+**Raises:**
+   - `TypeError`: If `node` is not an instance of `ForNode`, though this specific case is not directly handled in this method.
 
 generate_if_statement(self, node, indent, is_main)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4837,20 +4674,18 @@ generate_if_statement(self, node, indent, is_main)
   the `if` body, and the optional `else` body. Handles formatting
   and indentation for the `if` structure.
 
-| **Parameters:**
-| - `node` (IfNode): The `IfNode` instance representing the `if`
-  statement, including its condition, `if` body, and optional `else`
-  body. - `indent` (int): The level of indentation for formatting the
-  code. - `is_main` (bool): A flag indicating if the function is the
-  `main` function, affecting how certain statements are handled.
+**Parameters:**
 
-| **Returns:**
-| - `str`: A string containing the formatted code for the `if`
-  statement.
+- `node` (IfNode): The `IfNode` instance representing the `if` statement, including its condition, `if` body, and optional `else` body.
+- `indent` (int): The level of indentation for formatting the code.
+- `is_main` (bool): A flag indicating if the function is the `main` function, affecting how certain statements are handled.
 
-| **Raises:**
-| - `TypeError`: If `node` is not an instance of `IfNode`, though
-  this specific case is not directly handled in this method.
+
+**Returns:**
+   - `str`: A string containing the formatted code for the `if` statement.
+
+**Raises:**
+   - `TypeError`: If `node` is not an instance of `IfNode`, though this specific case is not directly handled in this method.
 
 generate_assignment(self, node, is_main)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4860,20 +4695,17 @@ generate_assignment(self, node, is_main)
   for assignments to output positions and general assignments. Formats
   the assignment based on whether it is in the `main` function.
 
-| **Parameters:**
-| - `node` (AssignmentNode): The `AssignmentNode` instance
-  representing the assignment, including the left-hand side (LHS) and
-  right-hand side (RHS) expressions. - `is_main` (bool): A flag
-  indicating if the function is the `main` function, which affects how
-  certain assignments are formatted.
+**Parameters:**
 
-| **Returns:**
-| - `str`: A string containing the formatted code for the assignment
-  statement.
+- `node` (AssignmentNode): The `AssignmentNode` instance representing the assignment, including the left-hand side (LHS) and right-hand side (RHS) expressions.
+- `is_main` (bool): A flag indicating if the function is the `main` function, which affects how certain assignments are formatted.
 
-| **Raises:**
-| - `TypeError`: If `node` is not an instance of `AssignmentNode`,
-  though this specific case is not directly handled in this method.
+
+**Returns:**
+   - `str`: A string containing the formatted code for the assignment statement.
+
+**Raises:**
+   - `TypeError`: If `node` is not an instance of `AssignmentNode`, though this specific case is not directly handled in this method.
 
 generate_expression(self, expr, is_main=False)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4884,21 +4716,17 @@ generate_expression(self, expr, is_main=False)
   member access, unary operations, ternary operations, and vector
   constructors.
 
-| **Parameters:**
-| - `expr` (ASTNode): The AST node representing the expression to be
-  converted to code. This can be a `VariableNode`, `AssignmentNode`,
-  `BinaryOpNode`, `FunctionCallNode`, `MemberAccessNode`,
-  `UnaryOpNode`, `TernaryOpNode`, or `VectorConstructorNode`. -
-  `is_main` (bool, optional): A flag indicating if the expression is
-  within the `main` function, affecting how some expressions are
-  formatted. Defaults to `False`.
+**Parameters:**
 
-| **Returns:**
-| - `str`: A string containing the generated code for the expression.
+- `expr` (ASTNode): The AST node representing the expression to be converted to code. This can be a `VariableNode`, `AssignmentNode`, `BinaryOpNode`, `FunctionCallNode`, `MemberAccessNode`, `UnaryOpNode`, `TernaryOpNode`, or `VectorConstructorNode`.
+- `is_main` (bool, optional): A flag indicating if the expression is within the `main` function, affecting how some expressions are formatted. Defaults to `False`.
 
-| **Raises:**
-| - `TypeError`: If `expr` is not an instance of a recognized AST
-  node class or a string.
+
+**Returns:**
+   - `str`: A string containing the generated code for the expression.
+
+**Raises:**
+   - `TypeError`: If `expr` is not an instance of a recognized AST node class or a string.
 
 map_type(self, metal_type)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4907,17 +4735,13 @@ map_type(self, metal_type)
 | Maps a type from the internal representation (e.g., Metal shading
   language types) to the corresponding type in the target language.
 
-| **Parameters:**
-| - `metal_type` (str): The type in the internal representation that
-  needs to be mapped to the target language type.
+**Parameters:**
+   - `metal_type` (str): The type in the internal representation that needs to be mapped to the target language type.
 
-| **Returns:**
-| - `str`: The corresponding type in the target language based on the
-  `type_map`. If `metal_type` is not found in `type_map`, it
-  returns the `metal_type` itself.
+**Returns:**
+   - `str`: The corresponding type in the target language based on the `type_map`. If `metal_type` is not found in `type_map`, it returns the `metal_type` itself.
 
-| **Raises:**
-| - `None`
+**Raises:** `None`
 
 OpenGL
 ------
@@ -5420,17 +5244,16 @@ Tokenize Method
   whitespace. If an illegal character is encountered, it raises a
   `SyntaxError`.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code to be
-  tokenized.
+**Parameters:**
+   - `self`: The instance of the class containing the code to be tokenized.
 
-| **Attributes:**
-| - `self.code` (str): The code to be tokenized. - `self.tokens`
-  (list of tuple): The list of tokens generated from the code.
+**Attributes:**
+   - `self.code` (str): The code to be tokenized. - `self.tokens` (list of tuple): The list of tokens generated from the code.
 
 | **Method Details:**
 
 - tokenize(self):
+
   - Initializes the position `pos` to 0.
   - Iterates through the code, matching it against token patterns.
   - Appends matched tokens to `self.tokens`.
@@ -5662,8 +5485,8 @@ parse_uniforms Method
 | Parses the uniform variables from the tokens, handling the `UNIFORM`
   token followed by the variable type and name.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5671,6 +5494,7 @@ parse_uniforms Method
 
   - Initializes an empty list `uniforms`.
   - Iterates through tokens while the current token is `UNIFORM`:
+
     - Consumes the `UNIFORM` token.
     - Parses the variable type and stores it in `vtype`.
     - Stores the variable name from the current token.
@@ -5686,9 +5510,9 @@ parse_variable Method
 | Parses a variable declaration or assignment from the tokens, handling
   various forms of assignments and member access.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
-  - `type_name`: The type of the variable being parsed.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
+   - `type_name`: The type of the variable being parsed.
 
 | **Method Details:**
 
@@ -5710,8 +5534,8 @@ parse_assignment_or_function_call Method
   various types of assignments, increments, decrements, and function
   calls.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5719,14 +5543,19 @@ parse_assignment_or_function_call Method
 
   - Initializes `type_name` as an empty string.
   - Checks if the current token is a type (`VECTOR`, `FLOAT`, `INT`, `MATRIX`):
+
     - If true, stores the type name and consumes the token.
   - If the current token is `IDENTIFIER`, calls `parse_variable` with `type_name`.
+
     - Stores the identifier name and consumes the `IDENTIFIER` token.
   - Checks for assignment operators (`EQUALS`, `ASSIGN_ADD`, `ASSIGN_SUB`, `ASSIGN_MUL`, `ASSIGN_DIV`):
+
     - If true, calls `parse_assignment` with the name.
   - Checks for increment (`PRE_INCREMENT`, `POST_INCREMENT`) or decrement (`PRE_DECREMENT`, `POST_DECREMENT`) operators:
+
     - If true, consumes the operator and returns an `AssignmentNode` with a `UnaryOpNode`.
   - Checks for a function call (`LPAREN`):
+
     - If true, calls `parse_function_call` with the name.
   - Raises a `SyntaxError` for unexpected tokens after the identifier.
 
@@ -5738,8 +5567,8 @@ parse_function Method
 | Parses a function definition from the tokens, handling the return
   type, function name, parameters, and body.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5747,6 +5576,7 @@ parse_function Method
 
   - Parses the return type using `parse_type()`.
   - Checks if the current token is `MAIN` or `IDENTIFIER`:
+
     - If `MAIN`, stores the function name and consumes the `MAIN` token.
     - If `IDENTIFIER`, stores the function name and consumes the `IDENTIFIER` token.
   - Raises a `SyntaxError` if neither `MAIN` nor `IDENTIFIER` is found.
@@ -5766,8 +5596,8 @@ parse_body Method
 | Parses the body of a function, handling various statements such as
   `if`, `for`, `return`, and assignments or function calls.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5775,6 +5605,7 @@ parse_body Method
 
   - Initializes an empty list `body`.
   - Iterates through tokens until `RBRACE` or `EOF` is encountered:
+
     - If the current token is `IF`, parses an `if` statement and appends it to `body`.
     - If the current token is `FOR`, parses a `for` loop and appends it to `body`.
     - If the current token is `RETURN`, parses a `return` statement and appends it to `body`.
@@ -5790,8 +5621,8 @@ parse_parameters Method
 | Parses the parameters of a function, handling multiple parameters
   separated by commas.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5811,8 +5642,8 @@ parse_parameter Method
 | **Description:**
 | Parses a single parameter, handling the parameter type and name.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5830,8 +5661,8 @@ parse_type Method
 | **Description:**
 | Parses the type of a variable or function return type from the tokens.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5853,8 +5684,8 @@ parse_arguments Method
 | Parses the arguments of a function call, handling multiple arguments
   separated by commas.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5862,7 +5693,9 @@ parse_arguments Method
 
   - Initializes an empty list `args`.
   - Iterates through tokens until `RPAREN` is encountered:
+
     - Parses an expression and appends it to `args`.
+
     - If the current token is `COMMA`, consumes it.
   - Returns the list `args`.
 
@@ -5874,8 +5707,8 @@ parse_update Method
 | Parses an update statement, handling various forms of increments,
   decrements, and assignments.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
 | **Method Details:**
 
@@ -5883,6 +5716,7 @@ parse_update Method
 
   - If the current token is `IDENTIFIER`:
     - Stores the identifier name and consumes the `IDENTIFIER` token.
+
     - Checks for `POST_INCREMENT` or `POST_DECREMENT` and returns a `UnaryOpNode`.
     - Checks for assignment operators (`EQUALS`, `ASSIGN_ADD`, `ASSIGN_SUB`, `ASSIGN_MUL`, `ASSIGN_DIV`):
     - Consumes the operator, parses the expression, and returns an `AssignmentNode` or `BinaryOpNode`.
@@ -5897,16 +5731,23 @@ parse_assignment Method
 | Parses an assignment statement, handling the variable name, assignment
   operator, and expression.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_assignment(self)`: 
-|   - Stores the variable name from the current token and consumes the `IDENTIFIER` token.
-|   - Consumes the `EQUALS` token.
-|   - Parses the expression and stores it in `expr`.
-|   - Consumes the `SEMICOLON` token.
-|   - Returns an `AssignmentNode` with the variable name and expression.
+**Method Details:**
+
+- `parse_assignment(self)`:
+
+  - Stores the variable name from the current token and consumes the `IDENTIFIER` token.
+
+  - Consumes the `EQUALS` token.
+
+  - Parses the expression and stores it in `expr`.
+
+  - Consumes the `SEMICOLON` token.
+
+  - Returns an `AssignmentNode` with the variable name and expression.
+
 
 parse_function_call_or_identifier Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5915,17 +5756,23 @@ parse_function_call_or_identifier Method
 | Parses a function call or an identifier, handling the function name
   and its arguments or member access.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_function_call_or_identifier(self)`:
-|   - Checks if the current token is `VECTOR`:
-|     - If true, stores the function name and consumes the `VECTOR` token.
-|     - Otherwise, stores the function name and consumes the `IDENTIFIER` token.
-|   - If the next token is `LPAREN`, calls `parse_function_call` with the function name.
-|   - If the next token is `DOT`, calls `parse_member_access` with the function name.
-|   - Returns a `VariableNode` with the function name if no further tokens are found.
+**Method Details:**
+
+- Checks if the current token is `VECTOR`:
+  
+  - If true, stores the function name and consumes the `VECTOR` token.
+  
+  - Otherwise, stores the function name and consumes the `IDENTIFIER` token.
+
+- If the next token is `LPAREN`, calls `parse_function_call` with the function name.
+
+- If the next token is `DOT`, calls `parse_member_access` with the function name.
+
+- Returns a `VariableNode` with the function name if no further tokens are found.
+
 
 parse_additive Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5934,17 +5781,25 @@ parse_additive Method
 | Parses an additive expression, handling addition and subtraction
   operations.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_additive(self)`:
-|   - Parses the left-hand side of the expression using `parse_multiplicative()`.
-|   - Iterates through tokens while the current token is `PLUS` or `MINUS`:
-|     - Stores the operator and consumes the token.
-|     - Parses the right-hand side of the expression using `parse_multiplicative()`.
-|   - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
-|   - Returns the final `BinaryOpNode`.
+**Method Details:**
+
+- `parse_additive(self)`:
+
+  - Parses the left-hand side of the expression using `parse_multiplicative()`.
+
+  - Iterates through tokens while the current token is `PLUS` or `MINUS`:
+
+    - Stores the operator and consumes the token.
+
+    - Parses the right-hand side of the expression using `parse_multiplicative()`.
+
+  - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
+
+  - Returns the final `BinaryOpNode`.
+
 
 parse_primary Method
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5953,27 +5808,45 @@ parse_primary Method
 | Parses a primary expression, handling various types of tokens such as
   negation, identifiers, numbers, and parenthesized expressions.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_primary(self)`:
-|   - Checks if the current token is `MINUS`:
-|     - Consumes the `MINUS` token.
-|     - Recursively calls `parse_primary()` to handle the negation.
-|     - Returns a `UnaryOpNode` with the negation operator and the parsed value.
-|   - Checks if the current token is an `IDENTIFIER`, `VECTOR`, or `FLOAT`:
-|     - Calls `parse_function_call_or_identifier()` to handle the token.
-|   - Checks if the current token is `NUMBER`:
-|     - Stores the token value.
-|     - Consumes the `NUMBER` token.
-|     - Returns the stored value.
-|   - Checks if the current token is `LPAREN`:
-|     - Consumes the `LPAREN` token.
-|     - Calls `parse_expression()` to parse the expression inside the parentheses.
-|     - Consumes the `RPAREN` token.
-|     - Returns the parsed expression.
-|   - Raises a `SyntaxError` if the token is unexpected.
+**Method Details:**
+
+- `parse_primary(self)`:
+
+  - Checks if the current token is `MINUS`:
+
+    - Consumes the `MINUS` token.
+
+    - Recursively calls `parse_primary()` to handle the negation.
+
+    - Returns a `UnaryOpNode` with the negation operator and the parsed value.
+
+  - Checks if the current token is an `IDENTIFIER`, `VECTOR`, or `FLOAT`:
+
+    - Calls `parse_function_call_or_identifier()` to handle the token.
+
+  - Checks if the current token is `NUMBER`:
+
+    - Stores the token value.
+
+    - Consumes the `NUMBER` token.
+
+    - Returns the stored value.
+
+  - Checks if the current token is `LPAREN`:
+
+    - Consumes the `LPAREN` token.
+
+    - Calls `parse_expression()` to parse the expression inside the parentheses.
+
+    - Consumes the `RPAREN` token.
+
+    - Returns the parsed expression.
+
+  - Raises a `SyntaxError` if the token is unexpected.
+
 
 parse_multiplicative Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5982,17 +5855,25 @@ parse_multiplicative Method
 | Parses a multiplicative expression, handling multiplication and
   division operations.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_multiplicative(self)`:
-|   - Parses the left-hand side of the expression using `parse_primary()`.
-|   - Iterates through tokens while the current token is `MULTIPLY` or `DIVIDE`:
-|     - Stores the operator and consumes the token.
-|     - Parses the right-hand side of the expression using `parse_primary()`.
-|   - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
-|   - Returns the final `BinaryOpNode`.
+**Method Details:**
+
+- `parse_multiplicative(self)`:
+
+  - Parses the left-hand side of the expression using `parse_primary()`.
+
+  - Iterates through tokens while the current token is `MULTIPLY` or `DIVIDE`:
+
+    - Stores the operator and consumes the token.
+
+    - Parses the right-hand side of the expression using `parse_primary()`.
+
+  - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
+
+  - Returns the final `BinaryOpNode`.
+
 
 parse_expression Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6001,23 +5882,37 @@ parse_expression Method
 | Parses a general expression, handling additive expressions, comparison
   operators, logical operators, and ternary conditional expressions.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_expression(self)`:
-|   - Parses the left-hand side of the expression using `parse_additive()`.
-|   - Iterates through tokens while the current token is a comparison or logical operator (`LESS_THAN`, `GREATER_THAN`, `LESS_EQUAL`, `GREATER_EQUAL`, `EQUAL`, `NOT_EQUAL`, `AND`, `OR`):
-|     - Stores the operator and consumes the token.
-|     - Parses the right-hand side of the expression using `parse_additive()`.
-|   - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
-|   - Checks if the current token is `QUESTION` for a ternary conditional expression:
-|     - Consumes the `QUESTION` token.
-|     - Parses the true expression using `parse_expression()`.
-|     - Consumes the `COLON` token.
-|     - Parses the false expression using `parse_expression()`.
-|     - Creates a `TernaryOpNode` with the condition, true expression, and false expression.
-|   - Returns the final expression node.
+**Method Details:**
+
+- `parse_expression(self)`:
+
+  - Parses the left-hand side of the expression using `parse_additive()`.
+
+  - Iterates through tokens while the current token is a comparison or logical operator (`LESS_THAN`, `GREATER_THAN`, `LESS_EQUAL`, `GREATER_EQUAL`, `EQUAL`, `NOT_EQUAL`, `AND`, `OR`):
+
+    - Stores the operator and consumes the token.
+
+    - Parses the right-hand side of the expression using `parse_additive()`.
+
+  - Creates a `BinaryOpNode` with the left-hand side, operator, and right-hand side.
+
+  - Checks if the current token is `QUESTION` for a ternary conditional expression:
+
+    - Consumes the `QUESTION` token.
+
+    - Parses the true expression using `parse_expression()`.
+
+    - Consumes the `COLON` token.
+
+    - Parses the false expression using `parse_expression()`.
+
+    - Creates a `TernaryOpNode` with the condition, true expression, and false expression.
+
+  - Returns the final expression node.
+
 
 parse_return Method
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -6026,15 +5921,21 @@ parse_return Method
 | Parses a return statement, handling the return keyword and the
   associated expression.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_return(self)`:
-|   - Consumes the `RETURN` token.
-|   - Parses the expression to be returned using `parse_expression()`.
-|   - Consumes the `SEMICOLON` token.
-|   - Returns a `ReturnNode` with the parsed expression.
+**Method Details:**
+
+- `parse_return(self)`:
+
+  - Consumes the `RETURN` token.
+
+  - Parses the expression to be returned using `parse_expression()`.
+
+  - Consumes the `SEMICOLON` token.
+
+  - Returns a `ReturnNode` with the parsed expression.
+
 
 parse_else_if_chain Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6043,29 +5944,49 @@ parse_else_if_chain Method
 | Parses a chain of `else if` and `else` statements, handling their
   conditions and bodies.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_else_if_chain(self)`:
-|   - Initializes an empty list `else_if_chain` and sets `else_body` to `None`.
-|   - Iterates through tokens while the current token is `ELSE_IF` or `ELSE`:
-|     - If the current token is `ELSE_IF`:
-|       - Consumes the `ELSE_IF` token.
-|       - Consumes the `LPAREN` token.
-|       - Parses the `elif` condition using `parse_expression()`.
-|       - Consumes the `RPAREN` token.
-|       - Consumes the `LBRACE` token.
-|       - Parses the `elif` body using `parse_body()`.
-|       - Consumes the `RBRACE` token.
-|       - Appends the condition and body as a tuple to `else_if_chain`.
-|     - If the current token is `ELSE`:
-|       - Consumes the `ELSE` token.
-|       - Consumes the `LBRACE` token.
-|       - Parses the `else` body using `parse_body()`.
-|       - Consumes the `RBRACE` token.
-|       - Breaks the loop.
-|   - Returns the `else_if_chain` and `else_body`.
+**Method Details:**
+
+- `parse_else_if_chain(self)`:
+
+  - Initializes an empty list `else_if_chain` and sets `else_body` to `None`.
+
+  - Iterates through tokens while the current token is `ELSE_IF` or `ELSE`:
+
+    - If the current token is `ELSE_IF`:
+    
+      - Consumes the `ELSE_IF` token.
+      
+      - Consumes the `LPAREN` token.
+      
+      - Parses the `elif` condition using `parse_expression()`.
+      
+      - Consumes the `RPAREN` token.
+      
+      - Consumes the `LBRACE` token.
+      
+      - Parses the `elif` body using `parse_body()`.
+      
+      - Consumes the `RBRACE` token.
+      
+      - Appends the condition and body as a tuple to `else_if_chain`.
+    
+    - If the current token is `ELSE`:
+    
+      - Consumes the `ELSE` token.
+      
+      - Consumes the `LBRACE` token.
+      
+      - Parses the `else` body using `parse_body()`.
+      
+      - Consumes the `RBRACE` token.
+      
+      - Breaks the loop.
+
+  - Returns the `else_if_chain` and `else_body`.
+
 
 parse_if Method
 ~~~~~~~~~~~~~~~~~~~
@@ -6074,20 +5995,31 @@ parse_if Method
 | Parses an `if` statement, handling the condition, body, and any
   associated `else if` and `else` statements.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_if(self)`:
-|   - Consumes the `IF` token.
-|   - Consumes the `LPAREN` token.
-|   - Parses the condition using `parse_expression()`.
-|   - Consumes the `RPAREN` token.
-|   - Consumes the `LBRACE` token.
-|   - Parses the body of the `if` statement using `parse_body()`.
-|   - Consumes the `RBRACE` token.
-|   - Parses any `else if` and `else` statements using `parse_else_if_chain()`.
-|   - Returns an `IfNode` with the condition, body, `else if` chain, and `else` body.
+**Method Details:**
+
+- `parse_if(self)`:
+
+  - Consumes the `IF` token.
+
+  - Consumes the `LPAREN` token.
+
+  - Parses the condition using `parse_expression()`.
+
+  - Consumes the `RPAREN` token.
+
+  - Consumes the `LBRACE` token.
+
+  - Parses the body of the `if` statement using `parse_body()`.
+
+  - Consumes the `RBRACE` token.
+
+  - Parses any `else if` and `else` statements using `parse_else_if_chain()`.
+
+  - Returns an `IfNode` with the condition, body, `else if` chain, and `else` body.
+
 
 parse_for Method
 ~~~~~~~~~~~~~~~~~~~~
@@ -6096,23 +6028,37 @@ parse_for Method
 | Parses a `for` loop, handling the initialization, condition, update,
   and body of the loop.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_for(self)`:
-|   - Consumes the `FOR` token.
-|   - Consumes the `LPAREN` token.
-|   - Parses the initialization statement using `parse_assignment()`.
-|   - Consumes the `SEMICOLON` token.
-|   - Parses the loop condition using `parse_expression()`.
-|   - Consumes the `SEMICOLON` token.
-|   - Parses the loop update using `parse_expression()`.
-|   - Consumes the `RPAREN` token.
-|   - Consumes the `LBRACE` token.
-|   - Parses the loop body using `parse_body()`.
-|   - Consumes the `RBRACE` token.
-|   - Returns a `ForNode` with the initialization, condition, update, and body.
+**Method Details:**
+
+- `parse_for(self)`:
+
+  - Consumes the `FOR` token.
+
+  - Consumes the `LPAREN` token.
+
+  - Parses the initialization statement using `parse_assignment()`.
+
+  - Consumes the `SEMICOLON` token.
+
+  - Parses the loop condition using `parse_expression()`.
+
+  - Consumes the `SEMICOLON` token.
+
+  - Parses the loop update using `parse_expression()`.
+
+  - Consumes the `RPAREN` token.
+
+  - Consumes the `LBRACE` token.
+
+  - Parses the loop body using `parse_body()`.
+
+  - Consumes the `RBRACE` token.
+
+  - Returns a `ForNode` with the initialization, condition, update, and body.
+
 
 parse_body Method
 ~~~~~~~~~~~~~~~~~~~~
@@ -6122,16 +6068,23 @@ parse_body Method
   different types of statements such as assignments, expressions, returns,
   and control flow.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_body(self)`:
-|   - Initializes an empty list `body`.
-|   - Iterates through tokens while the current token is not `RBRACE` or `EOF`:
-|     - Calls `parse_statement()` to parse each statement.
-|     - Appends each parsed statement to the `body`.
-|   - Returns the list `body`.
+**Method Details:**
+
+- `parse_body(self)`:
+
+  - Initializes an empty list `body`.
+
+  - Iterates through tokens while the current token is not `RBRACE` or `EOF`:
+
+    - Calls `parse_statement()` to parse each statement.
+
+    - Appends each parsed statement to the `body`.
+
+  - Returns the list `body`.
+
 
 parse_statement Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6140,26 +6093,40 @@ parse_statement Method
 | Parses a single statement, handling assignments, expressions, returns,
   `if` statements, `for` loops, and `break` statements.
 
-| **Parameters:**
-| - `self`: The instance of the class containing the code and tokens.
+**Parameters:**
+   - `self`: The instance of the class containing the code and tokens.
 
-| **Method Details:**
-| - `parse_statement(self)`:
-|   - Checks if the current token is `IDENTIFIER` and the next token is `EQUALS`:
-|     - Calls `parse_assignment()` to handle the assignment.
-|   - Checks if the current token is `RETURN`:
-|     - Calls `parse_return()` to handle the return statement.
-|   - Checks if the current token is `IF`:
-|     - Calls `parse_if()` to handle the `if` statement.
-|   - Checks if the current token is `FOR`:
-|     - Calls `parse_for()` to handle the `for` loop.
-|   - Checks if the current token is `BREAK`:
-|     - Consumes the `BREAK` token.
-|     - Consumes the `SEMICOLON` token.
-|   - Checks if the current token is an expression:
-|     - Calls `parse_expression()` to handle the expression.
-|     - Consumes the `SEMICOLON` token.
-|   - Raises a `SyntaxError` if the token is unexpected.
+**Method Details:**
+
+- `parse_statement(self)`:
+
+  - Checks if the current token is `IDENTIFIER` and the next token is `EQUALS`:
+
+    - Calls `parse_assignment()` to handle the assignment.
+
+  - Checks if the current token is `RETURN`:
+
+    - Calls `parse_return()` to handle the return statement.
+
+  - Checks if the current token is `IF`:
+
+    - Calls `parse_if()` to handle the `if` statement.
+
+  - Checks if the current token is `FOR`:
+
+    - Calls `parse_for()` to handle the `for` loop.
+
+  - Checks if the current token is `BREAK`:
+
+    - Consumes the `BREAK` token.
+    - Consumes the `SEMICOLON` token.
+
+  - Checks if the current token is an expression:
+
+    - Calls `parse_expression()` to handle the expression.
+    - Consumes the `SEMICOLON` token.
+
+  - Raises a `SyntaxError` if the token is unexpected.
 
 .. _opengl-codegen-1:
 
@@ -6274,6 +6241,7 @@ Generates the layout qualifiers for the shader, handling both input and output t
 **Method Details:**  
 
 - `generate_layouts(self, layouts)`:
+
   - Initializes an empty string `code`.
   - Iterates through each layout in `layouts`:
   - Checks if the layout’s `io_type` is `input`:
@@ -6304,6 +6272,7 @@ Generates the function definitions for the shader, handling both vertex and frag
    - Initializes an empty string `code`.
    - Checks if `shader_type` is either `vertex` or `fragment`.
    - Iterates through each `function_node` in `functions`:
+
      - Generates the parameter list by mapping each parameter’s type and name.
      - Generates the function header with the return type, function name, and parameters.
      - Generates the function body by iterating through each statement in `function_node.body` and calling `generate_statement()`.
@@ -6358,8 +6327,11 @@ Generates the code for an assignment statement, handling the left-hand side (LHS
 **Method Details:**  
 
 - `generate_assignment(self, node, shader_type)`:
+
   - Generates the LHS expression using `generate_expression(node.name, shader_type)`.
+
   - Generates the RHS expression using `generate_expression(node.value, shader_type)`.
+
   - Returns the assignment statement in the format `lhs = rhs`.
 
 ---
@@ -6606,7 +6578,7 @@ Mojo AST
 
 .. _ternaryopnode-class-2:
 
-**TernaryOpNode Class**
+TernaryOpNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 | **Description:**
@@ -6615,22 +6587,25 @@ Mojo AST
   possible outcomes, facilitating the generation of conditional code in
   shader programming.
 
-| **Constructor Parameters:**
-| - `condition` (MojoASTNode): The condition expression that
-  determines which of the two outcomes to choose.
-| - `true_expr` (MojoASTNode): The expression to be evaluated and returned if the condition is true.
-| - `false_expr` (MojoASTNode): The expression to be evaluated and returned if the condition is false.
+**Constructor Parameters**:
+   - `condition` (MojoASTNode): The condition expression that determines which of the two outcomes to choose.
+   - `true_expr` (MojoASTNode): The expression to be evaluated and returned if the condition is true.
+   - `false_expr` (MojoASTNode): The expression to be evaluated and returned if the condition is false.
 
-| **Methods:**
-| - `__repr__()`:
-  - **Description:** Returns a string representation of the `TernaryOpNode` instance, useful for debugging
-    and logging.
-  - **Returns:** `str`: A string representation of the `TernaryOpNode` in the format
-    `TernaryOpNode(condition={self.condition}, true_expr={self.true_expr}, false_expr={self.false_expr})`.
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `TernaryOpNode` instance, useful for debugging
+        and logging.
+      - **Returns**: A string in the format:
+
+      .. code:: python
+
+        "TernaryOpNode(condition={self.condition}, true_expr={self.true_expr}, false_expr={self.false_expr})"
+
 
 .. _shadernode-class-2:
 
-**ShaderNode Class**
+ShaderNode Class
 ~~~~~~~~~~~~~~~~~~~~
 
 | **Description:**
@@ -6638,19 +6613,22 @@ Mojo AST
   containing a collection of functions that define the shader’s behavior
   and structure.
 
-| **Constructor Parameters:**
-| - `functions` (list of MojoASTNode): A list of function nodes
-  (`MojoASTNode`) that are part of the shader. These functions define
-  the various operations and logic within the shader.
+**Constructor Parameters**:
+   - `functions` (list of MojoASTNode): A list of function nodes (`MojoASTNode`) that are part of the shader. These functions define the various operations and logic within the shader.
 
-| **Methods:**
-| - `__repr__()`:
-  - **Description:** Returns a string representation of the `ShaderNode` instance, useful for debugging
-    and logging.
-  - **Returns:** `str`: A string representation of the `ShaderNode` in the format
-    `ShaderNode(functions={self.functions})`.
 
-**StructNode Class**
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ShaderNode` instance, useful for debugging
+        and logging.
+      - **Returns**: `str`: A string representation of the `ShaderNode` in the format:
+
+      .. code:: python
+
+        "ShaderNode(functions={self.functions})"
+
+
+StructNode Class
 ~~~~~~~~~~~~~~~~~~~~
 
 | **Description:**
@@ -6658,22 +6636,25 @@ Mojo AST
   encapsulates the name of the structure and its members, which define
   the structure’s layout and data types.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the structure.
-| - `members` (list of Tuple[str, str]): A list of tuples where each tuple represents a
-  member of the structure. Each tuple contains the member’s name and its
-  data type.
+**Constructor Parameters**:
+   - `name` (str): The name of the structure.
+   - `members` (list of Tuple[str, str]): A list of tuples where each tuple represents a member of the structure. Each tuple contains the member’s name and its data type.
 
-| **Methods:**
-| - `__repr__()`:
-  - **Description:** Returns a string representation of the `StructNode` instance, which is useful for
-    debugging and logging.
-  - **Returns:** `str`: A string representation of the `StructNode` in the format
-    `StructNode(name={self.name}, members={self.members})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `StructNode` instance, which is useful for
+        debugging and logging.
+      - **Returns**: `str`: A string representation of the `StructNode` in the format:
+
+      .. code:: python
+
+        "StructNode(name={self.name}, members={self.members})"
+
 
 .. _functionnode-class-2:
 
-**FunctionNode Class**
+FunctionNode Class
 ~~~~~~~~~~~~~~~~~~~~~~
 
 | **Description:**
@@ -6681,44 +6662,46 @@ Mojo AST
   includes the function’s attributes, return type, name, parameters,
   body, and any additional attributes.
 
-| **Constructor Parameters:**
-| - `qualifier` (str): Specifies any qualifiers for the function, such
-  as `static`, `inline`, or `extern`.
-| - `return_type` (str): The data type that the function returns.
-| - `name` (str): The name of the function.
-| - `params` (list of Tuple[str, str]): A list of tuples
-  where each tuple represents a parameter of the function. Each tuple
-  contains the parameter’s type and name.
-| - `body` (list of ASTNode): A list of statements representing the body of the function.
-| - `attributes` (list of str, optional): A list of additional
-  attributes or modifiers for the function, such as `const`,
-  `volatile`, etc. Defaults to an empty list if not provided.
+**Constructor Parameters**:
+   - `qualifier` (str): Specifies any qualifiers for the function, such as `static`, `inline`, or `extern`.
+   - `return_type` (str): The data type that the function returns.
+   - `name` (str): The name of the function.
+   - `params` (list of Tuple[str, str]): A list of tuples where each tuple represents a parameter of the function. Each tuple contains the parameter’s type and name.
+   - `body` (list of ASTNode): A list of statements representing the body of the function.
+   - `attributes` (list of str, optional): A list of additional attributes or modifiers for the function, such as `const`, `volatile`, etc. Defaults to an empty list if not provided.
 
-| **Methods:**
-| - `__repr__()`:
-  - **Description:** Returns a string representation of the `FunctionNode` instance, which is useful for
-    debugging and logging.
-  - **Returns:** `str`: A string representation of the `FunctionNode` in the format
-    `FunctionNode(qualifier={self.qualifier}, return_type={self.return_type}, name={self.name}, params={self.params}, body={self.body}, attributes={self.attributes})`.
 
-**VariableDeclarationNode Class**
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `FunctionNode` instance, which is useful for
+        debugging and logging.
+      - **Returns**: `str`: A string representation of the `FunctionNode` in the format:
+
+      .. code:: python
+
+        "FunctionNode(qualifier={self.qualifier}, return_type={self.return_type}, name={self.name}, params={self.params}, body={self.body}, attributes={self.attributes})"
+
+VariableDeclarationNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | **Description:**
 | Represents a variable declaration in an abstract syntax tree (AST). It
   includes the variable’s type, name, and optionally an initial value.
 
-| **Constructor Parameters:**
-| - `var_type` (str): The data type of the variable (e.g., `int`,
-  `float`, `vec3`).
-| - `name` (str): The name of the variable.
-| - `initial_value` (Optional[str]): The initial value assigned to the
-  variable. Defaults to `None` if not provided.
+**Constructor Parameters**:
+   - `var_type` (str): The data type of the variable (e.g., `int`, `float`, `vec3`).
+   - `name` (str): The name of the variable.
+   - `initial_value` (Optional[str]): The initial value assigned to the variable. Defaults to `None` if not provided.
 
-| **Methods:**
+
+**Methods**:
    - `__repr__()`:
-      - **Description:** Returns a string representation of the `VariableDeclarationNode` instance, which is useful for debugging and logging.
-      - **Returns:** `str`: A string representation of the `VariableDeclarationNode` in the format `VariableDeclarationNode(var_type={self.var_type}, name={self.name}, initial_value={self.initial_value})`.
+      - **Description**: Returns a string representation of the `VariableDeclarationNode` instance, which is useful for debugging and logging.
+      - **Returns**: `str`: A string representation of the `VariableDeclarationNode` in the format:
+
+      .. code:: python
+
+        "VariableDeclarationNode(var_type={self.var_type}, name={self.name}, initial_value={self.initial_value})"
 
 ArrayAccessNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6728,17 +6711,20 @@ ArrayAccessNode Class
   It includes the array being accessed and the index used for accessing
   an element.
 
-| **Constructor Parameters:**
-| - `array` (MojoASTNode): The array from which an element is
-  accessed. - `index` (MojoASTNode): The index used to access an
-  element of the array.
+**Constructor Parameters**:
+   - `array` (MojoASTNode): The array from which an element is accessed.
+   - `index` (MojoASTNode): The index used to access an element of the array.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ArrayAccessNode` instance, which is useful
-  for debugging and logging. - **Returns:** `str`: A string
-  representation of the `ArrayAccessNode` in the format
-  `ArrayAccessNode(array={self.array}, index={self.index})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ArrayAccessNode` instance, which is useful
+        for debugging and logging.
+      - **Returns**: `str`: A string representation of the `ArrayAccessNode` in the format:
+
+      .. code:: python
+
+        "ArrayAccessNode(array={self.array}, index={self.index})"
 
 .. _variablenode-class-2:
 
@@ -6750,18 +6736,21 @@ VariableNode Class
   tree (AST). It includes the variable’s type, name, and optional
   attributes.
 
-| **Constructor Parameters:**
-| - `vtype` (str): The type of the variable (e.g., `"int"`,
-  `"float"`). - `name` (str): The name of the variable. -
-  `attributes` (list, optional): A list of attributes associated with
-  the variable. Defaults to an empty list if not provided.
+**Constructor Parameters**:
+   - `vtype` (str): The type of the variable (e.g., `"int"`, `"float"`).
+   - `name` (str): The name of the variable.
+   - `attributes` (list, optional): A list of attributes associated with the variable. Defaults to an empty list if not provided.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `VariableNode` instance, which is useful for
-  debugging and logging. - **Returns:** `str`: A string
-  representation of the `VariableNode` in the format
-  `VariableNode(vtype='{self.vtype}', name='{self.name}', attributes={self.attributes})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `VariableNode` instance, which is useful for
+        debugging and logging.
+      - **Returns**: `str`: A string representation of the `VariableNode` in the format:
+
+      .. code:: python
+
+        "VariableNode(vtype='{self.vtype}', name='{self.name}', attributes={self.attributes})"
 
 AttributeNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -6771,17 +6760,21 @@ AttributeNode Class
   elements in an abstract syntax tree (AST). Attributes are often used
   to specify metadata or additional properties.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the attribute (e.g., `"location"`,
-  `"binding"`). - `args` (list, optional): A list of arguments for
-  the attribute. Defaults to an empty list if not provided.
+**Constructor Parameters**:
+   - `name` (str): The name of the attribute (e.g., `"location"`, `"binding"`).
+   - `args` (list, optional): A list of arguments for the attribute. Defaults to an empty list if not provided.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `AttributeNode` instance, which is useful for
-  debugging and logging. - **Returns:** `str`: A string
-  representation of the `AttributeNode` in the format
-  `AttributeNode(name='{self.name}', args={self.args})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `AttributeNode` instance, which is useful for
+        debugging and logging.
+      - **Returns**: `str`: A string representation of the `AttributeNode` in the format:
+
+      .. code:: python
+
+        "AttributeNode(name='{self.name}', args={self.args})"
+
 
 .. _assignmentnode-class-2:
 
@@ -6793,20 +6786,21 @@ AssignmentNode Class
   This node is used to model the assignment of a value to a variable,
   potentially with a specific operator.
 
-| **Constructor Parameters:**
-| - `left` (MojoASTNode): The left-hand side of the assignment,
-  typically a variable or an array element. - `right` (MojoASTNode):
-  The right-hand side of the assignment, representing the value to be
-  assigned. - `operator` (str, optional): The assignment operator.
-  Defaults to `"="`. Other operators like `"+="`, `"-="`, etc.,
-  can be used.
+**Constructor Parameters:**
+   - `left` (MojoASTNode): The left-hand side of the assignment, typically a variable or an array element.
+   - `right` (MojoASTNode): The right-hand side of the assignment, representing the value to be assigned.
+   - `operator` (str, optional): The assignment operator. Defaults to `"="`. Other operators like `"+="`, `"-="`, etc., can be used.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `AssignmentNode` instance, which is useful for
-  debugging and logging. - **Returns:** `str`: A string
-  representation of the `AssignmentNode` in the format
-  `AssignmentNode(left={self.left}, operator='{self.operator}', right={self.right})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `AssignmentNode` instance, which is useful for
+        debugging and logging.
+      - **Returns**: `str`: A string representation of the `AssignmentNode` in the format:
+
+      .. code:: python
+
+        "AssignmentNode(left={self.left}, operator='{self.operator}', right={self.right})"
 
 .. _ifnode-class-2:
 
@@ -6818,22 +6812,21 @@ IfNode Class
   node is used to model conditional logic with an optional `else`
   block.
 
-| **Constructor Parameters:**
-| - `condition` (MojoASTNode): The condition to be evaluated for the
-  `if` statement. This typically involves a boolean expression. -
-  `if_body` (list of MojoASTNode): The body of the `if` block,
-  containing statements to be executed if the condition evaluates to
-  `True`. - `else_body` (list of MojoASTNode, optional): The body of
-  the `else` block, containing statements to be executed if the
-  condition evaluates to `False`. Defaults to `None` if no `else`
-  block is present.
+**Constructor Parameters:**
+   - `condition` (MojoASTNode): The condition to be evaluated for the `if` statement. This typically involves a boolean expression.
+   - `if_body` (list of MojoASTNode): The body of the `if` block, containing statements to be executed if the condition evaluates to `True`.
+   - `else_body` (list of MojoASTNode, optional): The body of the `else` block, containing statements to be executed if the condition evaluates to `False`. Defaults to `None` if no `else` block is present.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `IfNode` instance, including the condition,
-  `if_body`, and `else_body`. - **Returns:** `str`: A string
-  representation of the `IfNode` in the format
-  `IfNode(condition={self.condition}, if_body={self.if_body}, else_body={self.else_body})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `IfNode` instance, including the condition,
+        `if_body`, and `else_body`.
+      - **Returns**: `str`: A string representation of the `IfNode` in the format:
+
+      .. code:: python
+
+        "IfNode(condition={self.condition}, if_body={self.if_body}, else_body={self.else_body})"
 
 .. _fornode-class-2:
 
@@ -6845,22 +6838,22 @@ ForNode Class
   models the structure of a `for` loop, including initialization,
   condition, update, and body.
 
-| **Constructor Parameters:**
-| - `init` (MojoASTNode): The initialization statement of the `for`
-  loop, which is executed once before the loop starts. - `condition`
-  (MojoASTNode): The loop condition that is evaluated before each
-  iteration. The loop continues to execute as long as this condition is
-  `True`. - `update` (MojoASTNode): The update statement executed
-  after each iteration of the loop. - `body` (list of MojoASTNode):
-  The body of the `for` loop, containing the statements to be executed
-  in each iteration.
+**Constructor Parameters:**
+   - `init` (MojoASTNode): The initialization statement of the `for` loop, which is executed once before the loop starts.
+   - `condition` (MojoASTNode): The loop condition that is evaluated before each iteration. The loop continues to execute as long as this condition is `True`.
+   - `update` (MojoASTNode): The update statement executed after each iteration of the loop.
+   - `body` (list of MojoASTNode): The body of the `for` loop, containing the statements to be executed in each iteration.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ForNode` instance, including the
-  initialization, condition, update, and body. - **Returns:**
-  `str`: A string representation of the `ForNode` in the format
-  `ForNode(init={self.init}, condition={self.condition}, update={self.update}, body={self.body})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ForNode` instance, including the
+        initialization, condition, update, and body.
+      - **Returns**: `str`: A string representation of the `ForNode` in the format:
+
+      .. code:: python
+
+        "ForNode(init={self.init}, condition={self.condition}, update={self.update}, body={self.body})"
 
 WhileNode Class
 ~~~~~~~~~~~~~~~~~~~
@@ -6870,19 +6863,20 @@ WhileNode Class
   node models the structure of a `while` loop, including its condition
   and body.
 
-| **Constructor Parameters:**
-| - `condition` (MojoASTNode): The condition that is evaluated before
-  each iteration. The loop continues to execute as long as this
-  condition is `True`. - `body` (list of MojoASTNode): The body of
-  the `while` loop, containing the statements to be executed in each
-  iteration.
+**Constructor Parameters:**
+   - `condition` (MojoASTNode): The condition that is evaluated before each iteration. The loop continues to execute as long as this condition is `True`.
+   - `body` (list of MojoASTNode): The body of the `while` loop, containing the statements to be executed in each iteration.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `WhileNode` instance, including the condition
-  and body. - **Returns:** `str`: A string representation of the
-  `WhileNode` in the format
-  `WhileNode(condition={self.condition}, body={self.body})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `WhileNode` instance, including the condition
+        and body.
+      - **Returns**: `str`: A string representation of the `WhileNode` in the format:
+
+      .. code:: python
+
+        "WhileNode(condition={self.condition}, body={self.body})"
 
 .. _returnnode-class-2:
 
@@ -6893,15 +6887,19 @@ ReturnNode Class
 | Represents a `return` statement in the abstract syntax tree (AST).
   This node captures the value to be returned from a function or method.
 
-| **Constructor Parameters:**
-| - `value` (MojoASTNode or None): The value to be returned. If
-  `None`, it represents a return statement with no value.
+**Constructor Parameters:**
+   - `value` (MojoASTNode or None): The value to be returned. If `None`, it represents a return statement with no value.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ReturnNode` instance, including the return
-  value. - **Returns:** `str`: A string representation of the
-  `ReturnNode` in the format `ReturnNode(value={self.value})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ReturnNode` instance, including the return
+        value.
+      - **Returns**: `str`: A string representation of the `ReturnNode` in the format:
+
+      .. code:: python
+
+        "ReturnNode(value={self.value})"
 
 .. _functioncallnode-class-2:
 
@@ -6913,17 +6911,21 @@ FunctionCallNode Class
   (AST). This node captures the name of the function being called and
   the arguments passed to it.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the function or method being called. -
-  `args` (list of MojoASTNode): The arguments passed to the function.
-  Each argument is represented as an AST node.
+**Constructor Parameters:**
+   - `name` (str): The name of the function or method being called.
+   - `args` (list of MojoASTNode): The arguments passed to the function. Each argument is represented as an AST node.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `FunctionCallNode` instance, including the
-  function name and its arguments. - **Returns:** `str`: A string
-  representation of the `FunctionCallNode` in the format
-  `FunctionCallNode(name={self.name}, args={self.args})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `FunctionCallNode` instance, including the
+        function name and its arguments.
+      - **Returns**: `str`: A string representation of the `FunctionCallNode` in the format:
+
+      .. code:: python
+
+        "FunctionCallNode(name={self.name}, args={self.args})"
+
 
 .. _binaryopnode-class-2:
 
@@ -6934,18 +6936,22 @@ BinaryOpNode Class
 | Represents a binary operation in the abstract syntax tree (AST). This
   node captures two operands and the operator used to combine them.
 
-| **Constructor Parameters:**
-| - `left` (MojoASTNode): The left operand of the binary operation. -
-  `op` (str): The operator used in the binary operation (e.g., “+”,
-  “-”, “\*“,”/“). - `right` (MojoASTNode): The right operand of the
-  binary operation.
+**Constructor Parameters:**
+   - `left` (MojoASTNode): The left operand of the binary operation.
+   - `op` (str): The operator used in the binary operation (e.g., "+", "-", "*", "/").
+   - `right` (MojoASTNode): The right operand of the binary operation.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `BinaryOpNode` instance, including the left
-  operand, the operator, and the right operand. - **Returns:**
-  `str`: A string representation of the `BinaryOpNode` in the format
-  `BinaryOpNode(left={self.left}, operator={self.op}, right={self.right})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `BinaryOpNode` instance, including the left
+        operand, the operator, and the right operand.
+      - **Returns**: `str`: A string representation of the `BinaryOpNode` in the format:
+
+      .. code:: python
+
+        "BinaryOpNode(left={self.left}, operator={self.op}, right={self.right})"
+
 
 .. _unaryopnode-class-2:
 
@@ -6956,17 +6962,21 @@ UnaryOpNode Class
 | Represents a unary operation in the abstract syntax tree (AST). This
   node captures the operator and its single operand.
 
-| **Constructor Parameters:**
-| - `op` (str): The operator used in the unary operation (e.g., “+”,
-  “-”, “++”, “–”). - `operand` (MojoASTNode): The operand for the
-  unary operation.
+**Constructor Parameters:**
+   - `op` (str): The operator used in the unary operation (e.g., "+", "-", "++", "--").
+   - `operand` (MojoASTNode): The operand for the unary operation.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `UnaryOpNode` instance, including the operator
-  and the operand. - **Returns:** `str`: A string representation
-  of the `UnaryOpNode` in the format
-  `UnaryOpNode(operator={self.op}, operand={self.operand})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `UnaryOpNode` instance, including the operator
+        and the operand.
+      - **Returns**: `str`: A string representation of the `UnaryOpNode` in the format:
+
+      .. code:: python
+
+        "UnaryOpNode(operator={self.op}, operand={self.operand})"
+
 
 .. _memberaccessnode-class-2:
 
@@ -6978,17 +6988,21 @@ MemberAccessNode Class
   abstract syntax tree (AST). This node captures the object and the
   specific member being accessed.
 
-| **Constructor Parameters:**
-| - `object` (MojoASTNode): The object or variable whose member is
-  being accessed. - `member` (str): The name of the member being
-  accessed.
+**Constructor Parameters:**
+   - `object` (MojoASTNode): The object or variable whose member is being accessed.
+   - `member` (str): The name of the member being accessed.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `MemberAccessNode` instance, including the
-  object and the member. - **Returns:** `str`: A string
-  representation of the `MemberAccessNode` in the format
-  `MemberAccessNode(object={self.object}, member={self.member})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `MemberAccessNode` instance, including the
+        object and the member.
+      - **Returns**: `str`: A string representation of the `MemberAccessNode` in the format:
+
+      .. code:: python
+
+        "MemberAccessNode(object={self.object}, member={self.member})"
+
 
 VectorConstructorNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -6998,18 +7012,21 @@ VectorConstructorNode Class
   (AST). This node is used to create vectors from a set of arguments
   with a specified type.
 
-| **Constructor Parameters:**
-| - `type_name` (str): The name of the vector type (e.g., `"vec2"`,
-  `"vec3"`, `"vec4"`). - `args` (List[MojoASTNode]): A list of
-  arguments used to initialize the vector.
+**Constructor Parameters:**
+   - `type_name` (str): The name of the vector type (e.g., `"vec2"`, `"vec3"`, `"vec4"`).
+   - `args` (List[MojoASTNode]): A list of arguments used to initialize the vector.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `VectorConstructorNode` instance, including
-  the vector type and its initialization arguments. - **Returns:**
-  `str`: A string representation of the `VectorConstructorNode` in
-  the format
-  `VectorConstructorNode(type_name={self.type_name}, args={self.args})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `VectorConstructorNode` instance, including
+        the vector type and its initialization arguments.
+      - **Returns**: `str`: A string representation of the `VectorConstructorNode` in the format:
+
+      .. code:: python
+
+        "VectorConstructorNode(type_name={self.type_name}, args={self.args})"
+
 
 TextureSampleNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7019,19 +7036,22 @@ TextureSampleNode Class
   (AST). This node is used to sample a texture using a specified sampler
   and texture coordinates.
 
-| **Constructor Parameters:**
-| - `texture` (MojoASTNode): The texture to be sampled. - `sampler`
-  (MojoASTNode): The sampler used to sample the texture. -
-  `coordinates` (MojoASTNode): The coordinates at which the texture is
-  sampled.
+**Constructor Parameters:**
+   - `texture` (MojoASTNode): The texture to be sampled.
+   - `sampler` (MojoASTNode): The sampler used to sample the texture.
+   - `coordinates` (MojoASTNode): The coordinates at which the texture is sampled.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `TextureSampleNode` instance, including the
-  texture, sampler, and coordinates used for sampling. -
-  **Returns:** `str`: A string representation of the
-  `TextureSampleNode` in the format
-  `TextureSampleNode(texture={self.texture}, sampler={self.sampler}, coordinates={self.coordinates})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `TextureSampleNode` instance, including the
+        texture, sampler, and coordinates used for sampling.
+      - **Returns**: `str`: A string representation of the `TextureSampleNode` in the format:
+
+      .. code:: python
+
+        "TextureSampleNode(texture={self.texture}, sampler={self.sampler}, coordinates={self.coordinates})"
+
 
 ThreadgroupSyncNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7042,14 +7062,18 @@ ThreadgroupSyncNode Class
   threads in the group reach the synchronization point before
   continuing.
 
-| **Constructor Parameters:**
-| - None
+**Constructor Parameters:**
+   - None
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ThreadgroupSyncNode` instance. -
-  **Returns:** `str`: A string representation of the
-  `ThreadgroupSyncNode` in the format `ThreadgroupSyncNode()`.
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ThreadgroupSyncNode` instance.
+      - **Returns**: `str`: A string representation of the `ThreadgroupSyncNode` in the format:
+
+      .. code:: python
+
+        "ThreadgroupSyncNode()"
+
 
 ConstantBufferNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7059,17 +7083,20 @@ ConstantBufferNode Class
   store uniform data that remains constant across multiple shader
   invocations.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the constant buffer. - `members` (list
-  of `VariableNode`): A list of variables that are members of the
-  constant buffer.
+**Constructor Parameters:**
+   - `name` (str): The name of the constant buffer.
+   - `members` (list of `VariableNode`): A list of variables that are members of the constant buffer.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ConstantBufferNode` instance. -
-  **Returns:** `str`: A string representation of the
-  `ConstantBufferNode` in the format
-  `ConstantBufferNode(name={self.name}, members={self.members})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ConstantBufferNode` instance.
+      - **Returns**: `str`: A string representation of the `ConstantBufferNode` in the format:
+
+      .. code:: python
+
+        "ConstantBufferNode(name={self.name}, members={self.members})"
+
 
 ImportNode Class
 ~~~~~~~~~~~~~~~~~~~~
@@ -7078,18 +7105,24 @@ ImportNode Class
 | Represents an import statement in a shader program, used to include
   external modules or libraries with an optional alias.
 
-| **Constructor Parameters:**
-| - `module_name` (str): The name of the module to be imported. -
-  `alias` (str, optional): An alias for the module, allowing it to be
-  referenced with a different name in the shader.
+**Constructor Parameters:**
+   - `module_name` (str): The name of the module to be imported.
+   - `alias` (str, optional): An alias for the module, allowing it to be referenced with a different name in the shader.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ImportNode` instance. - **Returns:**
-  `str`: A string representation of the `ImportNode` in the format
-  `ImportNode(module_name='{self.module_name}', alias='{self.alias}')`
-  if an alias is provided, otherwise
-  `ImportNode(module_name='{self.module_name}')`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ImportNode` instance.
+      - **Returns**: `str`: A string representation of the `ImportNode` in the format:
+
+      .. code:: python
+
+        "ImportNode(module_name='{self.module_name}', alias='{self.alias}')"
+        
+        if an alias is provided, otherwise
+        
+        "ImportNode(module_name='{self.module_name}')"
+
 
 ClassNode Class
 ~~~~~~~~~~~~~~~~~~~
@@ -7098,17 +7131,21 @@ ClassNode Class
 | Represents a class definition in the shader program, including its
   name, base classes, and members.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the class. - `base_classes` (list of
-  str): A list of base class names that this class inherits from. -
-  `members` (list of `MojoASTNode`): A list of member variables and
-  methods that belong to the class.
+**Constructor Parameters:**
+   - `name` (str): The name of the class.
+   - `base_classes` (list of str): A list of base class names that this class inherits from.
+   - `members` (list of `MojoASTNode`): A list of member variables and methods that belong to the class.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `ClassNode` instance. - **Returns:**
-  `str`: A string representation of the `ClassNode` in the format
-  `ClassNode(name={self.name}, base_classes={self.base_classes}, members={self.members})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `ClassNode` instance.
+      - **Returns**: `str`: A string representation of the `ClassNode` in the format:
+
+      .. code:: python
+
+        "ClassNode(name={self.name}, base_classes={self.base_classes}, members={self.members})"
+
 
 DecoratorNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -7117,16 +7154,20 @@ DecoratorNode Class
 | Represents a decorator applied to functions or classes in the shader
   program, including the decorator’s name and any optional arguments.
 
-| **Constructor Parameters:**
-| - `name` (str): The name of the decorator. - `args` (list of
-  `MojoASTNode`, optional): A list of arguments for the decorator.
-  Defaults to an empty list if not provided.
+**Constructor Parameters:**
+   - `name` (str): The name of the decorator.
+   - `args` (list of `MojoASTNode`, optional): A list of arguments for the decorator. Defaults to an empty list if not provided.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `DecoratorNode` instance. - **Returns:**
-  `str`: A string representation of the `DecoratorNode` in the
-  format `DecoratorNode(name={self.name}, args={self.args})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `DecoratorNode` instance.
+      - **Returns**: `str`: A string representation of the `DecoratorNode` in the format:
+
+      .. code:: python
+
+        "DecoratorNode(name={self.name}, args={self.args})"
+
 
 SwitchCaseNode Class
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7135,17 +7176,20 @@ SwitchCaseNode Class
 | Represents a case in a switch statement, including the condition for
   the case and the block of code to execute if the condition is met.
 
-| **Constructor Parameters:**
-| - `condition` (MojoASTNode): The condition that determines if this
-  case should be executed. - `body` (list of `MojoASTNode`): The
-  block of code to execute if the condition is met.
+**Constructor Parameters:**
+   - `condition` (MojoASTNode): The condition that determines if this case should be executed.
+   - `body` (list of `MojoASTNode`): The block of code to execute if the condition is met.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `SwitchCaseNode` instance. - **Returns:**
-  `str`: A string representation of the `SwitchCaseNode` in the
-  format
-  `SwitchCaseNode(condition={self.condition}, body={self.body})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `SwitchCaseNode` instance.
+      - **Returns**: `str`: A string representation of the `SwitchCaseNode` in the format:
+
+      .. code:: python
+
+        "SwitchCaseNode(condition={self.condition}, body={self.body})"
+
 
 SwitchNode Class
 ~~~~~~~~~~~~~~~~~~~~
@@ -7154,17 +7198,20 @@ SwitchNode Class
 | Represents a switch statement, including the expression to evaluate
   and the list of cases to handle different values of the expression.
 
-| **Constructor Parameters:**
-| - `expression` (MojoASTNode): The expression being evaluated in the
-  switch statement. - `cases` (list of `SwitchCaseNode`): A list of
-  `SwitchCaseNode` instances, each representing a case in the switch
-  statement.
+**Constructor Parameters:**
+   - `expression` (MojoASTNode): The expression being evaluated in the switch statement.
+   - `cases` (list of `SwitchCaseNode`): A list of `SwitchCaseNode` instances, each representing a case in the switch statement.
 
-| **Methods:**
-| - `__repr__()`: - **Description:** Returns a string
-  representation of the `SwitchNode` instance. - **Returns:**
-  `str`: A string representation of the `SwitchNode` in the format
-  `SwitchNode(expression={self.expression}, cases={self.cases})`.
+
+**Methods**:
+   - `__repr__()`:
+      - **Description**: Returns a string representation of the `SwitchNode` instance.
+      - **Returns**: `str`: A string representation of the `SwitchNode` in the format:
+
+      .. code:: python
+
+        "SwitchNode(expression={self.expression}, cases={self.cases})"
+
 
 Mojo Lexer
 ~~~~~~~~~~

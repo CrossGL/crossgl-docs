@@ -54,43 +54,66 @@ graphics API languages (e.g., HLSL, Metal, OpenGL). The process involves
 several key steps, from lexing the input code to generating the final
 output. Below is a quick guide to the structure and workflow of CrossTL:
 
-**1. Lexical Analysis (Lexer)** - Purpose: - Breaks down the input
-CrossGL shader code into a series of tokens (lexical units). - Process:
-- The lexer reads the shader code and identifies keywords, operators,
-identifiers, literals, etc. - Example tokens: SHADER, INPUT, OUTPUT,
-VOID, MAIN, IDENTIFIER, NUMBER, etc. - Output: - A list of tokens that
-represent the structure of the shader code.
+1. **Lexical Analysis (Lexer)**
 
-**2. Syntax Analysis (Parser)** - Purpose: - Analyzes the sequence of
-tokens and builds a syntactic structure known as the Abstract Syntax
-Tree (AST). - Process: - The parser checks the token sequence for
-grammatical correctness based on the defined grammar of CrossGL. -
-Constructs the AST nodes such as ShaderNode, FunctionNode, VariableNode,
-etc. - Output: - An AST that represents the hierarchical structure of
-the shader code.
+   *Purpose:*
+   - Breaks down the input CrossGL shader code into a series of tokens (lexical units).
 
-**3. Abstract Syntax Tree (AST) Construction** - Purpose: - Represents
-the logical structure of the shader code in a tree format. - Process: -
-AST nodes are created during parsing, each representing a syntactical
-element of the shader (e.g., functions, variables, operations). - Nodes
-include details about data types, operations, and relationships between
-different code elements. - Output: - A complete AST that can be further
-analyzed or transformed.
+   *Process:*
+   - The lexer reads the shader code and identifies keywords, operators, identifiers, literals, etc.
 
-**4. Optimization (AST Optimization)** - Purpose: - Refines and
-optimizes the AST for better performance and efficiency. - Process: -
-Performs optimizations such as constant folding, dead code elimination,
-and loop unrolling. - Simplifies expressions and optimizes data
-structures within the AST. - Output: - An optimized AST ready for code
-generation.
+   *Example tokens:* SHADER, INPUT, OUTPUT, VOID, MAIN, IDENTIFIER, NUMBER, etc.
 
-**5. Code Generation (CodeGen)** - Purpose: - Translates the optimized
-AST into the target platform-specific shader code (HLSL, Metal, OpenGL,
-etc.). - Process: - The code generation module traverses the AST and
-converts it into the corresponding language’s syntax. - Handles the
-conversion of functions, variables, and other shader constructs into the
-target language. - Output: - Platform-specific shader code that is ready
-for use in the target graphics API.
+   *Output:*
+   - A list of tokens that represent the structure of the shader code.
+
+2. **Syntax Analysis (Parser)**
+
+   *Purpose:*
+   - Analyzes the sequence of tokens and builds a syntactic structure known as the Abstract Syntax Tree (AST).
+
+   *Process:*
+   - The parser checks the token sequence for grammatical correctness based on the defined grammar of CrossGL.
+   - Constructs the AST nodes such as `ShaderNode`, `FunctionNode`, `VariableNode`, etc.
+
+   *Output:*
+   - An AST that represents the hierarchical structure of the shader code.
+
+3. **Abstract Syntax Tree (AST) Construction**
+
+   *Purpose:*
+   - Represents the logical structure of the shader code in a tree format.
+
+   *Process:*
+   - AST nodes are created during parsing, each representing a syntactical element of the shader (e.g., functions, variables, operations).
+   - Nodes include details about data types, operations, and relationships between different code elements.
+
+   *Output:*
+   - A complete AST that can be further analyzed or transformed.
+
+4. **Optimization (AST Optimization)**
+
+   *Purpose:*
+   - Refines and optimizes the AST for better performance and efficiency.
+
+   *Process:*
+   - Performs optimizations such as constant folding, dead code elimination, and loop unrolling.
+   - Simplifies expressions and optimizes data structures within the AST.
+
+   *Output:*
+   - An optimized AST ready for code generation.
+
+5. **Code Generation (CodeGen)**
+
+   *Purpose:*
+   - Translates the optimized AST into the target platform-specific shader code (HLSL, Metal, OpenGL, etc.).
+
+   *Process:*
+   - The code generation module traverses the AST and converts it into the corresponding language’s syntax.
+   - Handles the conversion of functions, variables, and other shader constructs into the target language.
+
+   *Output:*
+   - Platform-specific shader code that is ready for use in the target graphics API.
 
 Workflow Summary
 ----------------
@@ -429,6 +452,7 @@ of existing shaders into your CrossGL workflow. Enjoy your shader coding
 journey! ☃️✨
 
 Supported Platforms 🚀
+~~~~~~~~~~~~~~~~~~~~~~~
 
 **DirectX:** Designed specifically for Windows-based applications,
 DirectX provides a robust framework for high-performance graphics and
@@ -436,10 +460,6 @@ multimedia.
 
 **Metal:** Optimized for macOS and iOS, Metal delivers efficient and
 low-overhead graphics performance, tailored to Apple’s hardware.
-
-**Vulkan:** A versatile API for cross-platform development, Vulkan
-supports a range of operating systems, including Linux and Android,
-offering high-performance graphics and compute capabilities.
 
 **OpenGL:** A widely-used, cross-platform API, OpenGL offers broad
 compatibility and ease of use for developing graphics applications
