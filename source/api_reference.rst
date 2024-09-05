@@ -3337,7 +3337,7 @@ map_type
       the original `hlsl_type`.
 
 Metal
--------
+------
 
 Metal AST
 ---------
