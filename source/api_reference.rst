@@ -3,7 +3,7 @@
 ..
 
 API References For CrossGL To DirectX , Metal And OpenGL
-========================================================
+----------------------------------------------------------------
 
 DirectX Code Generation
 -----------------------
@@ -20,7 +20,7 @@ can be executed in DirectX environments.
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
---------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  **__init__(self) :**
       
@@ -259,7 +259,7 @@ iPadOS.
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
---------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **__init__(self)**  
    Initializes the code generator.
@@ -501,7 +501,7 @@ Linux environments.
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
---------
+~~~~~~~
 
 **__init__(self)**  
    Initializes the code generator.
@@ -733,7 +733,7 @@ flexibility in rendering tasks.
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
---------
+~~~~~~~
 
 **__init__(self)**  
    Initializes the code generator.
@@ -1510,7 +1510,7 @@ Here’s a breakdown of the token types and their corresponding regular
 expressions:
 
 Token Definitions
------------------
+~~~~~~~~~~~~~~~~~~~
 
 -  **Comments**
 
@@ -1635,7 +1635,7 @@ Token Definitions
    -  ``BITWISE_NOT``: Matches `~`.
 
 Keywords Dictionary
--------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 The `KEYWORDS` dictionary maps shader language keywords to their
 corresponding token types. This helps in identifying and categorizing
@@ -1649,7 +1649,7 @@ Attributes: - code (str): The input code to tokenize - tokens (list): A
 list of tokens generated from the input code
 
 Methods
---------
+~~~~~~~
 
 **__init__(self):**
 
@@ -1708,7 +1708,7 @@ This method is designed to process a string of shader code and convert it into a
 This method ensures that the input shader code is tokenized correctly, allowing further processing like parsing or code generation to be performed.
 
 Parser
-======
+-------
 
 This parser generates an abstract syntax tree (AST) from a list of
 tokens.
@@ -1717,7 +1717,7 @@ Attributes:
    - tokens (list): A list of tokens generated from the input code
 
 Methods
---------
+~~~~~~~
 
 -  **__init__(self) :**
       
@@ -1975,7 +1975,7 @@ Methods
 
 
 API References For DirectX , Metal And OpenGL To CrossGL
-========================================================
+---------------------------------------------------------
 
 DirectX AST
 -----------
@@ -3337,7 +3337,7 @@ map_type
       the original `hlsl_type`.
 
 Metal
-=====
+-------
 
 Metal AST
 ---------
@@ -3917,7 +3917,7 @@ tokens. Each token has a name and a regex pattern to match it.
 
 .. _keywords-dictionary-1:
 
-`KEYWORDS` Dictionary
+KEYWORDS Dictionary
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The `KEYWORDS` dictionary maps specific keywords to their
@@ -3930,7 +3930,7 @@ keywords during parsing.
       names defined in `TOKENS`.
 
 Methods
--------
+~~~~~~~~~
 
 .. _init__self-1:
 
@@ -3962,7 +3962,7 @@ Metal Parser
 .. _methods-1:
 
 Methods
--------
+~~~~~~~~~
 
 .. _init__self-2:
 
@@ -6574,7 +6574,7 @@ Mojo
 ----
 
 Mojo AST
-~~~~~~~~
+---------
 
 .. _ternaryopnode-class-2:
 
@@ -7214,7 +7214,7 @@ SwitchNode Class
 
 
 Mojo Lexer
-~~~~~~~~~~
+------------
 
 Token Definitions and Keywords for Mojo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7429,7 +7429,7 @@ Tokenize Method
 
 
 Mojo Parser
-~~~~~~~~~~~
+------------
 
 Methods
 

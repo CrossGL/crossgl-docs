@@ -11,6 +11,25 @@ graphics projects.
 Getting Started
 ---------------
 
+To begin using CrossGL, you'll need to install its translation library. This is easily done using pip.
+
+.. note::
+
+    Ensure that pip is available in your environment.
+
+Installation
+------------
+
+Run the following command to install CrossGL's translation library:
+
+.. code-block:: bash
+
+    pip install crosstl
+
+Once installed, you're ready to start translating shaders with CrossGL!
+
+
+
 -  **Introduction to CrossGL Translator:**
 
    -  A tool that translates CrossGL shader code into different graphics
@@ -28,7 +47,7 @@ Getting Started
       ensuring peak performance.
 
 Key Features💡
-==============
+---------------
 
 -  **Streamlined Shader Conversion:** Our system translates shaders
    directly into graphical languages or intermediate representations
@@ -130,7 +149,7 @@ translated and optimized for different platforms, maintaining both
 performance and compatibility.
 
 How It Works 🛠️
-===============
+-----------------
 
 The translator processes CrossGL shader code through several key stages,
 ensuring a smooth and efficient transformation :
@@ -218,7 +237,7 @@ ensuring a smooth and efficient transformation :
   peak performance across different platforms.
 
 Cross-Platform Bridging 🌉: From Platform-Specific to CrossGL and Back
-======================================================================
+-----------------------------------------------------------------------
 
 CrossGL is a versatile tool that goes beyond simple translation from a
 universal language to platform-specific shaders. It’s bidirectional
