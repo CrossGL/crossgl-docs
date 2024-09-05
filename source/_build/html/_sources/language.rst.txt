@@ -97,4 +97,3 @@ CrossGL provides built-in functions and operations for vector and matrix manipul
 
         fragColor = vec4(color, 1.0);
     }
-

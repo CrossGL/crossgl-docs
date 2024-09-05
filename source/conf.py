@@ -12,7 +12,7 @@ extensions = [
 ]
 
 
-html_logo = '_static/logo.png' 
+html_logo = '_static/logo.png'
 html_theme = 'furo'
 
 html_static_path = ['_static']
@@ -25,13 +25,13 @@ exclude_patterns = []
 
 
 html_theme_options = {
-    "sidebar_hide_name": False, 
-    "navigation_with_keys": True,  
+    "sidebar_hide_name": False,
+    "navigation_with_keys": True,
     "hide_toc": False,
     "light_css_variables": {
-        "color-brand-primary": "#3d94ff",  
+        "color-brand-primary": "#3d94ff",
         "color-brand-content": "#000000",
-        "color-background-primary": "#3d94ff",  
+        "color-background-primary": "#3d94ff",
         "color-background-secondary": "#1a1a1a",
         "color-foreground-primary": "#f8f8f2",
         "color-foreground-secondary": "#ccc",
@@ -42,9 +42,9 @@ html_theme_options = {
         "color-background-border": "#444",
     },
     "dark_css_variables": {
-        "color-brand-primary": "#3d94ff", 
+        "color-brand-primary": "#3d94ff",
         "color-brand-content": "#000000",
-        "color-background-primary": "#3d94ff",  
+        "color-background-primary": "#3d94ff",
         "color-background-secondary": "#1a1a1a",
         "color-foreground-primary": "#f8f8f2",
         "color-foreground-secondary": "#ccc",

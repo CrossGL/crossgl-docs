@@ -30,4 +30,3 @@ The translator takes CrossGL shader code and processes it through several stages
 - **DirectX**: For Windows-based applications.
 - **Metal**: For macOS and iOS applications.
 - **Vulkan**: For cross-platform applications, including Linux and Android.
-

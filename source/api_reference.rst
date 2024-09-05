@@ -16,179 +16,179 @@ the logical structure of a shader) into corresponding HLSL code that
 can be executed in DirectX environments.
 
 
-* Attributes 
+* Attributes
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  **__init__(self) :**
-      
+
    Initializes the code generator.
 
 ---
 
-- **generate(self, ast)**  
-   Generates HLSL code from the AST.  
-   
-   - **Parameters:**  
+- **generate(self, ast)**
+   Generates HLSL code from the AST.
+
+   - **Parameters:**
       - `ast (ShaderNode)` – The abstract syntax tree of the shader.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-- **generate_shader(self, node)**  
-   Generates the HLSL code for the shader.  
-   
-   - **Parameters:**  
+- **generate_shader(self, node)**
+   Generates the HLSL code for the shader.
+
+   - **Parameters:**
       - `node (ShaderNode)` – The shader node of the AST.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-**check_gl_position(self, node)**  
+**check_gl_position(self, node)**
    Checks if the `gl_Position` output is assigned within the vertex shader.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (ASTNode)` – The current node being processed in the AST.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `None`
 
 ---
 
-**generate_intermidiate(self, node, shader_type)**  
+**generate_intermidiate(self, node, shader_type)**
    Generates intermediate shader code by processing a sequence of statements.
 
-   - **Parameters:**  
-      - `node (list[ASTNode])` – A list of AST nodes representing the statements to be processed.  
+   - **Parameters:**
+      - `node (list[ASTNode])` – A list of AST nodes representing the statements to be processed.
       - `shader_type (str)` – The type of shader (e.g., vertex, fragment) for which the code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated intermediate shader code as a string.
 
 ---
 
-**generate_main(self, node, shader_type)**  
+**generate_main(self, node, shader_type)**
    Generates the main function code for a shader, tailored to the specified shader type.
 
-   - **Parameters:**  
-      - `node (FunctionNode)` – The function node of the AST containing the body of the main function.  
+   - **Parameters:**
+      - `node (FunctionNode)` – The function node of the AST containing the body of the main function.
       - `shader_type (str)` – The type of shader (e.g., "vertex" or "fragment") for which the main function code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated main function code as a string.
 
 ---
 
-**generate_function(self, node)**  
+**generate_function(self, node)**
    Generates the HLSL code for a function.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (FunctionNode)` – The function node of the AST.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-**generate_statement(self, stmt, indent=0, is_vs_input=False)**  
+**generate_statement(self, stmt, indent=0, is_vs_input=False)**
    Generates the HLSL code for a statement.
 
-   - **Parameters:**  
-      - `stmt (ASTNode)` – The statement node of the AST.  
-      - `indent (int)` – The indentation level.  
+   - **Parameters:**
+      - `stmt (ASTNode)` – The statement node of the AST.
+      - `indent (int)` – The indentation level.
       - `is_vs_input (bool)` – Whether the statement is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-**generate_assignment(self, node, is_vs_input=False)**  
+**generate_assignment(self, node, is_vs_input=False)**
    Generates the HLSL code for an assignment statement.
 
-   - **Parameters:**  
-      - `node (AssignmentNode)` – The assignment node of the AST.  
+   - **Parameters:**
+      - `node (AssignmentNode)` – The assignment node of the AST.
       - `is_vs_input (bool)` – Whether the assignment is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-**generate_if(self, node, indent, is_vs_input=False)**  
+**generate_if(self, node, indent, is_vs_input=False)**
    Generates the HLSL code for an if statement.
 
-   - **Parameters:**  
-      - `node (IfNode)` – The if statement node of the AST.  
-      - `indent (int)` – The indentation level.  
+   - **Parameters:**
+      - `node (IfNode)` – The if statement node of the AST.
+      - `indent (int)` – The indentation level.
       - `is_vs_input (bool)` – Whether the if statement is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
       - `str` – The generated HLSL code.
 
 ---
 
-**generate_for(self, node, indent, is_vs_input=False)**  
+**generate_for(self, node, indent, is_vs_input=False)**
    Generates the HLSL code for a for loop statement.
 
-   - **Parameters:**  
-      - `node (ForNode)` – The for loop node of the AST.  
-      - `indent (int)` – The indentation level.  
+   - **Parameters:**
+      - `node (ForNode)` – The for loop node of the AST.
+      - `indent (int)` – The indentation level.
       - `is_vs_input (bool)` – Whether the for loop is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated HLSL code.
 
 ---
 
-**generate_expression(self, expr, is_vs_input=False)**  
+**generate_expression(self, expr, is_vs_input=False)**
    Generates the HLSL code for an expression.
 
-   - **Parameters:**  
-      - `expr (ASTNode)` – The expression node of the AST.  
+   - **Parameters:**
+      - `expr (ASTNode)` – The expression node of the AST.
       - `is_vs_input (bool)` – Whether the expression is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated HLSL code.
 
 ---
 
-**translate_expression(self, expr, is_vs_input)**  
+**translate_expression(self, expr, is_vs_input)**
    Translates an expression from CrossGL syntax to HLSL syntax.
 
-   - **Parameters:**  
-      - `expr (str)` – The expression in CrossGL syntax.  
+   - **Parameters:**
+      - `expr (str)` – The expression in CrossGL syntax.
       - `is_vs_input (bool)` – Whether the expression is in the vertex shader input.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The translated expression.
 
 ---
 
-**map_type(self, vtype)**  
+**map_type(self, vtype)**
    Maps CrossGL types to HLSL types.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `vtype (str)` – The CrossGL type.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The corresponding HLSL type.
 
 ---
 
-**map_operator(self, op)**  
+**map_operator(self, op)**
    Maps CrossGL operators to HLSL operators.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `op (str)` – The CrossGL operator.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The corresponding HLSL operator.
 
 ---
@@ -255,180 +255,180 @@ ensures that CrossGL shaders are efficiently translated into MSL,
 enabling their execution on Apple platforms, including macOS, iOS, and
 iPadOS.
 
-* Attributes 
+* Attributes
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**__init__(self)**  
+**__init__(self)**
    Initializes the code generator.
 
 ---
 
-**generate(self, ast)**  
+**generate(self, ast)**
    Generates the complete shader code from the given abstract syntax tree (AST).
 
-   - **Parameters:**  
+   - **Parameters:**
      - `ast (ASTNode)` – The root node of the AST, typically a ShaderNode, representing the entire shader.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated shader code as a string, or an empty string if the AST is not a ShaderNode.
 
 ---
 
-**generate_shader(self, node)**  
+**generate_shader(self, node)**
    Generates the complete Metal shading language (MSL) code for a shader from its abstract syntax tree (AST).
 
-   - **Parameters:**  
+   - **Parameters:**
      - `node (ShaderNode)` – The root node of the AST representing the entire shader, including its global inputs, outputs, and shader stages (vertex and fragment).
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated MSL code as a string.
 
 ---
 
-**check_gl_position(self, node)**  
+**check_gl_position(self, node)**
    Generates intermediate shader code by processing a sequence of statements.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (list[ASTNode])` – A list of AST nodes representing the statements to be processed.
       - `shader_type (str)` – The type of shader (e.g., vertex, fragment) for which the code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated intermediate shader code as a string.
 
 ---
 
-**generate_intermidiate(self, node, shader_type)**  
+**generate_intermidiate(self, node, shader_type)**
    Generates intermediate shader code by processing a sequence of statements.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (list[ASTNode])` – A list of AST nodes representing the statements to be processed.
       - `shader_type (str)` – The type of shader (e.g., vertex, fragment) for which the code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated intermediate shader code as a string.
 
 ---
 
-**generate_function(self, node, shader_type)**  
+**generate_function(self, node, shader_type)**
    Generates shader function code based on the function nodes and shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (list[FunctionNode] | FunctionNode)` – A list of function nodes or a single function node, depending on the shader type.
       - `shader_type (str)` – The type of shader (e.g., “vertex”, “fragment”, “global”) for which the function code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated shader function code as a string.
 
 ---
 
-**generate_main(self, node, shader_type)**  
+**generate_main(self, node, shader_type)**
    Generates the main function code for the specified shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (FunctionNode)` – The function node representing the main function in the shader’s AST.
       - `shader_type (str)` – The type of shader (“vertex” or “fragment”) for which the main function code is being generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated main function code as a string.
 
 ---
 
-**generate_statement(self, stmt, indent=0, shader_type=None)**  
+**generate_statement(self, stmt, indent=0, shader_type=None)**
    Generates code for a given statement, with support for different statement types and optional indentation.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `stmt (ASTNode)` – The statement node to be converted to code.
       - `indent (int, optional)` – The indentation level for the generated code. Defaults to 0.
       - `shader_type (str, optional)` – The type of shader (e.g., vertex, fragment), used for context-specific code generation.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated code for the statement as a string.
 
 ---
 
-**generate_assignment(self, node, shader_type=None)**  
+**generate_assignment(self, node, shader_type=None)**
    Generates the code for an assignment statement.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (AssignmentNode)` – The assignment node containing the variable name and the value to be assigned.
       - `shader_type (str, optional)` – The type of shader (e.g., vertex, fragment), which influences how the assignment is generated.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated assignment code as a string.
 
 ---
 
-**generate_if(self, node, indent, shader_type=None)**  
+**generate_if(self, node, indent, shader_type=None)**
    Generates code for an if statement, including optional else body.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (IfNode)` – The IfNode containing the condition, if body statements, and optionally else body statements.
       - `indent (int)` – The indentation level for the generated code.
       - `shader_type (str, optional)` – The type of shader (e.g., vertex, fragment), used for context-specific code generation.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated if statement code as a string.
 
 ---
 
-**generate_for(self, node, indent, shader_type=None)**  
+**generate_for(self, node, indent, shader_type=None)**
    Generates code for a for loop statement.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (ForNode)` – The ForNode containing initialization, condition, update expressions, and the loop body.
       - `indent (int)` – The indentation level for the generated code.
       - `shader_type (str, optional)` – The type of shader (e.g., vertex, fragment), used for context-specific code generation.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated for loop code as a string.
 
 ---
 
-**generate_expression(self, expr, shader_type=None)**  
+**generate_expression(self, expr, shader_type=None)**
    Generates code for an expression, handling various types of expression nodes.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `expr (ASTNode)` – The expression node to be converted into code.
       - `shader_type (str, optional)` – The type of shader (e.g., vertex, fragment), used for context-specific code generation.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated expression code as a string.
 
 ---
 
-**translate_expression(self, expr, shader_type)**  
+**translate_expression(self, expr, shader_type)**
    Translates an expression to its corresponding shader code representation, based on the shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `expr (str)` – The expression to be translated.
       - `shader_type (str)` – The type of shader (e.g., vertex, fragment), used for context-specific translation.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The translated expression code as a string.
 
 ---
 
-**map_type(self, vtype)**  
+**map_type(self, vtype)**
    Maps a type identifier to its corresponding shader type representation.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `vtype (str)` – The type identifier to be mapped.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The mapped shader type representation.
 
 ---
 
-**map_operator(self, op)**  
+**map_operator(self, op)**
    Maps an operator identifier to its corresponding shader code representation.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `op (str)` – The operator identifier to be mapped.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The mapped shader operator representation.
 
 ---
@@ -497,168 +497,168 @@ code, the `OpenGLCodeGen` class enables the efficient execution of
 shaders on systems that support OpenGL, including Windows, macOS, and
 Linux environments.
 
-* Attributes 
+* Attributes
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
 ~~~~~~~
 
-**__init__(self)**  
+**__init__(self)**
    Initializes the code generator.
 
 ---
 
-**generate(self, ast)**  
+**generate(self, ast)**
    Generates the shader code from the given abstract syntax tree (AST).
 
-   - **Parameters:**  
+   - **Parameters:**
      - `ast (ASTNode)` – The abstract syntax tree node representing the shader.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated shader code.
 
 ---
 
-**generate_shader(self, node)**  
+**generate_shader(self, node)**
    Generates the shader code from its abstract syntax tree (AST).
 
-   - **Parameters:**  
+   - **Parameters:**
      - `node (ShaderNode)` – The shader node containing global inputs, outputs, and shader sections.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated shader code.
 
 ---
 
-**generate_function(self, node, shader_type)**  
+**generate_function(self, node, shader_type)**
    Generates function code for the given function node and shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (FunctionNode)` – The function node containing return type, name, parameters, and body.
       - `shader_type (str)` – The type of shader ("vertex", "fragment", or "global").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated function code.
 
 ---
 
-**generate_main(self, node, shader_type)**  
+**generate_main(self, node, shader_type)**
    Generates the main function code for the given function node and shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (FunctionNode)` – The function node containing return type, name, parameters, and body.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated main function code.
 
 ---
 
-**generate_statement(self, stmt, indent=0, shader_type=None)**  
+**generate_statement(self, stmt, indent=0, shader_type=None)**
    Generates code for a given statement, handling different types of statements based on their node type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `stmt (ASTNode)` – The statement node to generate code for.
       - `indent (int)` – The level of indentation for the statement.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated code for the statement.
 
 ---
 
-**generate_intermediate(self, node, shader_type)**  
+**generate_intermediate(self, node, shader_type)**
    Generates intermediate code from a list of statements.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (list of ASTNode)` – The list of intermediate statements to generate code for.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated intermediate code.
 
 ---
 
-**generate_assignment(self, node, shader_type=None)**  
+**generate_assignment(self, node, shader_type=None)**
    Generates the code for an assignment statement.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (AssignmentNode)` – The assignment node containing the variable and the value to assign.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated assignment code.
 
 ---
 
-**generate_if(self, node, indent, shader_type=None)**  
+**generate_if(self, node, indent, shader_type=None)**
    Generates the code for an `if` statement.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (IfNode)` – The node representing the `if` statement with its condition and bodies.
       - `indent (int)` – The level of indentation for the generated code.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated `if` statement code.
 
 ---
 
-**generate_for(self, node, indent, shader_type=None)**  
+**generate_for(self, node, indent, shader_type=None)**
    Generates the code for a `for` loop.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `node (ForNode)` – The node representing the `for` loop with initialization, condition, update, and body.
       - `indent (int)` – The level of indentation for the generated code.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated `for` loop code.
 
 ---
 
-**generate_expression(self, expr, shader_type=None)**  
+**generate_expression(self, expr, shader_type=None)**
    Generates the code for an expression based on its type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `expr (ASTNode)` – The expression node, which could be a string, `VariableNode`, `BinaryOpNode`, `FunctionCallNode`, `UnaryOpNode`, `TernaryOpNode`, or `MemberAccessNode`.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The generated code for the expression.
 
 ---
 
-**translate_expression(self, expr, shader_type)**  
+**translate_expression(self, expr, shader_type)**
    Translates the expression based on its type and shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
       - `expr (str)` – The expression to translate.
       - `shader_type (str)` – The type of shader ("vertex" or "fragment").
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The translated expression, or the original expression if no translation is found.
 
 ---
 
-**map_type(self, vtype)**  
+**map_type(self, vtype)**
    Maps the given type to its corresponding shader type.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `vtype (str)` – The type to be mapped.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The mapped shader type.
 
 ---
 
-**map_operator(self, op)**  
+**map_operator(self, op)**
    Maps the given operator to its corresponding shader operator.
 
-   - **Parameters:**  
+   - **Parameters:**
      - `op (str)` – The operator to be mapped.
-   
-   - **Returns:**  
+
+   - **Returns:**
      - `str` – The mapped shader operator.
 
 ---
@@ -729,73 +729,73 @@ execution of shaders on systems that support Vulkan, including Windows,
 macOS, Linux, and Android environments, ensuring high performance and
 flexibility in rendering tasks.
 
-* Attributes 
+* Attributes
    - current_shader (ShaderNode) : The current shader node being processed.
 
 Methods
 ~~~~~~~
 
-**__init__(self)**  
+**__init__(self)**
    Initializes the code generator.
 
 ---
 
-**generate(self, ast)**  
+**generate(self, ast)**
 
 Generates shader code from the given abstract syntax tree (AST).
 
-- **Parameters:**  
+- **Parameters:**
   - `ast (ShaderNode)` – The abstract syntax tree node representing the shader.
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The generated shader code, or an empty string if the AST is not a `ShaderNode`.
 
 ---
 
-**generate_shader(self, node)**  
+**generate_shader(self, node)**
 
 Generates the SPIR-V code for a Vulkan shader based on the provided shader node.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (ShaderNode)` – The node representing the shader, containing inputs, outputs, functions, and other shader components.
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The generated SPIR-V code, including SPIR-V header information, entry points, decorations, type declarations, global variables, constants, function declarations, and function definitions.
 
 ---
 
-**declare_types(self)**  
+**declare_types(self)**
 
 Declares the necessary data types for the Vulkan SPIR-V shader.
 
-- **Parameters:**  
+- **Parameters:**
   - None
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The SPIR-V code string that includes type declarations for `void`, `boolean`, `float`, `integer`, and `unsigned integer` types. It also dynamically generates vector types based on the shader’s input and output variables, assigning them unique IDs.
 
 ---
 
-**declare_global_variables(self)**  
+**declare_global_variables(self)**
 
 Declares global variables for shader inputs and outputs in the SPIR-V code.
 
-- **Parameters:**  
+- **Parameters:**
   - None
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The SPIR-V code string that declares pointers to the input and output variables. It assigns unique IDs to these variables and stores them in `self.variable_ids`. The function handles both input and output variables, generating the appropriate `OpTypePointer` and `OpVariable` instructions for each.
 
 ---
 
-**declare_constants(self)** 
+**declare_constants(self)**
 
 Declares constants used in the shader within the SPIR-V code.
 
-- **Parameters:**  
+- **Parameters:**
   - None
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The SPIR-V code string that defines commonly used constants such as `0` and `1` for both `float` and `int` types, as well as `3` for the `int` type. Each constant is represented with an `OpConstant` instruction, associating the value with a type (`float` or `int`). These constants can then be referenced within the shader code.
 
 ---
@@ -804,10 +804,10 @@ Declares constants used in the shader within the SPIR-V code.
 
 Declares a function type in SPIR-V code based on the given function node.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (FunctionNode)` – The function node representing the function declaration in the shader.
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The SPIR-V code string that defines the function type. It includes the function’s return type and parameter types, and assigns a unique ID to this function type. The function type is represented with an `OpTypeFunction` instruction, specifying the return type and the types of parameters the function accepts.
 
 ---
@@ -816,23 +816,23 @@ Declares a function type in SPIR-V code based on the given function node.
 
 Generates the SPIR-V code for a function based on the given function node.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (FunctionNode)` – The function node representing the function definition in the shader.
-  
-- **Returns:**  
+
+- **Returns:**
   - `str` – The SPIR-V code string for the function. This includes the function declaration with its type, parameter declarations, function body, and function end. The function code is defined using `OpFunction`, `OpFunctionParameter`, `OpLabel`, `OpReturn`, `OpUnreachable`, and `OpFunctionEnd` instructions. The function is assigned a unique ID and the function parameters are mapped to SPIR-V function parameters. The body of the function is generated by translating each statement into SPIR-V code.
 
 ---
 
-**generate_statement(self, stmt)**  
+**generate_statement(self, stmt)**
 
 Generates the SPIR-V code for a given statement node.
 
-- **Parameters:**  
+- **Parameters:**
   - `stmt (ASTNode)` – The statement node representing a specific type of statement in the shader code.
-  
+
 - **Returns:**
-   - `str` – The SPIR-V code string for the statement. The function translates different types of statements into corresponding SPIR-V instructions: 
+   - `str` – The SPIR-V code string for the statement. The function translates different types of statements into corresponding SPIR-V instructions:
       - For `AssignmentNode`, it generates code using `OpStore`.
       - For `IfNode`, it generates conditional branches using `OpBranchConditional`.
       - For `ForNode`, it generates code for the initialization, condition, and update steps, and loops through the body.
@@ -841,28 +841,28 @@ Generates the SPIR-V code for a given statement node.
 
 ---
 
-**generate_assignment(self, node)** 
+**generate_assignment(self, node)**
 
 Generates the SPIR-V code for an assignment statement.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (AssignmentNode)` – The assignment node containing the variable being assigned to and the value being assigned.
-  
-- **Returns:**  
+
+- **Returns:**
    - `str` – The SPIR-V code string for the assignment operation. The function handles assignments in two cases:
       - If the variable being assigned to is a shader output, it uses the `OpStore` instruction to store the value directly to the output variable.
       - For other variables, it generates a temporary variable of the function type, assigns the value to it, and then stores the value to the temporary variable. This is useful for intermediate variables within functions.
 
 ---
 
-**generate_if(self, node)**  
+**generate_if(self, node)**
 
 Generates SPIR-V code for an `if` statement.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (IfNode)` – The if-node containing the condition, the body of statements to execute if the condition is true, and optionally the body of statements to execute if the condition is false.
 
-- **Returns:**  
+- **Returns:**
    - `str` – The SPIR-V code string for the `if` statement. The function handles the following :
       - **Condition Evaluation:** Evaluates the condition expression and generates the necessary label IDs for the `then`, `else`, and `merge` blocks.
       - **Branching:** Uses the `OpSelectionMerge` and `OpBranchConditional` instructions to branch to the appropriate labels based on the condition.
@@ -872,14 +872,14 @@ Generates SPIR-V code for an `if` statement.
 
 ---
 
-**generate_for(self, node)**  
+**generate_for(self, node)**
 
 Generates SPIR-V code for a `for` loop.
 
-- **Parameters:**  
+- **Parameters:**
   - `node (ForNode)` – The for-node containing initialization, condition, update, and body of the loop.
 
-- **Returns:**  
+- **Returns:**
    - `str` – The SPIR-V code string for the `for` loop. The function handles the following :
       - **Initialization:** Executes the initialization statement.
       - **Loop Header:** Creates labels for the loop header, body, continue, and merge blocks.
@@ -891,14 +891,14 @@ Generates SPIR-V code for a `for` loop.
 
 ---
 
-**generate_expression(self, expr)**  
+**generate_expression(self, expr)**
 
 Generates SPIR-V code for the given expression.
 
-- **Parameters:**  
+- **Parameters:**
   - `expr (ExpressionNode)` – The expression node to be converted into SPIR-V code. This can be a string, `VariableNode`, `BinaryOpNode`, `FunctionCallNode`, `MemberAccessNode`, or other types of expression nodes.
 
-- **Returns:**  
+- **Returns:**
    - `str` – The SPIR-V code string for the expression. The function handles the following cases :
       - **String:** Translates a simple string expression directly.
       - **VariableNode:** Translates the variable name to its corresponding SPIR-V identifier.
@@ -914,14 +914,14 @@ Generates SPIR-V code for the given expression.
 
 ---
 
-**translate_expression(self, expr)** 
+**translate_expression(self, expr)**
 
 Translates an expression into SPIR-V code.
 
-- **Parameters:**  
+- **Parameters:**
   - `expr (str)` – The expression to be translated. This can be a variable name, a vector constructor, or a constant value.
 
-- **Returns:**  
+- **Returns:**
    - `str` – The SPIR-V code string for the given expression. The function handles the following cases :
       - **Variable Names:** If the expression is a variable name that exists in `self.variable_ids`, it returns the corresponding SPIR-V identifier.
       - **Vector Constructors:** If the expression is a vector constructor (e.g., `vec3(1.0, 2.0, 3.0)`), it translates the components into SPIR-V code using `OpCompositeConstruct`. It splits the vector components, translates each component, and constructs the vector.
@@ -930,15 +930,15 @@ Translates an expression into SPIR-V code.
 
 ---
 
-**map_type(self, vtype)**  
+**map_type(self, vtype)**
 
 Maps a given type to its corresponding SPIR-V type.
 
-- **Parameters:**  
+- **Parameters:**
   - `vtype (str)` – The type to be mapped, which may include types like `"void"`, `"bool"`, `"int"`, `"float"`, and various vector and matrix types.
 
-- **Returns:**  
-   - `str` – The SPIR-V type corresponding to the input type. The function uses a mapping dictionary to translate common GLSL types to SPIR-V types :   
+- **Returns:**
+   - `str` – The SPIR-V type corresponding to the input type. The function uses a mapping dictionary to translate common GLSL types to SPIR-V types :
       - `"void"` -> `"void"`
       - `"bool"` -> `"bool"`
       - `"int"` -> `"int"`
@@ -954,15 +954,15 @@ Maps a given type to its corresponding SPIR-V type.
 
 ---
 
-**map_operator(self, op)**  
+**map_operator(self, op)**
 
 Maps a given operator to its corresponding SPIR-V opcode.
 
-- **Parameters:**  
+- **Parameters:**
    - `op (str)` – The operator to be mapped. This might include operators such as `"PLUS"`, `"MINUS"`, `"MULTIPLY"`, `"DIVIDE"`, `"LESS_THAN"`, and so on.
 
-- **Returns:**  
-   - `str` – The SPIR-V opcode corresponding to the input operator. The function uses a dictionary to translate common operators to their SPIR-V opcodes:   
+- **Returns:**
+   - `str` – The SPIR-V opcode corresponding to the input operator. The function uses a dictionary to translate common operators to their SPIR-V opcodes:
       - `"PLUS"` -> `"OpFAdd"`
       - `"MINUS"` -> `"OpFSub"`
       - `"MULTIPLY"` -> `"OpFMul"`
@@ -980,11 +980,11 @@ Maps a given operator to its corresponding SPIR-V opcode.
 
 ---
 
-**get_id(self)** 
+**get_id(self)**
 
 Generates a unique identifier for use in the SPIR-V code.
 
-- **Returns:**  
+- **Returns:**
   - `int` – The current value of `self.id_counter`, which serves as a unique identifier in the generated SPIR-V code. After returning the current value, the method increments `self.id_counter` by 1 to ensure that the next call to `get_id` produces a new unique identifier.
 
 AST (Abstract Syntax Tree)
@@ -1047,7 +1047,7 @@ a condition.
    - `__repr__()`:
       - **Purpose**: Provides a detailed string representation of the `TernaryOpNode` instance for debugging purposes.
       - **Returns**: A string in the format :
-      
+
       .. code:: python
 
         "TernaryOpNode(condition=<condition>, true_expr=<true_expr>, false_expr=<false_expr>)"
@@ -1056,7 +1056,7 @@ a condition.
    .. code:: python
 
       ternary_node = TernaryOpNode("x > 0", "x", "-x")
-      print(repr(ternary_node))  
+      print(repr(ternary_node))
       # Output: TernaryOpNode(condition=x > 0, true_expr=x, false_expr=-x)
 
 **ShaderNode Class**
@@ -1094,7 +1094,7 @@ outputs, functions, and the vertex and fragment shader sections.
           vertex_section="vertex operations here",
           fragment_section="fragment operations here",
       )
-      print(repr(shader_node))  
+      print(repr(shader_node))
       # Output: ShaderNode('BasicShader') ['position', 'normal'] ['color'] ['transform', 'lighting'] 'vertex operations here' 'fragment operations here'
 
 **VERTEXShaderNode Class**
@@ -1128,7 +1128,7 @@ and intermediate operations specific to the vertex shader.
           functions=["transform", "calculateNormal"],
           intermidiate="intermediate calculations here",
       )
-      print(repr(vertex_shader_node))  
+      print(repr(vertex_shader_node))
       # Output: VERTEXShaderNode(['position', 'normal']) ['gl_Position'] ['transform', 'calculateNormal'] 'intermediate calculations here'
 
 ---
@@ -1357,7 +1357,7 @@ Represents a `for` loop within the abstract syntax tree (AST) for shader code. T
               AssignmentNode(name="result", value="result + i")
           ]
       )
-      print(repr(for_node))  
+      print(repr(for_node))
       # Output: ForNode(init=AssignmentNode(name=i, value=0), condition=i < 10, update=AssignmentNode(name=i, value=i + 1), body=[AssignmentNode(name=result, value=result + i)])
 
 **ReturnNode Class**
@@ -1381,7 +1381,7 @@ Represents a return statement within the abstract syntax tree (AST) for shader c
    .. code:: python
 
       return_node = ReturnNode(value="result")
-      print(repr(return_node))  
+      print(repr(return_node))
       # Output: ReturnNode(value=result)
 
 **FunctionCallNode Class**
@@ -1406,7 +1406,7 @@ Represents a function call within the abstract syntax tree (AST) for shader code
    .. code:: python
 
       func_call_node = FunctionCallNode(name="someFunction", args=["arg1", "arg2"])
-      print(repr(func_call_node))  
+      print(repr(func_call_node))
       # Output: FunctionCallNode(name=someFunction, args=['arg1', 'arg2'])
 
 **BinaryOpNode Class**
@@ -1432,7 +1432,7 @@ Represents a binary operation within the abstract syntax tree (AST) for shader c
    .. code:: python
 
       binary_op_node = BinaryOpNode(left="a", op="PLUS", right="b")
-      print(repr(binary_op_node))  
+      print(repr(binary_op_node))
       # Output: BinaryOpNode(left=a, op=PLUS, right=b)
 
 **MemberAccessNode Class**
@@ -1457,7 +1457,7 @@ Represents an access operation for a member of an object within the abstract syn
    .. code:: python
 
       member_access_node = MemberAccessNode(object="myStruct", member="x")
-      print(repr(member_access_node))  
+      print(repr(member_access_node))
       # Output: MemberAccessNode(object=myStruct, member=x)
 
 **UnaryOpNode Class**
@@ -1482,7 +1482,7 @@ Represents a unary operation within the abstract syntax tree (AST) for shader co
    .. code:: python
 
       unary_op_node = UnaryOpNode(op="NEG", operand="x")
-      print(repr(unary_op_node))  
+      print(repr(unary_op_node))
       # Output: UnaryOpNode(op=NEG, operand=x)
 
 **Explanation:**
@@ -1713,14 +1713,14 @@ Parser
 This parser generates an abstract syntax tree (AST) from a list of
 tokens.
 
-Attributes: 
+Attributes:
    - tokens (list): A list of tokens generated from the input code
 
 Methods
 ~~~~~~~
 
 -  **__init__(self) :**
-      
+
    Initializes the code generator.
 
 ---
@@ -4215,7 +4215,7 @@ parse_if_statement(self)
 | **Parameters:** None
 
 **Returns:**
-   - `IfNode`: An AST node representing the `if` statement. 
+   - `IfNode`: An AST node representing the `if` statement.
    - This node contains:
 
      - The `condition` as an expression.
@@ -5762,9 +5762,9 @@ parse_function_call_or_identifier Method
 **Method Details:**
 
 - Checks if the current token is `VECTOR`:
-  
+
   - If true, stores the function name and consumes the `VECTOR` token.
-  
+
   - Otherwise, stores the function name and consumes the `IDENTIFIER` token.
 
 - If the next token is `LPAREN`, calls `parse_function_call` with the function name.
@@ -5956,33 +5956,33 @@ parse_else_if_chain Method
   - Iterates through tokens while the current token is `ELSE_IF` or `ELSE`:
 
     - If the current token is `ELSE_IF`:
-    
+
       - Consumes the `ELSE_IF` token.
-      
+
       - Consumes the `LPAREN` token.
-      
+
       - Parses the `elif` condition using `parse_expression()`.
-      
+
       - Consumes the `RPAREN` token.
-      
+
       - Consumes the `LBRACE` token.
-      
+
       - Parses the `elif` body using `parse_body()`.
-      
+
       - Consumes the `RBRACE` token.
-      
+
       - Appends the condition and body as a tuple to `else_if_chain`.
-    
+
     - If the current token is `ELSE`:
-    
+
       - Consumes the `ELSE` token.
-      
+
       - Consumes the `LBRACE` token.
-      
+
       - Parses the `else` body using `parse_body()`.
-      
+
       - Consumes the `RBRACE` token.
-      
+
       - Breaks the loop.
 
   - Returns the `else_if_chain` and `else_body`.
@@ -6142,18 +6142,18 @@ Initializes the code generator.
 generate Method
 ~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates shader code from the abstract syntax tree (AST).
 
-**Parameters:**  
+**Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
+- `self`: The instance of the class containing the code and tokens.
 - `ast (ASTNode)` – The abstract syntax tree representing the shader code.
 
-**Returns:**  
+**Returns:**
 - `str` – The generated shader code as a string, or an empty string if the `ast` is not a `ShaderNode`.
 
-**Method Details:**  
+**Method Details:**
 
 - `generate(self, ast)`:
    - Checks if the `ast` is an instance of `ShaderNode`.
@@ -6165,18 +6165,18 @@ Generates shader code from the abstract syntax tree (AST).
 generate_shader Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the shader code for both vertex and fragment sections from the given node.
 
-**Parameters:** 
+**Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
+- `self`: The instance of the class containing the code and tokens.
 - `node (ShaderNode)` – The node representing the shader structure.
 
-**Returns:**  
+**Returns:**
 - `str` – The generated shader code for the vertex and fragment sections.
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_shader(self, node)`:
    - Sets up the shader by initializing `shader_inputs`, `shader_outputs`, and `uniforms` from the node.
@@ -6206,16 +6206,16 @@ Generates the shader code for both vertex and fragment sections from the given n
 generate_uniforms Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the uniform declarations for the shader.
 
-**Parameters:**  
+**Parameters:**
 - `self`: The instance of the class containing the code and tokens.
 
-**Returns:**  
+**Returns:**
 - `str` – The generated uniform declarations.
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_uniforms(self)`:
    - Initializes an empty list `uniform_lines`.
@@ -6227,18 +6227,18 @@ Generates the uniform declarations for the shader.
 generate_layouts Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the layout qualifiers for the shader, handling both input and output types.
 
-**Parameters:**  
+**Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
+- `self`: The instance of the class containing the code and tokens.
 - `layouts (list of LayoutNode)` – A list of layout objects, each containing `io_type`, `dtype`, and `name`.
 
-**Returns:**  
+**Returns:**
 - `str` – The generated layout qualifiers.
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_layouts(self, layouts)`:
 
@@ -6254,19 +6254,19 @@ Generates the layout qualifiers for the shader, handling both input and output t
 generate_functions Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the function definitions for the shader, handling both vertex and fragment shader types.
 
 **Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
-- `functions (list[FunctionNode])` – A list of function nodes, each representing a function in the shader.  
+- `self`: The instance of the class containing the code and tokens.
+- `functions (list[FunctionNode])` – A list of function nodes, each representing a function in the shader.
 - `shader_type (str)` – The type of shader (`vertex` or `fragment`).
 
-**Returns:**  
+**Returns:**
 - `str` – The generated function definitions.
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_functions(self, functions, shader_type)`:
    - Initializes an empty string `code`.
@@ -6283,17 +6283,17 @@ Generates the function definitions for the shader, handling both vertex and frag
 generate_statement Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the code for a given statement, handling various types of statements such as variable declarations, assignments, control flow statements, and expressions.
 
-**Parameters:** 
+**Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
-- `stmt`: The statement node to be generated.  
-- `shader_type`: The type of shader (`vertex` or `fragment`).  
+- `self`: The instance of the class containing the code and tokens.
+- `stmt`: The statement node to be generated.
+- `shader_type`: The type of shader (`vertex` or `fragment`).
 - `indent`: The indentation level for the generated code (default is 0).
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_statement(self, stmt, shader_type, indent=0)`:
    - Initializes the indentation string `indent_str` based on the `indent` level.
@@ -6315,16 +6315,16 @@ Generates the code for a given statement, handling various types of statements s
 generate_assignment Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the code for an assignment statement, handling the left-hand side (LHS) and right-hand side (RHS) expressions.
 
-**Parameters:** 
+**Parameters:**
 
-- `self`: The instance of the class containing the code and tokens.  
-- `node`: The assignment node containing the LHS and RHS expressions.  
+- `self`: The instance of the class containing the code and tokens.
+- `node`: The assignment node containing the LHS and RHS expressions.
 - `shader_type`: The type of shader (`vertex` or `fragment`).
 
-**Method Details:**  
+**Method Details:**
 
 - `generate_assignment(self, node, shader_type)`:
 
@@ -6339,22 +6339,22 @@ Generates the code for an assignment statement, handling the left-hand side (LHS
 generate_if Method
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates code for an `if` statement, including optional `else if` and `else` blocks, formatted with the specified indentation.
 
-**Parameters:**  
+**Parameters:**
 
-- `node` (IfNode): An `IfNode` instance representing the `if` statement and its associated conditions and blocks.  
-- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), affecting how certain constructs are handled.  
+- `node` (IfNode): An `IfNode` instance representing the `if` statement and its associated conditions and blocks.
+- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), affecting how certain constructs are handled.
 - `indent` (int): The current level of indentation to apply in the generated code.
 
-**Returns:**  
+**Returns:**
 - `str`: A string containing the generated code for the `if` statement, properly formatted with indentation.
 
-**Method Details:**  
-- Constructs the `if` statement with its condition and corresponding body.  
-- Handles chained `else if` conditions and their bodies.  
-- Includes an optional `else` block if provided.  
+**Method Details:**
+- Constructs the `if` statement with its condition and corresponding body.
+- Handles chained `else if` conditions and their bodies.
+- Includes an optional `else` block if provided.
 - Ensures that code blocks are correctly indented based on the `indent` parameter.
 
 ---
@@ -6362,20 +6362,20 @@ Generates code for an `if` statement, including optional `else if` and `else` bl
 generate_else_if Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates code for an `else if` block within an `if` statement, formatted with the specified indentation.
 
-**Parameters:**  
+**Parameters:**
 
-- `node` (IfNode): An `IfNode` instance representing the `else if` condition and its associated body.  
-- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), influencing the handling of specific constructs.  
+- `node` (IfNode): An `IfNode` instance representing the `else if` condition and its associated body.
+- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), influencing the handling of specific constructs.
 - `indent` (int): The level of indentation to apply in the generated code.
 
-**Returns:**  
+**Returns:**
 - `str`: A string containing the generated code for the `else if` block, properly formatted with indentation.
 
-**Method Details:**  
-- Constructs the `else if` block with its condition and corresponding body.  
+**Method Details:**
+- Constructs the `else if` block with its condition and corresponding body.
 - Ensures that the code within the `else if` block is correctly indented based on the `indent` parameter.
 
 ---
@@ -6383,22 +6383,22 @@ Generates code for an `else if` block within an `if` statement, formatted with t
 generate_for Method
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates code for a `for` loop construct, including initialization, condition, update, and body, formatted with the specified indentation.
 
-**Parameters:** 
+**Parameters:**
 
-- `node` (ForNode): An instance of `ForNode` representing the `for` loop’s components such as initialization, condition, update, and body.  
-- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), affecting the syntax and semantics of the loop.  
+- `node` (ForNode): An instance of `ForNode` representing the `for` loop’s components such as initialization, condition, update, and body.
+- `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), affecting the syntax and semantics of the loop.
 - `indent` (int): The level of indentation to apply to the generated code.
 
-**Returns:**  
+**Returns:**
 - `str`: A string containing the generated code for the `for` loop, properly formatted with indentation.
 
-**Method Details:**  
-- **Initialization (`init`)**: Generates the initialization statement for the `for` loop, stripping trailing semicolons.  
-- **Condition (`condition`)**: Generates the loop’s condition expression.  
-- **Update (`update`)**: Generates the update statement for the `for` loop, stripping trailing semicolons.  
+**Method Details:**
+- **Initialization (`init`)**: Generates the initialization statement for the `for` loop, stripping trailing semicolons.
+- **Condition (`condition`)**: Generates the loop’s condition expression.
+- **Update (`update`)**: Generates the update statement for the `for` loop, stripping trailing semicolons.
 - **Body**: Generates the code for the body of the `for` loop, applying additional indentation.
 
 **Example:**
@@ -6414,24 +6414,24 @@ Generates code for a `for` loop construct, including initialization, condition, 
 generate_update Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates the code for the update part of a `for` loop, handling various types of expressions such as assignments, unary operations, and binary operations.
 
-**Parameters:**  
+**Parameters:**
 
-- `node` (ASTNode): An instance of `AssignmentNode`, `UnaryOpNode`, or `BinaryOpNode` representing the update expression in the `for` loop.  
+- `node` (ASTNode): An instance of `AssignmentNode`, `UnaryOpNode`, or `BinaryOpNode` representing the update expression in the `for` loop.
 - `shader_type` (str): Specifies the type of shader being generated (e.g., `"vertex"` or `"fragment"`), which can affect how the update expression is formatted.
 
-**Returns:**  
+**Returns:**
 - `str`: A string containing the generated code for the update expression.
 
-**Method Details:**  
+**Method Details:**
 
-- **AssignmentNode**: Handles both simple assignments and increments/decrements.  
-  - If the value is a `UnaryOpNode`, it generates increment or decrement operations.  
-  - Otherwise, it generates a standard assignment.  
-- **UnaryOpNode**: Generates pre-increment, post-increment, pre-decrement, post-decrement, or unary operations based on the operation type.  
-- **BinaryOpNode**: Handles binary operations and maps them to appropriate operators using `map_operator`.  
+- **AssignmentNode**: Handles both simple assignments and increments/decrements.
+  - If the value is a `UnaryOpNode`, it generates increment or decrement operations.
+  - Otherwise, it generates a standard assignment.
+- **UnaryOpNode**: Generates pre-increment, post-increment, pre-decrement, post-decrement, or unary operations based on the operation type.
+- **BinaryOpNode**: Handles binary operations and maps them to appropriate operators using `map_operator`.
 - **Error Handling**: Raises a `ValueError` for unsupported node types.
 
 ---
@@ -6439,26 +6439,26 @@ Generates the code for the update part of a `for` loop, handling various types o
 generate_expression Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Generates code for various types of expressions used in shader programming. This includes translating simple strings, handling variables, binary and unary operations, function calls, ternary operations, and member accesses.
 
 **Parameters:**
 
-- `expr` (ASTNode): An instance of a specific type of expression node, such as `VariableNode`, `BinaryOpNode`, etc.  
+- `expr` (ASTNode): An instance of a specific type of expression node, such as `VariableNode`, `BinaryOpNode`, etc.
 - `shader_type` (str): Indicates the type of shader (e.g., `"vertex"` or `"fragment"`), which might influence how the expressions are formatted.
 
-**Returns:**  
+**Returns:**
 - `str`: A string containing the generated code for the expression.
 
-**Method Details:**  
+**Method Details:**
 
-1. **str**: Uses `translate_expression` to handle basic string translation or identifiers.  
-2. **VariableNode**: Generates a variable declaration or usage based on its type and name.  
-3. **BinaryOpNode**: Generates binary operations by recursively generating code for left and right operands and mapping the operator.  
-4. **FunctionCallNode**: Generates function calls, including the function name and arguments.  
-5. **UnaryOpNode**: Handles unary operations, including pre-increment and pre-decrement.  
-6. **TernaryOpNode**: Generates ternary conditional expressions.  
-7. **MemberAccessNode**: Handles member accesses (e.g., object.property).  
+1. **str**: Uses `translate_expression` to handle basic string translation or identifiers.
+2. **VariableNode**: Generates a variable declaration or usage based on its type and name.
+3. **BinaryOpNode**: Generates binary operations by recursively generating code for left and right operands and mapping the operator.
+4. **FunctionCallNode**: Generates function calls, including the function name and arguments.
+5. **UnaryOpNode**: Handles unary operations, including pre-increment and pre-decrement.
+6. **TernaryOpNode**: Generates ternary conditional expressions.
+7. **MemberAccessNode**: Handles member accesses (e.g., object.property).
 8. **Default Case**: Converts any other node types to their string representations.
 
 ---
@@ -6466,32 +6466,32 @@ Generates code for various types of expressions used in shader programming. This
 translate_expression Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Translates a given expression (identifier) into its corresponding name based on the shader type. It checks if the expression matches any of the inputs or outputs for the current shader item and returns the appropriate name.
 
-**Parameters:**  
+**Parameters:**
 
-- `expr` (str): The identifier or expression to be translated.  
+- `expr` (str): The identifier or expression to be translated.
 - `shader_type` (str): The type of shader (`"vertex"` or `"fragment"`) which determines which item lists to check.
 
-**Returns:**  
+**Returns:**
 - `str`: The translated name if a match is found, otherwise the original expression.
 
-**Method Details:**  
+**Method Details:**
 
-1. **Vertex Shader Type:**  
+1. **Vertex Shader Type:**
 
-   - If `shader_type` is `"vertex"` and `self.vertex_item` is not `None`, it checks the inputs and outputs of `self.vertex_item`.  
-   - If `expr` matches any input or output names, it returns the matched name.  
+   - If `shader_type` is `"vertex"` and `self.vertex_item` is not `None`, it checks the inputs and outputs of `self.vertex_item`.
+   - If `expr` matches any input or output names, it returns the matched name.
    - If no match is found, it returns the original expression.
 
-2. **Fragment Shader Type:**  
+2. **Fragment Shader Type:**
 
-   - If `shader_type` is `"fragment"` and `self.fragment_item` is not `None`, it checks the inputs and outputs of `self.fragment_item`.  
-   - If `expr` matches any input or output names, it returns the matched name.  
+   - If `shader_type` is `"fragment"` and `self.fragment_item` is not `None`, it checks the inputs and outputs of `self.fragment_item`.
+   - If `expr` matches any input or output names, it returns the matched name.
    - If no match is found, it returns the original expression.
 
-3. **Default Return:**  
+3. **Default Return:**
 
    - If the shader type is not recognized or no match is found, the method returns the expression as is.
 
@@ -6500,34 +6500,34 @@ Translates a given expression (identifier) into its corresponding name based on 
 map_type Method
 ~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Translates internal type representations into their corresponding shader types using a predefined mapping.
 
-**Parameters:**  
+**Parameters:**
 - `vtype` (str): The internal type representation to be mapped.
 
-**Returns:**  
+**Returns:**
 - `str`: The corresponding shader type based on the mapping, or the original type if no mapping is found.
 
-**Method Details:** 
+**Method Details:**
 
-1. **Type Mapping:** 
+1. **Type Mapping:**
 
-   - The method uses a dictionary called `type_map` to define the mappings: 
+   - The method uses a dictionary called `type_map` to define the mappings:
 
    .. code:: cpp
- 
-      vec3 maps to vec3  
-      vec4 maps to vec4  
-      float maps to float  
-      int maps to int  
-      bool maps to bool 
+
+      vec3 maps to vec3
+      vec4 maps to vec4
+      float maps to float
+      int maps to int
+      bool maps to bool
 
    - The `type_map` dictionary includes common GLSL types.
 
-2. **Lookup:**  
-   - The method attempts to find the `vtype` in the `type_map` dictionary.  
-   - If `vtype` is found, it returns the corresponding shader type.  
+2. **Lookup:**
+   - The method attempts to find the `vtype` in the `type_map` dictionary.
+   - If `vtype` is found, it returns the corresponding shader type.
    - If `vtype` is not found in the dictionary, it returns the original `vtype`.
 
 ---
@@ -6535,35 +6535,35 @@ Translates internal type representations into their corresponding shader types u
 map_operator Method
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description:**  
+**Description:**
 Maps internal operator representations to their corresponding shader language operators using a predefined mapping.
 
-**Parameters:**  
+**Parameters:**
 - `op` (str): The internal operator representation to be mapped.
 
-**Returns:**  
+**Returns:**
 - `str`: The corresponding shader operator based on the mapping, or the original operator if no mapping is found.
 
-**Method Details:** 
+**Method Details:**
 
-1. **Operator Mapping:** 
+1. **Operator Mapping:**
 
-   - The method uses a dictionary called `operator_map` to define the mappings:  
+   - The method uses a dictionary called `operator_map` to define the mappings:
 
    .. code:: cpp
 
-      + maps to +  
-      - maps to -  
-      * maps to *  
-      / maps to /  
-      == maps to ==  
-      != maps to !=  
+      + maps to +
+      - maps to -
+      * maps to *
+      / maps to /
+      == maps to ==
+      != maps to !=
 
    - The `operator_map` dictionary includes common GLSL operators.
 
-2. **Lookup:**  
-   - The method attempts to find the `op` in the `operator_map` dictionary.  
-   - If `op` is found, it returns the corresponding shader operator.  
+2. **Lookup:**
+   - The method attempts to find the `op` in the `operator_map` dictionary.
+   - If `op` is found, it returns the corresponding shader operator.
    - If `op` is not found in the dictionary, it returns the original operator.
 
 ---
@@ -7118,9 +7118,9 @@ ImportNode Class
       .. code:: python
 
         "ImportNode(module_name='{self.module_name}', alias='{self.alias}')"
-        
+
         if an alias is provided, otherwise
-        
+
         "ImportNode(module_name='{self.module_name}')"
 
 
