@@ -6,11 +6,11 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="CrossGL Language" href="language.html" /><link rel="prev" title="Design" href="design.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>CrossGL Translator - CrossGL 0.0.1 documentation</title>
+        <title>CrossGL Translator 🌟 - CrossGL 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=9ba4b1f2" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=aee86503" />
     
     
 
@@ -212,7 +212,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -239,10 +239,35 @@
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">CrossGL Translator</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">CrossGL Translator 🌟</a></li>
 <li class="toctree-l1"><a class="reference internal" href="language.html">CrossGL Language</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution.html">Contribution Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_reference.html">DirectX Code Generation API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API References For CrossGL To DirectX , Metal And OpenGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#directx-code-generation">DirectX Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal-codegen">Metal Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#opengl-codegen">OpenGL Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#vulkan-codegen">Vulkan Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#ast-abstract-syntax-tree">AST (Abstract Syntax Tree)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#lexer">Lexer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#parser">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#api-references-for-directx-metal-and-opengl-to-crossgl">API References For DirectX , Metal And OpenGL To CrossGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#directx-ast">DirectX AST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#directx-lexer">DirectX Lexer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#directx-parser">DirectX Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#directx-codegen">DirectX Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal">Metal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal-ast">Metal AST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal-lexer">Metal Lexer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal-parser">Metal Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#metal-codegen-1">Metal Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#opengl">OpenGL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#opengl-lexer">OpenGL Lexer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#opengl-parser">OpenGL Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#opengl-codegen-1">OpenGL Codegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#mojo">Mojo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#mojo-ast">Mojo AST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#mojo-lexer">Mojo Lexer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html#mojo-parser">Mojo Parser</a></li>
 </ul>
 
 </div>
@@ -277,33 +302,471 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="crossgl-translator">
-<h1>CrossGL Translator<a class="headerlink" href="#crossgl-translator" title="Link to this heading">¶</a></h1>
-<p>The CrossGL Translator is a core component of our platform, enabling the conversion of CrossGL shader code directly into various graphics APIs, such as DirectX, Metal, and Vulkan.</p>
-<div class="large-text">Key Features</div><ul class="simple">
-<li><p><strong>Direct s2s conversion</strong>: Translates shaders directly to graphical languages / IR, bypassing many needless intermediate translations.</p></li>
-<li><p><strong>Unified Language</strong>: Supports multiple platforms with a single, consistent unified AST.</p></li>
-<li><p><strong>Optimized Performance</strong>: Generates highly optimized code tailored to the target backend.</p></li>
+<h1>CrossGL Translator 🌟<a class="headerlink" href="#crossgl-translator" title="Link to this heading">¶</a></h1>
+<p>The CrossTL is a cornerstone of our platform, expertly bridging the gap
+between CrossGL shader code and leading graphics APIs like DirectX,
+Metal, and Vulkan. Whether you’re a seasoned developer or just starting
+out, this tool empowers you to effortlessly translate and deploy shaders
+across multiple platforms, expanding the versatility and impact of your
+graphics projects.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
+<p>To begin using CrossGL, you’ll need to install its translation library. This is easily done using pip.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that pip is available in your environment.</p>
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p>Run the following command to install CrossGL’s translation library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>crosstl
+</pre></div>
+</div>
+<p>Once installed, you’re ready to start translating shaders with CrossGL!</p>
+<ul class="simple">
+<li><p><strong>Introduction to CrossGL Translator:</strong></p>
+<ul>
+<li><p>A tool that translates CrossGL shader code into different graphics
+API languages like DirectX, Metal, and Vulkan.</p></li>
+<li><p>Designed to streamline shader development across multiple
+platforms.</p></li>
 </ul>
-<div class="large-text">How It Works</div><p>The translator takes CrossGL shader code and processes it through several stages:</p>
-<ol class="arabic simple">
-<li><p><strong>Parsing</strong>: The code is parsed into an abstract syntax tree (AST).</p></li>
-<li><p><strong>Intermediate Representation</strong>: The AST is converted into an intermediate representation (IR) for optimization.</p></li>
-<li><p><strong>Code Generation</strong>: The IR is translated into the target backend code.</p></li>
-<li><p><strong>Optimization</strong>: Various optimization passes are applied to ensure maximum performance.</p></li>
-<li><p><strong>Source output</strong>: The final output is produced and ready for use.</p></li>
+</li>
+<li><p><strong>Core Features:</strong></p>
+<ul>
+<li><p>Streamlined Shader Conversion: Translates shaders directly into
+graphical languages or IR, bypassing unnecessary steps.</p></li>
+<li><p>Consistent Multi-Platform Support: Unified AST supporting multiple
+graphics APIs.</p></li>
+<li><p>Tailored Code Optimization: Optimized code for each target backend
+ensuring peak performance.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="key-features">
+<h2>Key Features💡<a class="headerlink" href="#key-features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Streamlined Shader Conversion:</strong> Our system translates shaders
+directly into graphical languages or intermediate representations
+(IR), bypassing unnecessary steps. This approach simplifies the
+process for developers, ensuring efficiency and ease of use.</p></li>
+<li><p><strong>Consistent Multi-Platform Support:</strong> With a unified Abstract Syntax
+Tree (AST), our platform supports various graphics APIs, enabling
+developers to write shaders once and deploy them across multiple
+platforms seamlessly.</p></li>
+<li><p><strong>Tailored Code Optimization:</strong> The code generated by our system is
+highly optimized for each target backend, ensuring that shaders
+perform at their best. Whether you’re focusing on speed or resource
+efficiency, our platform delivers code that’s finely tuned for
+optimal performance.</p></li>
+</ul>
+</section>
+<section id="quick-guide-to-crosstl-structure">
+<h2>Quick Guide to CrossTL Structure<a class="headerlink" href="#quick-guide-to-crosstl-structure" title="Link to this heading">¶</a></h2>
+<p>CrossTL is designed to translate CrossGL shader code into different
+graphics API languages (e.g., HLSL, Metal, OpenGL). The process involves
+several key steps, from lexing the input code to generating the final
+output. Below is a quick guide to the structure and workflow of CrossTL:</p>
+<ol class="arabic">
+<li><p><strong>Lexical Analysis (Lexer)</strong></p>
+<p><em>Purpose:</em>
+- Breaks down the input CrossGL shader code into a series of tokens (lexical units).</p>
+<p><em>Process:</em>
+- The lexer reads the shader code and identifies keywords, operators, identifiers, literals, etc.</p>
+<p><em>Example tokens:</em> SHADER, INPUT, OUTPUT, VOID, MAIN, IDENTIFIER, NUMBER, etc.</p>
+<p><em>Output:</em>
+- A list of tokens that represent the structure of the shader code.</p>
+</li>
+<li><p><strong>Syntax Analysis (Parser)</strong></p>
+<p><em>Purpose:</em>
+- Analyzes the sequence of tokens and builds a syntactic structure known as the Abstract Syntax Tree (AST).</p>
+<p><em>Process:</em>
+- The parser checks the token sequence for grammatical correctness based on the defined grammar of CrossGL.
+- Constructs the AST nodes such as <cite>ShaderNode</cite>, <cite>FunctionNode</cite>, <cite>VariableNode</cite>, etc.</p>
+<p><em>Output:</em>
+- An AST that represents the hierarchical structure of the shader code.</p>
+</li>
+<li><p><strong>Abstract Syntax Tree (AST) Construction</strong></p>
+<p><em>Purpose:</em>
+- Represents the logical structure of the shader code in a tree format.</p>
+<p><em>Process:</em>
+- AST nodes are created during parsing, each representing a syntactical element of the shader (e.g., functions, variables, operations).
+- Nodes include details about data types, operations, and relationships between different code elements.</p>
+<p><em>Output:</em>
+- A complete AST that can be further analyzed or transformed.</p>
+</li>
+<li><p><strong>Optimization (AST Optimization)</strong></p>
+<p><em>Purpose:</em>
+- Refines and optimizes the AST for better performance and efficiency.</p>
+<p><em>Process:</em>
+- Performs optimizations such as constant folding, dead code elimination, and loop unrolling.
+- Simplifies expressions and optimizes data structures within the AST.</p>
+<p><em>Output:</em>
+- An optimized AST ready for code generation.</p>
+</li>
+<li><p><strong>Code Generation (CodeGen)</strong></p>
+<p><em>Purpose:</em>
+- Translates the optimized AST into the target platform-specific shader code (HLSL, Metal, OpenGL, etc.).</p>
+<p><em>Process:</em>
+- The code generation module traverses the AST and converts it into the corresponding language’s syntax.
+- Handles the conversion of functions, variables, and other shader constructs into the target language.</p>
+<p><em>Output:</em>
+- Platform-specific shader code that is ready for use in the target graphics API.</p>
+</li>
 </ol>
-<div class="large-text">Supported Platforms</div><ul class="simple">
-<li><p><strong>DirectX</strong>: For Windows-based applications.</p></li>
-<li><p><strong>Metal</strong>: For macOS and iOS applications.</p></li>
-<li><p><strong>Vulkan</strong>: For cross-platform applications, including Linux and Android.</p></li>
-</ul>
+</section>
+<section id="workflow-summary">
+<h2>Workflow Summary<a class="headerlink" href="#workflow-summary" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Lexical Analysis: Input shader code is tokenized.</p></li>
+<li><p>Syntax Analysis: Tokens are parsed into an AST.</p></li>
+<li><p>AST Construction: The logical structure of the shader is represented.</p></li>
+<li><p>Optimization: The AST is refined for performance.</p></li>
+<li><p>Code Generation: Optimized AST is converted into the target shader
+language.</p></li>
+</ol>
+<p>This structured approach ensures that the shader code is accurately
+translated and optimized for different platforms, maintaining both
+performance and compatibility.</p>
+</section>
+<section id="how-it-works">
+<h2>How It Works 🛠️<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>The translator processes CrossGL shader code through several key stages,
+ensuring a smooth and efficient transformation :</p>
+<div class="line-block">
+<div class="line"><strong>1.Parsing 🌲 :</strong></div>
+<div class="line">The first stage in the CrossGL shader pipeline is the Parsing phase,
+where the shader code is meticulously analyzed and broken down into
+its constituent parts. This process begins with a lexical analysis,
+where the code is tokenized into manageable pieces such as keywords,
+identifiers, operators, and literals. These tokens are then passed
+through a syntactical analysis to construct the Abstract Syntax Tree
+(AST). The AST is a hierarchical, tree-like structure that represents
+the logical flow and structure of the shader code. Each node in the
+AST corresponds to a construct in the shader, such as variable
+declarations, function definitions, and control flow statements. By
+converting the code into an AST, CrossGL allows for a clear and
+organized representation of the shader’s logic, making it easier to
+perform further transformations, optimizations, and analyses. This
+structured representation serves as the foundation for all subsequent
+stages in the shader compilation process.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>2.Intermediate Representation 🔗 :</strong></div>
+<div class="line">After the AST is generated, the next step is to transform it into an
+Intermediate Representation (IR). The IR acts as an abstraction layer
+between the high-level CrossGL shader code and the low-level machine
+code that will eventually run on the hardware. This representation is
+designed to be both flexible and portable, allowing it to adapt to the
+specific needs of various graphics APIs like DirectX, Metal, or
+Vulkan. The IR retains the logical structure and intent of the
+original code while abstracting away platform-specific details, making
+it easier to perform optimizations and transformations that are
+crucial for efficient execution. Additionally, the IR enables the
+CrossGL system to apply uniform optimizations across different
+platforms, ensuring that the shader code remains performant regardless
+of the target environment. The IR serves as a critical stepping stone,
+bridging the gap between the high-level constructs in the shader code
+and the low-level instructions required by the graphics hardware.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>3.Code Generation ⚙️ :</strong></div>
+<div class="line">With the IR in place, the process moves on to the Code Generation
+stage. Here, the IR is translated into the target backend code
+specific to the chosen graphics API, whether it’s DirectX for Windows,
+Metal for macOS, or Vulkan for cross-platform compatibility. This
+stage involves mapping the abstract constructs in the IR to the
+concrete syntax and semantics of the target API. The translation
+process is designed to preserve the original intent and functionality
+of the CrossGL shader code while ensuring that it adheres to the
+conventions and requirements of the target platform. During this
+phase, the code generator also handles the integration of
+platform-specific features and optimizations, such as memory
+management, thread synchronization, and resource binding. The result
+is a backend-specific shader code that is ready to be compiled and
+executed on the target hardware, ensuring that the shader behaves
+consistently across different environments.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>4.Optimization ⚡ :</strong></div>
+<div class="line">Once the target backend code is generated, the Optimization phase
+begins. This stage is crucial for enhancing the performance of the
+shader, ensuring that it runs efficiently on the intended platform.
+Various optimization passes are applied to the code, each tailored to
+address specific aspects of shader execution. These optimizations may
+include reducing the number of instructions, minimizing resource usage
+(such as registers and memory), and improving data locality to enhance
+execution speed. Additionally, platform-specific optimizations are
+applied to take full advantage of the hardware capabilities, such as
+parallel processing on GPUs, efficient use of shader cores, and
+minimizing latency in data access. The goal of this stage is to
+produce a highly optimized shader that not only functions correctly
+but also delivers the best possible performance on the target
+platform.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>5.Final Output 🎯 :</strong></div>
+<div class="line">After all the processing and optimization stages are complete, the
+Final Output is produced. This is the fully optimized shader code,
+ready for integration into your graphics application. Whether the
+shader is destined for a game engine, a rendering pipeline, or a
+specialized graphics tool, the final output is designed to meet the
+highest standards of performance, compatibility, and reliability. The
+shader is now in a format that can be directly compiled and executed
+by the target platform, ensuring smooth deployment and execution. This
+final stage marks the culmination of the CrossGL shader pipeline,
+where all the intricate processes of parsing, intermediate
+representation, code generation, and optimization come together to
+produce a shader that is not only functional but also optimized for
+peak performance across different platforms.</div>
+</div>
+</section>
+<section id="cross-platform-bridging-from-platform-specific-to-crossgl-and-back">
+<h2>Cross-Platform Bridging 🌉: From Platform-Specific to CrossGL and Back<a class="headerlink" href="#cross-platform-bridging-from-platform-specific-to-crossgl-and-back" title="Link to this heading">¶</a></h2>
+<p>CrossGL is a versatile tool that goes beyond simple translation from a
+universal language to platform-specific shaders. It’s bidirectional
+translation capability allows developers to seamlessly convert shaders
+between platform-specific languages like HLSL, MSL, and GLSL to CrossGL
+and then back again. This flexibility ensures that your shaders can be
+consistently optimized, maintained, and deployed across multiple
+platforms with ease.</p>
+</section>
+<section id="two-way-conversion">
+<h2>Two-Way Conversion 🔄<a class="headerlink" href="#two-way-conversion" title="Link to this heading">¶</a></h2>
+<p>With CrossGL, you can not only convert CrossGL code into HLSL for
+DirectX, MSL for Metal, or GLSL for OpenGL, but you can also take
+existing shaders written in these platform-specific languages and
+convert them back into the CrossGL format. This two-way conversion is
+incredibly powerful for developers who want to: - <strong>Standardize shaders
+across multiple platforms:</strong> By converting HLSL, MSL, and GLSL shaders
+into CrossGL, you can unify your shader code into a single, maintainable
+format, ensuring consistency and reducing redundancy. - <strong>Optimize for
+multiple platforms:</strong> Once shaders are in the CrossGL format, they can
+be re-translated into any of the supported platform-specific languages,
+ensuring that they are optimized for the specific needs and performance
+characteristics of each platform.</p>
+</section>
+<section id="unified-shader-management">
+<h2>Unified Shader Management 🛠️<a class="headerlink" href="#unified-shader-management" title="Link to this heading">¶</a></h2>
+<p>This bidirectional capability of CrossGL simplifies shader management by
+allowing you to maintain a single version of your shaders in CrossGL.
+From this central format, you can easily generate platform-specific
+shaders for different environments or bring platform-specific shaders
+into the CrossGL ecosystem for centralized management. This flexibility
+makes it easier to apply updates, bug fixes, and optimizations across
+all platforms without having to manually edit each shader individually.</p>
+<p>A typical CrossGL shader consists of input, output, and the main
+function. #### Example :<code class="docutils literal notranslate"><span class="pre">shader.cgl</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shader</span> <span class="n">main</span>
+<span class="p">{</span>
+    <span class="n">vertex</span>
+    <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec3</span> <span class="n">position</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">fragment</span> <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">fragColor</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">fragColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Translate to your desired backend :</strong> 🔮</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crosstl</span>
+
+<span class="c1">#Translate to Metal</span>
+<span class="n">metal_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.cgl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;metal&#39;</span><span class="p">)</span>
+
+<span class="c1">#Translate to DirectX (HLSL)</span>
+<span class="n">hlsl_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.cgl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;directx&#39;</span><span class="p">)</span>
+
+<span class="c1">#Translate to OpenGL</span>
+<span class="n">opengl_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.cgl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;opengl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="converting-from-hlsl-to-crossgl">
+<h3>Converting from HLSL to CrossGL<a class="headerlink" href="#converting-from-hlsl-to-crossgl" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>write your HLSL shader (e.g., <code class="docutils literal notranslate"><span class="pre">shader.hlsl</span></code>):</p></li>
+</ol>
+<div class="highlight-hlsl notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="n">VS_INPUT</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float3</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">POSITION</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="n">PS_INPUT</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float4</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SV_POSITION</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float2</span><span class="w"> </span><span class="n">uv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">TEXCOORD0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">PS_INPUT</span><span class="w"> </span><span class="n">VSMain</span><span class="p">(</span><span class="n">VS_INPUT</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PS_INPUT</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+<span class="w">    </span><span class="n">output</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float4</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">output</span><span class="p">.</span><span class="n">uv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">xy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">float4</span><span class="w"> </span><span class="n">PSMain</span><span class="p">(</span><span class="n">PS_INPUT</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SV_TARGET</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">float4</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">uv</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Convert to CrossGL:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crosstl</span>
+
+<span class="n">crossgl_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.hlsl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cgl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crossgl_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-from-metal-to-crossgl">
+<h3>Converting from Metal to CrossGL<a class="headerlink" href="#converting-from-metal-to-crossgl" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>write your Metal shader (e.g., <code class="docutils literal notranslate"><span class="pre">shader.metal</span></code>):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;metal_stdlib&gt;</span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">metal</span><span class="p">;</span>
+
+<span class="n">struct</span> <span class="n">VertexInput</span> <span class="p">{</span>
+    <span class="n">float3</span> <span class="n">position</span> <span class="p">[[</span><span class="n">attribute</span><span class="p">(</span><span class="mi">0</span><span class="p">)]];</span>
+<span class="p">};</span>
+
+<span class="n">struct</span> <span class="n">VertexOutput</span> <span class="p">{</span>
+    <span class="n">float4</span> <span class="n">position</span> <span class="p">[[</span><span class="n">position</span><span class="p">]];</span>
+    <span class="n">float2</span> <span class="n">uv</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">vertex</span> <span class="n">VertexOutput</span> <span class="n">vertexShader</span><span class="p">(</span><span class="n">VertexInput</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">stage_in</span><span class="p">]])</span> <span class="p">{</span>
+    <span class="n">VertexOutput</span> <span class="n">out</span><span class="p">;</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">float4</span><span class="p">(</span><span class="ow">in</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">uv</span> <span class="o">=</span> <span class="ow">in</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">xy</span> <span class="o">*</span> <span class="mf">10.0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">fragment</span> <span class="n">float4</span> <span class="n">fragmentShader</span><span class="p">(</span><span class="n">VertexOutput</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">stage_in</span><span class="p">]])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">float4</span><span class="p">(</span><span class="ow">in</span><span class="o">.</span><span class="n">uv</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Convert to CrossGL:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crosstl</span>
+
+<span class="n">crossgl_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.metal&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cgl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crossgl_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-from-crossgl-to-hlsl">
+<h3>Converting from CrossGL to HLSL<a class="headerlink" href="#converting-from-crossgl-to-hlsl" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>write your crossGL shader (e.g., <code class="docutils literal notranslate"><span class="pre">shader.cgl</span></code>):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shader</span> <span class="n">main</span> <span class="p">{</span>
+    <span class="n">vertex</span> <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec3</span> <span class="n">position</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">fragment</span> <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">fragColor</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">fragColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Convert to HLSL:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crosstl</span>
+
+<span class="n">hlsl_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.cgl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;hlsl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hlsl_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-from-crossgl-to-metal">
+<h3>Converting from CrossGL to Metal<a class="headerlink" href="#converting-from-crossgl-to-metal" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>write your crossGL shader (e.g., <code class="docutils literal notranslate"><span class="pre">shader.cgl</span></code>):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shader</span> <span class="n">main</span> <span class="p">{</span>
+    <span class="n">vertex</span> <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec3</span> <span class="n">position</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">fragment</span> <span class="p">{</span>
+        <span class="nb">input</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
+        <span class="n">output</span> <span class="n">vec4</span> <span class="n">fragColor</span><span class="p">;</span>
+
+        <span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">fragColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Convert to Metal:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crosstl</span>
+
+<span class="n">metal_code</span> <span class="o">=</span> <span class="n">crosstl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;shader.cgl&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;metal&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metal_code</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These examples will help you get started with CrossGL, enabling smooth
+translation between different shader languages and seamless integration
+of existing shaders into your CrossGL workflow. Enjoy your shader coding
+journey! ☃️✨</p>
+</section>
+<section id="supported-platforms">
+<h3>Supported Platforms 🚀<a class="headerlink" href="#supported-platforms" title="Link to this heading">¶</a></h3>
+<p><strong>DirectX:</strong> Designed specifically for Windows-based applications,
+DirectX provides a robust framework for high-performance graphics and
+multimedia.</p>
+<p><strong>Metal:</strong> Optimized for macOS and iOS, Metal delivers efficient and
+low-overhead graphics performance, tailored to Apple’s hardware.</p>
+<p><strong>OpenGL:</strong> A widely-used, cross-platform API, OpenGL offers broad
+compatibility and ease of use for developing graphics applications
+across different platforms, including Windows, macOS, and Linux.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -349,8 +812,42 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">CrossGL Translator 🌟</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#key-features">Key Features💡</a></li>
+<li><a class="reference internal" href="#quick-guide-to-crosstl-structure">Quick Guide to CrossTL Structure</a></li>
+<li><a class="reference internal" href="#workflow-summary">Workflow Summary</a></li>
+<li><a class="reference internal" href="#how-it-works">How It Works 🛠️</a></li>
+<li><a class="reference internal" href="#cross-platform-bridging-from-platform-specific-to-crossgl-and-back">Cross-Platform Bridging 🌉: From Platform-Specific to CrossGL and Back</a></li>
+<li><a class="reference internal" href="#two-way-conversion">Two-Way Conversion 🔄</a></li>
+<li><a class="reference internal" href="#unified-shader-management">Unified Shader Management 🛠️</a><ul>
+<li><a class="reference internal" href="#converting-from-hlsl-to-crossgl">Converting from HLSL to CrossGL</a></li>
+<li><a class="reference internal" href="#converting-from-metal-to-crossgl">Converting from Metal to CrossGL</a></li>
+<li><a class="reference internal" href="#converting-from-crossgl-to-hlsl">Converting from CrossGL to HLSL</a></li>
+<li><a class="reference internal" href="#converting-from-crossgl-to-metal">Converting from CrossGL to Metal</a></li>
+<li><a class="reference internal" href="#supported-platforms">Supported Platforms 🚀</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

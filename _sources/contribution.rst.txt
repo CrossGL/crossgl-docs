@@ -1,7 +1,7 @@
 Contribution Guidelines
 =======================
 
-We appreciate your interest in contributing to CrossGL. By contributing, you help improve the project and make it more robust and useful for everyone. 
+We appreciate your interest in contributing to CrossGL. By contributing, you help improve the project and make it more robust and useful for everyone.
 
 
 .. raw:: html
@@ -86,4 +86,3 @@ Open a pull request on the original repository. Provide a detailed description o
    <div class="large-text">Thank You ✨</div>
 
 Thank you for your interest in contributing to CrossGL! Your contributions make a significant impact on the project and the community.
-
