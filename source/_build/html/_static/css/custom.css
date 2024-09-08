@@ -81,8 +81,8 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #2d2f36; /* Slightly lighter for search area */
 }
 
-.wy-menu-vertical .current a, 
-.wy-menu-vertical .current a:hover, 
+.wy-menu-vertical .current a,
+.wy-menu-vertical .current a:hover,
 .wy-menu-vertical .current a:focus {
     background-color: #61dafb; /* Highlight for the current item */
     color: #20232a; /* Text color for the current item */
@@ -128,8 +128,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo img {
-    max-height: 40px; 
-    margin-right: 10px; 
+    max-height: 40px;
+    margin-right: 10px;
 }
 
 .sidebar-logo {

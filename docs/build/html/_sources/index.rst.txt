@@ -17,7 +17,7 @@ Welcome to CrossGL's documentation!
       </div>
 
       <script>
-         const GUILD_ID = '1240998239206113330';  
+         const GUILD_ID = '1240998239206113330';
          const WIDGET_URL = `https://discord.com/api/guilds/1240998239206113330/widget.json`;
 
          fetch(WIDGET_URL)s
@@ -74,7 +74,7 @@ The CrossGL team comprises experienced professionals from the graphics programmi
 .. raw:: html
 
     <div>
-        <div style="display: flex; flex-wrap: wrap;"> 
+        <div style="display: flex; flex-wrap: wrap;">
             <div style="margin: 5px; text-align: center;">
 
                 <a href="https://github.com/NripeshN">
@@ -157,4 +157,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
