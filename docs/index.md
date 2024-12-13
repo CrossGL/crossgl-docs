@@ -21,7 +21,7 @@ We value diverse perspectives, continuous learning, and the spirit of collaborat
 
     [:octicons-arrow-right-24: Getting started](https://crossgl.github.io/crossgl-docs/graphica/)
 
--   :material-clock-fast:{ .lg .middle } __Explore `Graphica` and `CrossGL`__
+-   :material-fire:{ .lg .middle } __Explore `Graphica` and `CrossGL`__
 
     ---
 
