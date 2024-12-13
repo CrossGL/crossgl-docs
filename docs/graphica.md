@@ -1,6 +1,6 @@
-# CrossGL Graphica 🌟
+# CrossGL Translator 🌟
 
-The `Graphica` is a cornerstone of our platform, expertly bridging the gap
+The `Translator` is a cornerstone of our platform, expertly bridging the gap
 between CrossGL shader code and leading graphics APIs like DirectX,
 Metal, and Vulkan. Whether you're a seasoned developer or just starting
 out, this tool empowers you to effortlessly translate and deploy shaders
@@ -17,19 +17,19 @@ This is easily done using pip.
 Run the following command to install CrossGL\'s translation library:
 
 ``` bash
-pip install Graphica
+pip install crosstl
 ```
 
 Once installed, you\'re ready to start translating shaders with CrossGL!
 
--   **Introduction to CrossGL Graphica:**
+-   **Introduction to CrossGL Translator:**
     -   A tool that translates CrossGL shader code into different
         graphics API languages like DirectX, Metal, and Vulkan.
     -   Designed to streamline shader development across multiple
         platforms.
 -   **Core Features:**
     -   Streamlined Shader Conversion: Translates shaders directly into
-        graphical languages or IR, bypassing unnecessary steps.
+        crosstl languages or IR, bypassing unnecessary steps.
     -   Consistent Multi-Platform Support: Unified AST supporting
         multiple graphics APIs.
     -   Tailored Code Optimization: Optimized code for each target
@@ -38,7 +38,7 @@ Once installed, you\'re ready to start translating shaders with CrossGL!
 ## Key Features💡
 
 -   **Streamlined Shader Conversion:** Our system translates shaders
-    directly into graphical languages or intermediate representations
+    directly into crosstl languages or intermediate representations
     (IR), bypassing unnecessary steps. This approach simplifies the
     process for developers, ensuring efficiency and ease of use.
 -   **Consistent Multi-Platform Support:** With a unified Abstract
@@ -51,12 +51,12 @@ Once installed, you\'re ready to start translating shaders with CrossGL!
     efficiency, our platform delivers code that's finely tuned for
     optimal performance.
 
-## Quick Guide to Graphica Structure
+## Quick Guide to Translator Structure
 
-`Graphica` is designed to translate CrossGL shader code into different
+`Translator` is designed to translate CrossGL shader code into different
 graphics API languages (e.g., HLSL, Metal, OpenGL). The process involves
 several key steps, from lexing the input code to generating the final
-output. Below is a quick guide to the structure and workflow of `Graphica`:
+output. Below is a quick guide to the structure and workflow of `Translator`:
 
 1.  **Lexical Analysis (Lexer)**
 
@@ -169,7 +169,7 @@ performance and compatibility.
 
 ## How It Works 🛠️
 
-The Graphica processes CrossGL shader code through several key stages,
+The Translator processes CrossGL shader code through several key stages,
 ensuring a smooth and efficient transformation :
 
 | **1.Parsing 🌲 :**
