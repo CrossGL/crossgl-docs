@@ -14,19 +14,16 @@ pip install dyson
 
 
 ```python
-from dyson import router
+import dyson
 import torch
+import time
+from dyson import router
 
-class ComplexOperations:
-    def add(self):
-        a, b = 1, 3
-        return a + b
+# Define a function
+def mat(a, b):
+    return torch.matmul(a,b)
 
-    def func(self):
-        x = torch.tensor([1, 2])
-        y = torch.tensor([3, 4])
-        z = torch.add(x, y)
-        return z
+
 ```
 
 ### Routing Your Workload
@@ -37,12 +34,10 @@ Add the `key.cgl` path in your code like so,
 key_path = "path/to/your/key.cgl"
 ```
 
-Add your function with [`paramter`](https://crossgl.github.io/crossgl-docs/dyson/#advanced-routing-parameters) values.
+Add your function with [`parameter`](https://crossgl.github.io/crossgl-docs/dyson/#advanced-routing-parameters) values.
 
 ```python
-physics_function = ComplexOperations()
-
-result = router.route_hardware(
+hardware = router.route_hardware(
     key_path,                     
     physics_function,             
     mode="energy-efficient",      
@@ -53,3 +48,18 @@ result = router.route_hardware(
     multi_device=True             
 ) 
 ```
+
+We now have the hardware name required for routing. This can be passed as a parameter to the dyson.run() function, enabling it to route to the specified hardware.
+
+```python
+# Compile the function for CUDA (or CPU)
+func = dyson.run(mat, target_device=hardware)
+
+# Execute the function with arguments
+a = torch.randn(1000, 1000)
+b = torch.randn(1000, 1000)
+result = func(a, b)
+
+print(result)
+```
+
