@@ -16,8 +16,18 @@
 }
 
 div.grid.cards > ul > li{
- color: hsl(0, 100%, 35%);
+ color: hsl(0, 100%, 40%);
  background-color: hsl(240, 100%, 10%);
+}
+
+div > a.md-button {
+  padding: 20px 50px ;
+  color: hsl(210, 6%, 48%);
+  background-color: black;
+  border: 2px;
+  border-radius: 10px;
+  justify-content: center;
+
 }
 
 

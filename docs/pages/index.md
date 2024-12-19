@@ -2,7 +2,7 @@
 
 We're more than just a company, we're a group of passionate individuals working together to shape the future of AI-driven hardware optimization and cross-platform graphics development.
 
-With our groundbreaking tools, [`DYSON`]() and [`GRAPHICA`](), we're empowering businesses to tackle inefficiencies in cloud infrastructure and graphics development.
+With our groundbreaking tools, [`DYSON`](https://crossgl.net/#/dyson) and [`GRAPHICA`](), we're empowering businesses to tackle inefficiencies in cloud infrastructure and graphics development.
 
 Solving complex problems takes collaboration, creativity, and a shared vision. At CrossGL, you won't just be joining a team—you'll be joining a network of innovators and creators, all working towards a common goal of transforming AI and graphics.
 

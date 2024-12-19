@@ -1,5 +1,9 @@
 # Dyson Router Documentation
 
+<div style="display: flex; justify-content: center">
+<p><a class="md-button" href="https://crossgl.net/#/dyson" target="_blank">Go to app </a></p>
+</div>
+
 ## Introduction
 
 The **Dyson Router** is a cutting-edge solution designed to dynamically route computational workloads to the most optimal hardware in real-time. By leveraging advanced AI-driven hardware mapping techniques, Dyson delivers unprecedented performance and efficiency.
@@ -16,10 +20,12 @@ The **Dyson Router** is a cutting-edge solution designed to dynamically route co
 Dyson revolutionizes hardware routing through a sophisticated three-step approach:
 
 1. **Hardware Profiling**
+
    - Builds comprehensive performance profiles for each available hardware option
    - Ensures routing decisions are based on in-depth, data-driven analysis
 
 2. **Dynamic Workload Routing**
+
    - Evaluates each request comprehensively
    - Routes to the hardware configuration most suited to its unique requirements
 
@@ -28,18 +34,16 @@ Dyson revolutionizes hardware routing through a sophisticated three-step approac
    - Adapts dynamically to changing computational conditions
    - Guarantees consistently efficient workload execution
 
-
 ## Advanced Routing Parameters
 
-| Parameter     | Description                                                                               | Default Value | Possible Values                 |
-|--------------|-------------------------------------------------------------------------------------------|--------------|--------------------------------|
-| `mode`       | Defines optimization criteria                                                             | `performance`| `energy-efficient`, `performance` |
-| `judge`      | Number of LLMs used to determine hardware suitability                                     | `1`          | Integer (1-5)                  |
-| `run_type`   | Specifies execution log type                                                              | `minimal`    | `log`, `minimal`, `detailed`   |
-| `complexity` | Indicates task complexity level                                                           | `low`        | `low`, `medium`, `high`        |
-| `precision`  | Defines required precision level                                                          | `normal`     | `low`, `normal`, `high`        |
-| `multi_device`| Enables routing across multiple devices                                                   | `False`      | `True`, `False`                |
-
+| Parameter      | Description                                           | Default Value | Possible Values                   |
+| -------------- | ----------------------------------------------------- | ------------- | --------------------------------- |
+| `mode`         | Defines optimization criteria                         | `performance` | `energy-efficient`, `performance` |
+| `judge`        | Number of LLMs used to determine hardware suitability | `1`           | Integer (1-5)                     |
+| `run_type`     | Specifies execution log type                          | `minimal`     | `log`, `minimal`, `detailed`      |
+| `complexity`   | Indicates task complexity level                       | `low`         | `low`, `medium`, `high`           |
+| `precision`    | Defines required precision level                      | `normal`      | `low`, `normal`, `high`           |
+| `multi_device` | Enables routing across multiple devices               | `False`       | `True`, `False`                   |
 
 ## Best Practices
 
