@@ -33,7 +33,7 @@ repo_name: CrossGL
 extra_css:
   - stylesheets/extra.css
 nav:
-  - HOME: pages/index.md
+  - HOME: index.md
   - DYSON: 
     - OVERVIEW: pages/dyson/overview.md
     - GETTING STARTED: pages/dyson/getting-started.md
