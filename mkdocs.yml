@@ -33,15 +33,16 @@ repo_name: CrossGL
 extra_css:
   - stylesheets/extra.css
 nav:
-  - HOME: index.md
+  - HOME: pages/index.md
   - DYSON: 
-    - OVERVIEW: overview.md
-    - GETTING STARTED: getting-started.md
+    - OVERVIEW: pages/dyson/overview.md
+    - GETTING STARTED: pages/dyson/getting-started.md
+    - BILLING: pages/dyson/billing.md
   - GRAPHICA: 
-    - OVERVIEW: graphica.md
-    - LANGUAGE: language.md
-    # - DESIGN: design.md
-    - API REFERENCE: api_reference.md
-    - CONTRIBUTION : contribution.md
+    - OVERVIEW: pages/graphica/graphica.md
+    - LANGUAGE: pages/graphica/language.md
+    # - DESIGN: pages/graphica/design.md
+    - API REFERENCE: pages/graphica/api_reference.md
+    - CONTRIBUTION : pages/graphica/graphica_contribution.md
    
     
