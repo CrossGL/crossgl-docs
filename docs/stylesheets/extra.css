@@ -1,8 +1,8 @@
 [data-md-color-scheme="slate"] {
   --md-default-bg-color: hsl(0, 0%, 10%);
   --md-default-fg-color: hsl(0, 0%, 90%);
-  --md-accent-fg-color: hsl(0, 100%, 35%); 
-  --md-primary-fg-color: hsl(210, 100%, 25%);
+  --md-accent-fg-color: hsl(0, 100%, 40%); 
+  --md-primary-fg-color: hsl(210, 100%, 30%);
   --md-primary-active-fg-color: hsl(0, 0%, 0%);
 }
 
@@ -20,15 +20,12 @@ div.grid.cards > ul > li{
  background-color: hsl(240, 100%, 10%);
 }
 
-div > a.md-button {
-  padding: 20px 50px ;
-  color: hsl(210, 6%, 48%);
-  background-color: black;
-  border: 2px;
-  border-radius: 10px;
-  justify-content: center;
-
+h1 {
+color:hsl(0, 97%, 40%) !important;
 }
 
+h2{
+color:hsl(210, 100%, 40%) !important;
+}
 
 
