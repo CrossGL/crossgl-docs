@@ -34,7 +34,7 @@ Add the `key.cgl` path in your code like so,
 key_path = "path/to/your/key.cgl"
 ```
 
-Add your function with [`parameter`](https://crossgl.github.io/crossgl-docs/dyson/#advanced-routing-parameters) values.
+Add your function with [`parameter`](https://crossgl.github.io/crossgl-docs/pages/dyson/overview/#advanced-routing-parameters) values.
 
 ```python
 hardware = router.route_hardware(

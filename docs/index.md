@@ -19,17 +19,17 @@ We value diverse perspectives, continuous learning, and the spirit of collaborat
 
     ---
 
-    [:octicons-arrow-right-24: Getting started](https://crossgl.github.io/crossgl-docs/graphica/)
+    [:octicons-arrow-right-24: Getting started](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/)
 
 -   :material-fire:{ .lg .middle } __Explore `Graphica` and `CrossGL`__
 
     ---
 
-    Install [`graphica`](https://crossgl.github.io/crossgl-docs/graphica/) with [`pip`](https://crossgl.github.io/crossgl-docs/graphica/#installation/) and get access to our cross-platform shader language.
+    Install [`graphica`](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/) with [`pip`](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/#installation/) and get access to our cross-platform shader language.
 
     ---
 
-    [:octicons-arrow-right-24: Getting Started](https://crossgl.github.io/crossgl-docs/dyson/)
+    [:octicons-arrow-right-24: Getting Started](https://crossgl.github.io/crossgl-docs/pages/dyson/overview/)
 
 
 </div>
