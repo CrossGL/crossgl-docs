@@ -20,8 +20,16 @@ div.grid.cards > ul > li{
  background-color: hsl(240, 100%, 10%);
 }
 
+.md-tabs__list > .md-tabs__item :hover{
+  color:hsl(165, 100%, 45%) !important;
+}
+
+.md-tabs__list .md-tabs__item--active{
+  color:hsl(163, 100%, 45%) !important;
+}
+
 h1 {
-color:hsl(0, 97%, 40%) !important;
+color:hsl(165, 100%, 40%) !important;
 }
 
 h2{
