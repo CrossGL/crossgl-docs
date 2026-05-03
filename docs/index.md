@@ -1,35 +1,51 @@
-# Welcome to CrossGL Docs!
+# Welcome to CrossGL Documentation
 
-We're more than just a company, we're a group of passionate individuals working together to shape the future of AI-driven hardware optimization and cross-platform graphics development.
+**CrossGL** is a deeptech R&D company building foundational tools for AI infrastructure, GPU computing, and cross-platform graphics. Our product suite spans shader translation, document intelligence, decentralized compute, and AI-driven hardware optimization.
 
-With our groundbreaking tools, [`DYSON`](https://crossgl.net/#/dyson) and [`GRAPHICA`](), we're empowering businesses to tackle inefficiencies in cloud infrastructure and graphics development.
-
-Solving complex problems takes collaboration, creativity, and a shared vision. At CrossGL, you won't just be joining a team—you'll be joining a network of innovators and creators, all working towards a common goal of transforming AI and graphics.
-
-We value diverse perspectives, continuous learning, and the spirit of collaboration that drives real change. Join us in shaping the future of technology.
+---
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up `Dyson` in minutes__
+-   :material-translate:{ .lg .middle } __CrossTL__
 
     ---
 
-    Install [`dyson`](https://crossgl.github.io/crossgl-docs/pages/dyson/overview/) with [`pip`](https://crossgl.github.io/crossgl-docs/pages/dyson/getting-started/#quick-start-guide) and get up
-    and running in minutes.
+    A universal shader translation language and toolchain. Write shaders once in CrossGL's unified language and compile to HLSL, Metal, GLSL, and more. Includes bidirectional translation between platform-specific shader languages.
+
+    [:octicons-arrow-right-24: CrossTL Docs](pages/crosstl/crosstl.md)
+
+-   :material-file-document-check:{ .lg .middle } __Credora__
 
     ---
 
-    [:octicons-arrow-right-24: Getting started](https://crossgl.github.io/crossgl-docs/pages/dyson/getting-started/)
+    AI-powered document authentication, verification, and analysis platform for financial institutions. Extracts data from 60+ document types with 99.4% accuracy, generates risk scores, and produces annotated PDF reports — all in under 7 seconds.
 
--   :material-fire:{ .lg .middle } __Explore `Graphica` and `CrossGL`__
+    [:octicons-arrow-right-24: Credora Docs](pages/credora/overview.md)
 
-    ---
-
-    Install [`graphica`](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/) with [`pip`](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/#installation) and get access to our cross-platform shader language.
+-   :material-server-network:{ .lg .middle } __Infrintia__
 
     ---
 
-    [:octicons-arrow-right-24: Getting Started](https://crossgl.github.io/crossgl-docs/pages/graphica/graphica/#getting-started)
+    A decentralized GPU compute marketplace. Submit inference jobs, and Infrintia's broker routes them to the cheapest available host. Features credit reservation, multi-backend support (HuggingFace, LangChain, Worker), and live token streaming.
 
+    [:octicons-arrow-right-24: Infrintia Docs](pages/infrintia/overview.md)
+
+-   :material-router:{ .lg .middle } __Dyson__
+
+    ---
+
+    An AI-driven hardware routing engine that dynamically maps computational workloads to the most optimal hardware in real-time. Delivers up to 20% cost savings with continuous optimization and multi-device support.
+
+    [:octicons-arrow-right-24: Dyson Docs](pages/dyson/overview.md)
 
 </div>
+
+---
+
+## Getting Started
+
+Choose a product above to dive into its documentation, or use the navigation tabs at the top to browse by product. Each section includes an overview, getting-started guide, and API reference.
+
+## Support
+
+For questions or support, reach out to us at [support@crossgl.net](mailto:support@crossgl.net) or visit our [GitHub](https://github.com/CrossGL/).
