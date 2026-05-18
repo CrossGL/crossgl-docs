@@ -1,0 +1,12 @@
+:root {
+  --color-brand-primary: #184d47;
+  --color-brand-content: #184d47;
+}
+
+.sidebar-brand-text {
+  letter-spacing: 0;
+}
+
+article p {
+  line-height: 1.65;
+}

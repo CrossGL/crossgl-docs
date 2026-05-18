@@ -1,0 +1,11 @@
+docs/_build/
+docs/doxygen/build/
+docs/doxygen/*/html/
+docs/doxygen/*/xml/
+docs/source/products/*/autoapi/
+.doctrees/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
