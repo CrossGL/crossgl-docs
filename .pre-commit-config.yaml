@@ -1,0 +1,55 @@
+default_install_hook_types:
+  - pre-commit
+
+default_stages:
+  - pre-commit
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^docs/_build/
+      - id: end-of-file-fixer
+        exclude: ^docs/_build/
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: check-added-large-files
+        args:
+          - --maxkb=2048
+
+  - repo: local
+    hooks:
+      - id: shell-syntax
+        name: shell syntax
+        entry: bash -n
+        language: system
+        files: \.sh$
+      - id: docs-doxygen
+        name: build Doxygen XML
+        entry: make doxygen
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages:
+          - manual
+      - id: docs-strict
+        name: build Sphinx docs with warnings as errors
+        entry: bash -c 'PYTHON="${PYTHON:-python3}"; if [ -x .venv/bin/python ]; then PYTHON=.venv/bin/python; fi; PYTHON="$PYTHON" make strict'
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages:
+          - manual

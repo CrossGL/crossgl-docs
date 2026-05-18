@@ -42,7 +42,19 @@ infrintia_source = add_source_path(
     DOCS_REPO / "_external" / "infrintia",
     WORKSPACE / "infrintia",
 )
-enable_infrintia_autoapi = bool(infrintia_source and product_index_exists("infrintia"))
+infrintia_autoapi_dirs = (
+    [
+        infrintia_source / "app",
+        infrintia_source / "host_agent",
+        infrintia_source / "sdk",
+    ]
+    if infrintia_source
+    else []
+)
+enable_infrintia_autoapi = bool(
+    product_index_exists("infrintia")
+    and any(path.exists() for path in infrintia_autoapi_dirs)
+)
 
 try:
     import dill  # noqa: F401
@@ -138,11 +150,7 @@ copybutton_prompt_is_regexp = True
 
 if enable_infrintia_autoapi:
     autoapi_type = "python"
-    autoapi_dirs = [
-        str(infrintia_source / "app"),
-        str(infrintia_source / "host_agent"),
-        str(infrintia_source / "sdk"),
-    ]
+    autoapi_dirs = [str(path) for path in infrintia_autoapi_dirs if path.exists()]
     autoapi_root = "products/infrintia/autoapi"
     autoapi_add_toctree_entry = True
     autoapi_keep_files = False

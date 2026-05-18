@@ -8,10 +8,7 @@ generation.
 
 .. only:: has_infrintia_source
 
-   .. toctree::
-      :maxdepth: 2
-
-      autoapi/index
+   Open the generated `AutoAPI reference <autoapi/index.html>`__.
 
 .. only:: not has_infrintia_source
 
