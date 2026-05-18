@@ -26,8 +26,8 @@ for config in docs/doxygen/*/Doxyfile; do
   done
 
   if [ "${#existing_inputs[@]}" -eq 0 ]; then
-    echo "No configured Doxygen inputs exist for ${config}" >&2
-    exit 1
+    echo "Skipping ${config}: no configured inputs exist" >&2
+    continue
   fi
 
   tmp_config="$(mktemp docs/doxygen/build/Doxyfile.XXXXXX)"

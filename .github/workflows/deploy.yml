@@ -28,10 +28,17 @@ jobs:
           path: _external/CrossGL-Translator
 
       - name: Checkout Infrintia source
+        continue-on-error: true
         uses: actions/checkout@v4
         with:
           repository: CrossGL/infrintia
           path: _external/infrintia
+
+      - name: Remove incomplete optional checkouts
+        run: |
+          if [ ! -d _external/infrintia/app ]; then
+            rm -rf _external/infrintia
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
