@@ -91,8 +91,6 @@ html_static_path = ["_static"]
 html_css_files = ["crossgl.css", "custom.css"]
 
 autodoc_default_options = {
-    "members": True,
-    "undoc-members": True,
     "show-inheritance": True,
 }
 autosummary_generate = True

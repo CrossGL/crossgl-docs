@@ -10,5 +10,13 @@ target code for graphics, compute, and systems-language backends.
 
    quickstart
    architecture
+   translation-pipeline
+   lexer
+   ast
+   codegen-utilities
+   backend-support
+   backends/index
+   examples
+   extending
    api
    doxygen
